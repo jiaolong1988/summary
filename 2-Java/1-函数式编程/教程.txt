@@ -1,0 +1,12 @@
+lambd语法
+https://www.w3cschool.cn/java/java-lambda-syntax.html
+
+stream各个方法
+	https://blog.csdn.net/icarusliu/article/details/79495534
+	reduce与collect()
+	https://blog.csdn.net/icarusliu/article/details/79504602
+	案例总结
+	http://t.zoukankan.com/freshchen-p-12313999.html
+
+Function接口 消灭if...else
+https://mp.weixin.qq.com/s/3V_GtJjna5b8wy5GcWnQ0g

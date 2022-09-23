@@ -1,0 +1,2 @@
+Java Properties 类读配置文件保持顺序
+http://t.zoukankan.com/loong-hon-p-9957575.html

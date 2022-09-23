@@ -1,0 +1,71 @@
+
+常用
+    Ctrl+1					快速修复，给出解决方案
+    Ctrl+Shift+O   			自动引入包和删除无用包
+	Ctrl+Shift+S  			保存所有文件 
+	Ctrl+shift+/			注释掉选择的代码块xml文件注释
+	Ctrl+shift+F        	格式化代码
+	Ctrl+Shift+P 		    查询选中括号的结束括号
+	
+	Alt+Shift+R             批量修改名称
+	Ctrl+ =/-       		代码字体变大或缩小
+
+代码
+	Shift+Alt+L   			光标放在“request.getParameter(“username”);”的行末尾，按 Shift+Alt+L，填入变量名，自动生成。
+	Ctrl+2,选择L   			自动生成变量
+	
+	Alt+Shift+T             重构菜单
+	Alt+Shift+Z             生成常用代码
+	Ctrl+Shift+X/Y  		变为大/小写  
+    Alt+/                   代码提示
+    Ctrl+Q 	                转至上一个编辑位置
+    Alt+shift+J				添加注释
+
+调试
+	Ctrl+R 					运行至下一断点
+    Ctrl+L 					文本编辑器 转至行
+
+	
+搜索
+	Ctrl+Shift+R            查找指定类
+	Ctrl+Shift+T            搜索类所属jar
+	
+    Ctrl+K					快速定位到下一个
+	Ctrl+Shift+K			快速定位到上一个
+	
+    Ctrl+h                  全局查找类
+    Ctrl+f                  批量替换
+
+查看类结构
+	Ctrl+O					第一次按显示当前类方法，
+							第二次显示父类的所有方法
+	Ctrl+T  				查看继承结构: 
+	
+		
+	此类被谁使用	        1.ctrl+H  全局搜索		
+							2.选中类名，右键选择References,选择Project    
+							3.Ctrl+Alt+H  类的方法被那些类调用
+
+行操作
+	End/Home				行末/行首
+	Ctrl+D					删除当前行：
+    Alt+上下方向键 	        当前行和下面一行交互位置
+	Alt+左右方向键			返回上一次代码编辑位置
+	Ctrl+Alt+上下方向键 	复制当前行到下一行或上一行
+
+
+窗口
+    ctrl+e                      根据类名切换编辑器
+	
+	
+	Ctrl+F7  					显示所有视图菜单
+		
+    Ctrl+M						窗口最大化/最小化
+	Ctrl+W						关闭当前编辑器
+
+Eclipse 快捷键设置
+https://www.runoob.com/eclipse/eclipse-shortcuts.html
+
+https://blog.csdn.net/qq_42301302/article/details/109314546
+
+https://blog.csdn.net/weasleyqi/article/details/7896576

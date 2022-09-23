@@ -1,0 +1,6 @@
+Socket 
+
+	setSoLinger: 用于控制合适关闭网络连接，默认是当数据放松完毕后关闭连接。
+	https://blog.csdn.net/a19881029/article/details/52382956
+	socket.setSoLinger(true, 1);
+	即当网卡收到关闭连接请求时，等待一段时间，然后关闭连接

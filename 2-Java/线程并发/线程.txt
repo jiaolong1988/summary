@@ -1,0 +1,39 @@
+线程
+	Thread t = new Thread(new MessageLoop());
+		t.join()       			 t线程获得无限时间执行，且当前主线程暂停，直到t线程执行完毕后主线程可获得执行权限。
+								（导致当前线程暂停执行，直到 t 的线程终止。）
+		t.join(1000)   			 t线程获得1秒的执行权限，1秒后当前主线程获得执行权限。
+								（当前线程暂停1秒执行，  t线程获得1秒执行时间）
+		t.interrupt();   		设置线程停止
+		Thread.interrupted();   获取停止标志，在run方法中。
+        
+		wait():					 在第一个个线程的synchronized方法中调用wait(),首先检查是否获取内部锁，然后释放锁(放弃此对象上的所有同步声明)且当前线程挂起。在第二个线程将获得相同的锁并调用 Object.notifyAll()后,第一个线程将与他线程竞争在 对象上同步 的权利或被唤醒，重新获得锁后，此线程继续执行后续操作。
+
+	指定同步方法：	
+		synchronized 方法：	    synchronized 修饰方法时锁定的是调用该方法的对象。也就是说：在同一个对象上的两个同步方法调用不可能交错。当一个线程为一个对象执行同步方法时，所有其他线程调用同一个对象块的同步方法(暂停执行) ，直到第一个线程完成对象。
+		https://www.cnblogs.com/hapjin/p/4678773.html
+		
+		synchronized 代码块：	 在方法中设定同步锁，案例如下；		
+		private Object lock2 = new Object();
+		public void inc1() {
+			synchronized(lock1) {
+				c1++;
+			}
+			或
+			synchronized(this) { c1++;}
+		}
+		
+	重入锁
+		Lock 对象相对于隐式锁的最大优势在于它们能够退出获取锁的尝试。如果锁没有立即可用，tryLock 方法会退出。解决死锁问题。对象化相互引用。
+			 private final Lock lock = new ReentrantLock();
+			 lock.tryLock();
+			 lock.unlock();
+		案例：https://docs.oracle.com/javase/tutorial/essential/concurrency/newlocks.html
+	
+	
+	线程池
+		最小化由于线程创建而产生的开销（线程对象使用大量的内存，在大规模应用程序中，分配和释放许多线程对象会产生大量的内存管理开销。）
+	
+		这种类型的池总是有指定数量的线程在运行; 如果某个线程在仍在使用时以某种方式终止，则会自动用一个新线程替换它。任务通过一个内部队列提交给池，当活动任务比线程多时，该队列保存额外的任务。
+	
+	

@@ -1,0 +1,74 @@
+git 修改账号
+	ssh-keygen -t rsa -C "jiaolong@wiseda.com.cn"
+
+	查看当前用户名和邮箱
+	git config user.name
+	git config user.email
+	修改
+	git config --global user.name "jiaolong"
+	git config --global user.email "jiaolong@wiseda.com.cn"
+	git config --global user.password "wIfangshan"
+
+
+	修改git账号：账号密码验证不通过，密码或者权限不对，导致 Git 操作失败。
+	解决方案：
+	输入：git config --system --unset credential.helper
+
+
+	git记住密码
+	git config --global credential.helper store
+
+
+
+
+checkout 用法总结
+https://www.jianshu.com/p/cad4d2ec4da5
+
+查看分支
+git branch -a 
+
+查看当前分支的tag,并过滤查询
+git tag -ln 'v4.*'
+
+
+查看当前tag
+git describe --tags
+https://blog.csdn.net/zhangpeng_linux/article/details/85858841
+
+
+切换分支
+git switch master
+
+
+查看当前分支所属
+git branch -vv
+
+
+
+sudo apt install git
+git --version
+
+
+echo "alias git='LANG=en_GB git'" >> ~/.bashrc
+
+
+下载指定tag或分支
+git clone -b mvp-dev-more --single-branch git@github.com:tancolo/MOOC.git
+git clone -b v4.1.2 --single-branch https://github.com/emqx/emqx-rel.git
+
+
+make clean（会清除所有下载的lib和plugins）  
+make或者make compile
+
+export EMQX_DEPS_DEFAULT_VSN=v4.2.7
+unset EMQX_DEPS_DEFAULT_VSN
+ 
+ 
+git clone -b v4.2.2 https://github.com/emqx/emqx-rel.git emqx-4.2.2 
+export EMQX_DEPS_DEFAULT_VSN=v4.2.2 $ make
+
+git tag 1.0.0
+git push origin --tags
+
+
+https://blog.csdn.net/chenyao1994/article/details/114686758?spm=1001.2014.3001.5501

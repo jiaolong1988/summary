@@ -1,0 +1,9 @@
+可变长度参数列表
+List<String> getName(List<item>...items) {}
+跳出多层循环
+aa:while(true){break:aa}
+
+读取文件
+List<String> rows = Files.readAllLines(Paths.get("D:\\test\\test.sql"));
+System.out.println(rows);
+			

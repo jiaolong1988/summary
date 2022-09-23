@@ -1,0 +1,24 @@
+ ctrl + q  在 按w 选择浏览器 预览
+ 
+ ！ tab 生产html 模板
+ 
+ 右下角选择语言模式
+ 
+ 文件->首选项-> 设置，搜索 linked Editing（用于标签同步修改）
+ 
+ html环境配置
+ https://www.bilibili.com/video/BV1P64y187Fh?from=search&seid=7275127613386707884&spm_id_from=333.337.0.0
+ 
+快速输入代码
+ .xxx 回车  返回  <div class="jjj"></div>
+ #ddd 回车  返回  <div id="id"></div>
+ div.iteam.box#iteam1 回车  返回    <div class="item sss" id="item1"></div>
+ div.iteam#ied[data=xxx]  回车 返回  <div class="iteam" id="ied" data="xxx"></div>
+ https://www.bilibili.com/video/BV1ZK4y1d7AX?from=search&seid=7275127613386707884&spm_id_from=333.337.0.0
+ 
+ 
+ Alt+Shift+F  格式化html代码（js-css-html formatter）
+ 
+ 
+ 装上这几个插件，VS code才是真正无敌的存在！
+ https://www.bilibili.com/video/BV1Vv411j7MF?from=search&seid=7275127613386707884&spm_id_from=333.337.0.0

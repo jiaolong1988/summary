@@ -1,0 +1,50 @@
+https://www.likecs.com/show-203413265.html
+
+配置案例
+https://blog.csdn.net/shulianghan/article/details/104068609
+
+jni参考
+https://blog.csdn.net/yaojingqingcheng/article/details/123497697
+
+步骤
+
+进入java目录，生成.h文件
+javac -h . HelloWorld.java
+
+环境变量配置
+	在系统环境变量PATH中添加
+	C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.28610\bin\Hostx64\x64 
+
+	变量名：INCLUDE
+		C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include;
+		C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared;
+		C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt;
+		C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um;
+		C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\winrt;
+		C:\Program Files\Java\jdk1.8.0_152\include;
+		C:\Program Files\Java\jdk1.8.0_152\include\win32
+
+	变量名：LIB
+	C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x64;
+	C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\ucrt\x64;
+	C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\um\x64
+
+
+
+jni案例
+https://www.likecs.com/show-203413265.html
+
+
+cl/LD D:\JNI\HelloWorldImpl.cpp
+
+
+fatal error C1083: 无法打开包括文件解决方案
+https://blog.csdn.net/shulianghan/article/details/121185804
+
+
+
+
+
+
+jni系列文章
+https://blog.csdn.net/zhan107876/category_11444246.html?spm=1001.2014.3001.5482

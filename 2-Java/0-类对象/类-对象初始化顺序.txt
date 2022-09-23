@@ -1,0 +1,33 @@
+package com.founder.ttt;
+
+
+public class TestTemp {
+	//类初始化
+	static {
+		System.out.println("--->1");
+	}
+	
+	//对象初始化 在构造方法前执行
+	{
+		System.out.println("--->2");
+	}
+	
+    //构造方法
+	public TestTemp() {
+		System.out.println("--->3");
+	}
+
+
+	public static void main(String[] args) {
+		new TestTemp();
+		/**
+		 * 打印结果
+		 *  --->1
+			--->2
+			--->3
+		 */
+	
+	}
+
+	
+}

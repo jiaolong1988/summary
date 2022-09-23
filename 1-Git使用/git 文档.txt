@@ -1,0 +1,39 @@
+GitHub添加SSH密钥
+https://blog.csdn.net/adsl624153/article/details/81156436
+
+tocken
+https://blog.csdn.net/weixin_41010198/article/details/119698015
+
+Intellij IDEA 使用GitHub+Git
+https://www.cnblogs.com/yysbolg/p/8566389.html
+
+综合
+https://cloud.tencent.com/developer/article/1861466
+
+git config --global user.name jiaolong1988
+git config --global user.email jiaolong1234567@126.com
+
+git config --global -l
+
+git push -u origin master
+git pull origin master
+
+
+git clone https://github.com/jiaolong1988/test.git
+
+git remote add origin git@github.com:jiaolong1988/test.git
+
+git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
+git remote set-url origin https://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@github.com/jiaolong1988/test.git
+
+git remote -v
+git remote remove origin
+
+
+git config --system --unset credential.helper
+
+
+撤销add
+git reset
+
+git mv a.txt b.txt 		//把a.txt改名为b.txt
