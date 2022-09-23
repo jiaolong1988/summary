@@ -1,5 +1,6 @@
 可变长度参数列表
 List<String> getName(List<item>...items) {}
+
 跳出多层循环
 aa:while(true){break:aa}
 
@@ -7,3 +8,16 @@ aa:while(true){break:aa}
 List<String> rows = Files.readAllLines(Paths.get("D:\\test\\test.sql"));
 System.out.println(rows);
 			
+
+
+// Date 转 LocalDateTime
+Date startDate = new Date();
+LocalDateTime localDateTime1 = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+// LocalDateTime 转 Date
+Date date = Date.from(localDateTime1.atZone(ZoneId.systemDefault()).toInstant());
+
+//日期格式化
+DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+String dateTimeStr = localDateTime1.format(dateTimeFormatter);
+System.out.println(dateTimeStr);
