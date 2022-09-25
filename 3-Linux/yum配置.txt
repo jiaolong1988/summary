@@ -1,0 +1,7 @@
+https://blog.csdn.net/xupengxl/article/details/89946287
+
+centos7yum源配置与本地yum设置
+https://blog.csdn.net/qq_46162321/article/details/115006096
+
+测试
+yum repolist
