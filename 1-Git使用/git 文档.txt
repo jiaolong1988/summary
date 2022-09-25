@@ -10,30 +10,45 @@ https://www.cnblogs.com/yysbolg/p/8566389.html
 综合
 https://cloud.tencent.com/developer/article/1861466
 
+tocken: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
+
+ssh-keygen -t rsa -C "jiaolong1234567@126.com"
+
 git config --global user.name jiaolong1988
 git config --global user.email jiaolong1234567@126.com
-
+git config --global github.token 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
 git config --global -l
 
-git push -u origin master
-git pull origin master
 
 
+克隆公共项目
 git clone https://github.com/jiaolong1988/test.git
+克隆私有项目
+git clone  git@github.com:jiaolong1988/project.git
 
-git remote add origin git@github.com:jiaolong1988/test.git
 
-git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
-git remote set-url origin https://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@github.com/jiaolong1988/test.git
 
 git remote -v
 git remote remove origin
 
 
+添加别名
+git remote add origin git@github.com:jiaolong1988/test.git
+
+git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
+git remote set-url origin https://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@github.com/jiaolong1988/test.git
+
+
+git push -u origin master
+git pull origin master
+
 git config --system --unset credential.helper
 
 
-撤销add
 git reset
+git mv a.txt b.txt
 
-git mv a.txt b.txt 		//把a.txt改名为b.txt
+
+
+
+
