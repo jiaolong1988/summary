@@ -1,0 +1,46 @@
+读取.properties的值
+grep "${1}" pom.properties | cut -d'=' -f2 | sed 's/\r//'
+https://www.jianshu.com/p/b66940497e6e
+
+
+taskNum=3
+for ((taskId=0;taskId<$taskNum;taskId++))
+do
+	echo "$taskId"
+done
+
+
+#!/bin/sh 
+dmin=
+if [ "$dmin" = "" ]
+then
+  echo "dmin is not set!"
+else  
+  echo "dmin is set !"
+fi
+
+
+
+#!/bin/bash
+i=1
+sum=0
+while ((i <= 100))
+do
+	((sum += i))
+	((i++))
+done
+echo "The sum is: $sum"
+
+http://c.biancheng.net/view/1006.html
+
+
+
+while :
+do
+	if [ -z $(ps -ef |grep $! | grep -v grep) ];then
+		echo "over"
+		break
+	else
+	    echo "staill"
+	fi
+done

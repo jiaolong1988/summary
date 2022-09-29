@@ -1,0 +1,70 @@
+延迟1秒
+sleep 1
+
+
+ubuntu18 开机启动脚本（程序）
+	https://zhuanlan.zhihu.com/p/63507762
+	1. 脚本中使用绝对路径，否则 rc-local.service 会启动失败
+	2. 启动脚本时候，必须制定shell,例如： /bin/bash /home/test.sh
+	3. 命令必须是全路径，非root用户需要添加 sudo
+	cd /home/hdxt/emqx && sudo bin/emqx start
+	
+	
+emq自启动教程
+https://www.cuiwenyuan.com/shanghai/post/how-to-setup-emq-x-broker-auto-start-on-raspberrypi-4b.html
+
+
+
+VIM打开后，在最下面增加如下代码
+sudo vim /lib/systemd/system/rc-local.service
+
+[Install]
+WantedBy=multi-user.target
+Alias=rc-local.service
+
+
+https://www.myfreax.com/how-to-install-tomcat-9-on-ubuntu-18-04/
+tomcat 自启动配置
+/etc/systemd/system/tomcat.service
+
+	[Unit]
+	Description=Tomcat 9 servlet container
+	After=network.target
+	 
+	[Service]
+	Type=forking
+	 
+	Environment="JAVA_HOME=/usr/local/java/jdk1.8.0_271"
+	Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
+	 
+	Environment="CATALINA_BASE=/usr/local/tomcat/apache-tomcat-8.5.47" 
+	Environment="CATALINA_HOME=/usr/local/tomcat/apache-tomcat-8.5.47" 
+	Environment="CATALINA_PID=/usr/local/tomcat/apache-tomcat-8.5.47/tomcat.pid" 
+	Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+	 
+	ExecStart=/usr/local/tomcat/apache-tomcat-8.5.47/bin/startup.sh
+	ExecStop=/usr/local/tomcat/apache-tomcat-8.5.47/shutdown.sh
+	 
+	[Install]
+	WantedBy=multi-user.target
+	
+案例2
+	[Unit]
+	Description=Create AP Service
+	After=network.target
+
+	[Service]
+	Type=simple
+	ExecStart=/usr/bin/create_ap --config /etc/create_ap.conf
+	KillSignal=SIGINT
+	Restart=on-failure
+	RestartSec=5
+
+	[Install]
+	WantedBy=multi-user.target
+
+	
+systemctl daemon-reload
+systemctl start rc-local.service
+systemctl status rc-local.service
+systemctl enable rc-local.service

@@ -1,0 +1,32 @@
+
+	sudo fdisk -l
+	/dev/sdb
+
+	sudo fdisk /dev/sdb
+	m n p w
+
+	格式化
+	sudo mkfs -t vfat /dev/sdb1
+	
+	UUID
+	ls -l /dev/disk/by-uuid
+	vim /etc/fstab
+	UUID=520D-FEBF  /data          vfat    defaults        0       2
+
+	#挂在分区目录
+	mount /dev/sdb1 /data
+	umount /dev/sdb1
+	
+    挂在Boot分区
+	cp  -r /boot/efi    /boot/efi.old
+	mount  /dev/sdb1 /boot/efi  
+	cp  -r  /boot.old   /boot
+	
+	
+	查看文件系统类型
+	df -hT	
+	parted 
+	print list
+	
+	https://zhuanlan.zhihu.com/p/35774442
+

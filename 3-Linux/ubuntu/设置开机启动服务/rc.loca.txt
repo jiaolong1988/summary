@@ -1,0 +1,73 @@
+
+多命令执行
+https://www.cnblogs.com/chenlifan/p/13810640.html
+cd /home/hdxt/emqx && bin/emqx start
+cd /home/hdxt/emqx; bin/emqx start
+
+
+#不需要输入密码执行命令
+sudo -u 用户名  命令 
+sudo -u hdxt vim  /etc/profile 
+
+systemctl daemon-reload
+systemctl start rc-local.service
+systemctl status rc-local.service
+systemctl enable rc-local.service
+
+
+# 查看服务是否开机启动
+systemctl is-enabled test.service
+
+# 查看已启动的服务列表
+systemctl list-unit-files|grep enabled
+
+查看启动失败的服务列表
+systemctl --failed
+
+
+
+查询命令的位置
+which docker
+查询安装位置
+whereis  docker
+
+
+
+#重新加载配置
+sudo systemctl daemon-reload
+#设置开机启动
+sudo systemctl enable emqx.service
+
+sudo systemctl start emqx.service
+sudo systemctl status emqx.service
+
+sudo vim /usr/lib/systemd/system/emqx.service
+
+
+
+=====================================
+# 设定软链接
+cd /etc/systemd/system/
+ln -s /usr/lib/systemd/system/emqx.service emqx.service 
+
+
+
+
+/etc/systemd/system/              读取配置文件（默认路径）
+/usr/lib/systemd/system/          真正的配置文件存放在那个目录
+/lib/systemd/system               系统安装的启动路径
+
+
+
+https://www.cuiwenyuan.com/shanghai/post/how-to-setup-emq-x-broker-auto-start-on-raspberrypi-4b.html
+
+开机自启动
+https://zhuanlan.zhihu.com/p/63507762
+
+/etc/systemd/system和/lib/systemd/system的区别
+https://www.dazhuanlan.com/2020/03/14/5e6cb299378a9/
+
+
+Systemd 自启动管理
+http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html
+

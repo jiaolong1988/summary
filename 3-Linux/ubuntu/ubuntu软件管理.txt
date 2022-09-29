@@ -1,0 +1,10 @@
+ubuntu卸载
+https://blog.csdn.net/wsygdxg1989/article/details/79169174
+
+
+apt-get purge 
+
+Ubuntu上如何查询和安装指定版本的软件
+https://www.jianshu.com/p/87cccdab2d1f
+	 apt-cache madison nginx
+	 apt-get  -y   install    nginx=1.14.2-1~xenial

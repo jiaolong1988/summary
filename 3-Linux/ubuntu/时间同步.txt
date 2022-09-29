@@ -1,0 +1,12 @@
+用timedatectl修改了 
+sudo vi /etc/systemd/timesyncd.conf ， 打开注释，更改为ntp.bj-hdxt.com.cn
+[Time]
+NTP=ntp.bj-hdxt.com.cn cn.ntp.org.cn cn.pool.ntp.org ntp1.aliyun.com
+FallbackNTP=ntp.bj-hdxt.com.cn
+RootDistanceMaxSec=5
+PollIntervalMinSec=32
+PollIntervalMaxSec=2048
+
+sudo timedatectl set-ntp false
+sudo timedatectl set-ntp true后好用了
+查看状态：systemctl status systemd-timesyncd.service

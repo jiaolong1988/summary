@@ -1,0 +1,17 @@
+
+cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l		#查看物理CPU个数
+cat /proc/cpuinfo| grep "cpu cores"| uniq						#查看每颗物理CPU核心数
+cat /proc/cpuinfo| grep "processor"| wc -l					    #查看总核心数 # 总逻辑CPU数 = 物理CPU个数 * 每颗物理CPU的核数 * 超线程数
+cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c			#查看CPU型号，主频
+4cup/每个cpu8核心/共64
+
+
+#查看机器型号
+dmidecode | grep "Product Name"
+
+架构
+arch
+
+硬盘
+lsblk -d -o name,rota
+# 返回0：SSD盘 返回1：SATA盘

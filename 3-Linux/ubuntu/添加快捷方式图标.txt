@@ -1,0 +1,15 @@
+1.首先创建一个文件
+sudo vim /usr/share/applications/Intellij-idea.desktop
+
+
+[Desktop Entry]
+Name=IntelliJ IDEA			//此处即为在桌面显示的的应用名称
+Comment=IntelliJ IDEA	//可选
+Exec=/home/hesy/Downloads/ideaIU-2019.3.2/idea-IU-193.6015.39/bin/idea.sh		//此处为idea的路径必填
+Icon=/home/hesy/Downloads/ideaIU-2019.3.2/idea-IU-193.6015.39/bin/idea.svg		//此处为idea的快捷方式图标
+Terminal=false			//是否启动终端
+Type=Application
+Categories=Developer;
+
+3.最后执行命令修改权限即可在应用程序中看到相应的快捷方式了
+sudo chmod +x /usr/share/applications/Intellij-idea.desktop

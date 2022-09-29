@@ -1,0 +1,206 @@
+一、变量
+	定义变量 ：变量名=值
+	变量作用域 ：export 全局变量
+	变量的增删改查：
+		查看：$变量名称  
+		增加:变量名=value
+		删除：unset 变量名称
+
+二、数组
+	1、定义数组：
+		array_name=(value0 value1)
+		或者
+		array_name=(
+		value0
+		value1
+		)
+	2、赋值
+		array_name[0]=value0
+	2、数组读取
+		${数组名[下标]}：${array_name[0]}
+		${array_name[@]}：读取所有数组
+
+	3、获取数组长度
+		取得数组元素的个数
+			length=${#array_name[@]}
+			# 或者
+			length=${#array_name[*]}
+		取得数组单个元素的长度
+			lengthn=${#array_name[n]}
+
+三、执行shell、获取shell参数
+	$? 表示上一个命令退出的状态
+	$$ 表示当前进程编号
+	$0 表示当前脚本名称
+	$n 表示n位置的输入参数（n代表数字，n>=1）注意：9以上用${10}
+	$# 表示参数的个数，常用于循环
+	$*和$@ 都表示参数列表?
+
+	$*与$@区别
+	"$*" ："$1 $2 … $n"的形式输出所有参数
+	"$@" ："$1" "$2" … "$n" 的形式输出所有参数
+
+四、数学计算   
+	$[a+b] 或 expr `m + n` 或$((m+n)) 
+
+	 推荐：	
+		d=$[(2+3)*4]
+	 参考：
+		b=expr `expr 2 + 3 ` \* 4
+		c=$(((2+3)*4))
+		
+五、 echo
+	1、显示结果定向至文件
+	echo "I want to learn shell" > myfile
+
+	2、原样输出字符串，不进行转义或取变量(用单引号)
+	echo '$name\"'
+
+	3、显示命令执行结果
+	echo `date`
+	echo $(date)
+
+
+if判断
+	简述：（1）if command  ：只能执行命令状态码为0的 逻辑
+				if grep hadoop /etc/passwd
+			
+		  （2）if [ command ]（if test command 意思是一样的）是测试命令状态码之外的逻辑，如果条件成立，返回状态码0
+				if test command 是测试命令状态码之外的逻辑，因为if test 使用不方便，
+			因此shell提供了另外一种方式既：if [ command ],也可以说是test命令的另一种写法，表达的
+			意义是一样的，test命令可以提供数值比较、字符串比较，文件比较。
+		  
+	语法：
+		1、根据命令进行判断
+		if command1
+		then
+			commands
+		elif command2
+		then
+			commands
+		else
+			commands
+		fi
+		
+		2、根据比较条件进行判断
+		if [ command1 ]
+		then
+			commands
+		elif [ command2 ]
+		then
+			commands
+		else
+			commands
+		fi
+
+	if高级用法		
+	(( expression )):用于高级数学表达式的比较
+	[[ expression ]]:用于高级字符串表达式的比较
+	
+	总结：
+		if command ;then				执行命令“状态码”是为0 的逻辑
+		if [ condition ] ; then 		根据 command 返回的状态码是否为0，来判断执行逻辑
+		if (( expression )) ; then  	可以使用 数学表达式 进行比较，如 val++、val--、++val、--val
+		if [[ expression ]] ; then 		提供针对字符串的高级比较
+	
+	case用法：
+		case variable in
+			pattern1 | pattern2) commands1;;
+			pattern3) commands2;;
+			*)  commands;;
+		esac 
+	
+循环
+    1、for循环
+		for var in list
+		do
+			commands
+		done
+		例1、for test in aa  bb cc
+		例2、for test in $(cat $file) #读取文件内容
+		例3、for finfo in /home/*     #读取文件列表信息
+
+	2、字段分隔符
+		IFS变量，是系统默认的分隔符，通过对其修改，可对其进行字段分割，默认（空格、制表符、换行符）
+		推荐：
+			IFS.OLD=$IFS
+			IFS=$'\n'
+			<代码中使用新的IFS值>
+			IFS=IFS.OLD
+			
+	3、通配符读取目录
+	for file in /home/*
+	
+	4、for((i=1; i <=10 ;i++))
+		do
+			echo $i
+		done
+	
+	5、while test command
+		do 
+			commands
+		done
+
+重定向
+	1、管道
+		|		管道
+		>		覆盖
+		>> 		追加
+		2> file  将错误信息输出到指定文件
+		/dev/null 2>&1  指定到回收站，不要所有信息
+		
+	2、执行顺序
+	；  [命令1 ；命令2],多个命令顺序执行，命令之间没有任何逻辑联系
+	&&  [命令1 && 命令2]逻辑与当命令1正确执行，则命令2才会执行,当命令1执行不正确，则命令2不会执行
+	||  [命令1 || 命令2]逻辑或当命令1 执行不正确，则命令2才会执行,当命令1正确执行，则命令2不会执行
+	
+	xargs
+		由于很多命令不支持管道命令，因此需要使用xargs来提供命令的引用
+	
+	cut -d '分隔符' -f 列数（指定要看那几列）
+	
+
+定义方法
+	方法
+		[ function ] funname [()]
+		{
+			action;
+			[return int;]
+		}
+		说明：
+		1、可以带function fun() 定义，也可以直接fun() 定义,不带任何参数。
+		2、参数返回，可以显示加：return 返回，如果不加，将以最后一条命令运行结果，作为返回值。
+		return后跟数值n(0-255）
+
+	例子：
+		myFun(){
+		echo "这是我的第一个 shell 函数!"
+		}
+		echo "-----函数开始执行-----"
+		myFun
+		echo "-----函数执行完毕-----"
+
+	Shell 文件包含的语法格式如下：
+		. filename # 注意点号(.)和文件名中间有一空格
+		或
+		source filename
+打印
+
+
+
+注意：
+''单引号：单引号字符串中的变量是无效的；
+""双引号：双引号里可以有变量、可以出现转义字符
+``反引号: 执行命令反引号中的命令，与$()相同
+
+$aa 与 ${aa} 获取变量
+$(date) 与 `date` 执行命令
+[] 与 test  逻辑比较
+(())	数字的高级使用
+[[]]	if 字符串 使用
+$[]		执行数学运算
+()		执行一组命令行
+
+
+
+

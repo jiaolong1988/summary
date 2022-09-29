@@ -1,0 +1,22 @@
+startNum: 60285714    endNum: 130000000   commitNum: 1000   taskNum: 25
+imagesys imagesys 172.18.66.216:1521/orcl
+clearMemory: 13    datatype: 1020 
+[*]pid: 47729
+[*]avg: 2788571  startNum: 60285714   endNum: 63074285
+[*]current: 34  clearMemory: 13 
+imagesys imagesys 172.18.66.216:1521/orcl
+
+SQL*Plus: Release 12.2.0.1.0 Production on Tue Sep 28 17:18:30 2021
+
+Copyright (c) 1982, 2016, Oracle.  All rights reserved.
+
+Last Successful login time: Tue Sep 28 2021 15:23:32 +08:00
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.2.0.1.0 - 64bit Production
+
+SQL> 
+TIMESTR
+-------------------
+2021-09-28 17:18:30
+

@@ -1,0 +1,29 @@
+result.txt: source.txt
+        cp source.txt result.txt
+
+source.txt: a
+        cat a >source.txt 
+
+a:
+        ehco "this is a" >a
+
+var-lost:
+	export foo=bar; \
+	echo "foo=[$$foo]"
+
+
+.ONESHELL:
+var-lost:
+        export foo=bar; 
+        echo "this is jl $$foo " >jl.txt
+
+调用shell中的全局变量
+$$foo
+
+调用局部与全局变量
+$(foo)
+
+
+
+
+
