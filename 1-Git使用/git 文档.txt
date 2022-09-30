@@ -2,6 +2,7 @@ GitHub添加SSH密钥
 https://blog.csdn.net/adsl624153/article/details/81156436
 
 tocken
+设置tocken
 https://blog.csdn.net/weixin_41010198/article/details/119698015
 
 Intellij IDEA 使用GitHub+Git
@@ -10,13 +11,13 @@ https://www.cnblogs.com/yysbolg/p/8566389.html
 综合
 https://cloud.tencent.com/developer/article/1861466
 
-tocken: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
-
-ssh-keygen -t rsa -C "jiaolong1234567@126.com"
+ssh-keygen -t rsa -C "jialong@xxx.com"
 
 git config --global user.name jiaolong1988
-git config --global user.email jiaolong1234567@126.com
-git config --global github.token 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
+git config --global user.email jialong@xxx.com
+git config --global github.token ghp_T8LkRLDBpqWy
+
+#查看git全局配置
 git config --global -l
 
 
@@ -38,14 +39,15 @@ git remote add origin git@github.com:jiaolong1988/test.git
 git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
 git remote set-url origin https://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@github.com/jiaolong1988/test.git
 
-
+#提交至github
 git push -u origin master
 git pull origin master
 
 git config --system --unset credential.helper
 
-
+#还原
 git reset
+改名
 git mv a.txt b.txt
 
 
