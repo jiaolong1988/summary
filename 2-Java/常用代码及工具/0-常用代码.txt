@@ -1,4 +1,4 @@
-可变长度参数列表
+可变长度参数列表[既可变参数可以不填写即getName()]
 	getName("1","2","3");
 	static void getName(String...items) {
 		for(String x :items) 
@@ -47,3 +47,11 @@
 		//调用方法，传参数
 		Object value = method.invoke(obj, "jiaolong");
 		System.out.println(value);
+		
+		//调用无参数的静态方法
+		Method m = MyTest.class.getMethod("m1", null);
+		m.invoke(null, null);			
+		public class MyTest{
+			public static void m1()
+				System.out.println("m1");			
+		}

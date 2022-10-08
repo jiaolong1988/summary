@@ -1,0 +1,65 @@
+https://www.jianshu.com/p/da4821bbe7bc
+
+
+
+	
+反射
+		//获取对象方法
+		Object obj = new Object();
+		Method method = obj.getClass().getMethod("wait", Long.TYPE);
+		Method[] methods = obj.getClass().getMethods();	
+		
+		//获取方法中个参数类型，数组的大小表示参数的数量		
+		Class[] c = method.getParameterTypes();
+		System.out.println("method name: "+method.getName());
+		System.out.println("method Parameter Type: "+c[0].getName());
+		
+		//调用方法，传参数
+		Object value = method.invoke(obj, "jiaolong");
+		System.out.println(value);
+		
+		//调用无参数的静态方法
+		Method m = MyTest.class.getMethod("m1", null);
+		m.invoke(null, null);			
+		public class MyTest{
+			public static void m1()
+				System.out.println("m1");			
+		}	
+		
+		//用于判断参数类型是否一致（表示Long是不是Number的子类:既将Long转换为Number,失败会抛出ClassCastException）
+		Long.class.asSubclass(Number.class);	
+		
+
+
+//根据对象判断类型
+		//方式1
+		Object obj = new Object();
+		//判断obj是否是string类型的实例-false		
+		System.out.println("方式1_obj对象为String类型："+(obj instanceof String));
+		//判断obj是否是Object类型的实例-true
+		System.out.println("方式1_obj对象为Object类型："+(obj instanceof Object));
+		
+		//方式2
+		//判断obj是否是string类型的实例-false		
+		System.out.println("方式2_obj对象为String类型："+(String.class.isInstance(obj)));
+		//判断obj是否是Object类型的实例-true
+		System.out.println("方式2_obj对象为Object类型："+(Object.class.isInstance(obj)));		
+			
+//根据类判断类型
+		System.out.println("================================");
+		//1.判断String.class 是否是object.class的子类-true
+		Class<?> c1 = String.class.asSubclass(Object.class);		
+		//2.判断Object.class 是否是object.class的子类-true
+		Class<?> c2 = Object.class.asSubclass(Object.class);
+		System.out.println("返回的是Object类的子类："+c1);
+		System.out.println("返回的是Object类的子类："+c2);
+
+//Integer.class 与int.class
+		System.out.println("================================");
+		Class<?> integerClass = Integer.class;
+		System.out.println("Integer的class对象:"+integerClass);
+		Class<?> intClass = int.class;
+		System.out.println("int的class对象:"+intClass);
+		Class<Integer> it = Integer.TYPE;
+		System.out.println("Integer的原始类型对应的Class对象："+it);
+		
