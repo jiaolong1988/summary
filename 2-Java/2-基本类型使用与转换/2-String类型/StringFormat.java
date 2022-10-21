@@ -32,7 +32,7 @@ public class StringFormat {
 				d:十进制
 				o:八进制
 				x或X:十六进制
-				n:平台独立的换行符, 也可通过System.getProperty(“line.separator”)获取。 String.format("%n","234")，实际就是一个换行符
+				n:平台独立的换行符, 实际就是一个换行符
 				b:布尔类型，只要实参为非false的布尔类型，均格式化为字符串true，否则为字符串false。
 
 		 */

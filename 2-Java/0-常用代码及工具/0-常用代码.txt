@@ -29,6 +29,16 @@
 	String dateTimeStr = localDateTime1.format(dateTimeFormatter);
 	System.out.println(dateTimeStr);
 	
+
+延时5秒
+	Thread.sleep( 5 * 1000 );
+	TimeUnit.SECONDS.sleep( 5 );
+
+拷贝对象-spring	
+	BeanUtils.copyProperties(oldObj, newObj);
+
+文件操作-org.apache.commons.io.FileUtils
+FileUtils.copyFile(srcFile, destFile);
 	
 反射
 		//用于判断参数类型是否一致（表示Long是不是Number的子类:既将Long转换为Number,失败会抛出ClassCastException）
