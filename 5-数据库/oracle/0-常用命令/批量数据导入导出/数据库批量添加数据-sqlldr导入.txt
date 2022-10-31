@@ -1,0 +1,97 @@
+oracle 批量添加数据出现 ORA-01000（最多允许打开的游标数错误）
+原因：
+	由于批处理使用了过多的preparedStatement而未及时关闭.造成游标数超过限制
+参考	
+	Java-超出打开游标的最大数_Oracle出现超出打开游标最大数的解决方法
+	https://blog.csdn.net/weixin_33404919/article/details/114762497
+	
+	oracle超出打开游标的最大数的原因和解决方案
+	https://blog.csdn.net/kai27ks/article/details/7633482
+
+c3p0数据库连接池手册
+	https://lilit.cn/c3p0-manual
+
+
+解决方案
+	oracle一次插入多条数据(insert all)
+	https://www.jianshu.com/p/fee7cc6ee0da
+	
+	
+	
+oracle append有什么作用？
+
+  insert /*+append*/ into table1 select * from table2
+  在使用了append选项以后，insert数据会直接加到表的最后面，而不会在表的空闲块中插入数据。
+  使用append会增加数据插入的速度。
+  /*+APPEND*/的作用是在表的高水位上分配空间,不再使用表的extent中的空余空间
+  append 属于direct insert,归档模式下append+table nologging会大量减少日志,非归档模式append会大量减少日志,append方式插入只会产生很少的undo，不去寻找 freelist 中的free block , 
+  直接在table HWM 上面加入数据。
+  
+  
+导入数据方案
+	
+	Oracle数据库导入csv文件(sqlldr命令行)
+	https://www.jianshu.com/p/498c26ba95a7
+	https://blog.csdn.net/qq_37708081/article/details/116145810
+	
+	操作案例
+	https://blog.csdn.net/liyang3462/article/details/80104522
+	
+	java将.csv文件导入mysql中
+	http://www.4k8k.xyz/article/qq_29338911/81324454
+
+
+
+csv批量导入
+    sqlldr导入
+	import.ctl
+		load data
+		infile '/home/oracle/test/cbip238_log_20220630_rec.csv'
+		insert into table "CBIP238_LOG_20220630_REC"
+		fields terminated by ','
+		(START_TIME,COMPLEX_NO,DATA_SYSTEM_CODE,BANK_CODE,VERSION,MS_SYSTEM_CODE,EN_CODE,DATA_LEN,PROTOCOL_TYPE,REQUEST_TYPE,CLIENT_IP,SERIAL_NO,EXT_DATA,UNIQUE_NO,USER_DATA)
+
+	sqlldr userid=icmssys/icmssys@192.168.241.128/yxptdb control=import.ctl
+	
+	direct导入串行
+	import_direct.ctl
+		options(skip=1,COLUMNARRAYROWS=20971520, ROWS=10000, READSIZE=20971520, ERRORS=999999999)
+		load data
+		infile '/home/oracle/test/cbip238_log_20220630_rec.csv'
+		insert into table "CBIP238_LOG_20220630_REC"
+		fields terminated by ','
+		Optionally enclosed by '\''  
+		(START_TIME,COMPLEX_NO,DATA_SYSTEM_CODE,BANK_CODE,VERSION,MS_SYSTEM_CODE,EN_CODE,DATA_LEN,PROTOCOL_TYPE,REQUEST_TYPE,CLIENT_IP,SERIAL_NO,EXT_DATA,UNIQUE_NO,USER_DATA)
+	
+	sqlldr userid=icmssys/icmssys@192.168.241.128/yxptdb control=import_direct.ctl direct=true
+	
+	
+	direct并行并行
+	import_direct_parallel.ctl
+		options(skip=1,COLUMNARRAYROWS=20971520, ROWS=10000, READSIZE=20971520, ERRORS=999999999)
+		load data
+		infile '/home/oracle/test/cbip238_log_20220630_rec.csv'
+		append into table "CBIP238_LOG_20220630_REC"
+		fields terminated by ','
+		Optionally enclosed by '\''  
+		(START_TIME,COMPLEX_NO,DATA_SYSTEM_CODE,BANK_CODE,VERSION,MS_SYSTEM_CODE,EN_CODE,DATA_LEN,PROTOCOL_TYPE,REQUEST_TYPE,CLIENT_IP,SERIAL_NO,EXT_DATA,UNIQUE_NO,USER_DATA)
+		
+	sqlldr userid=icmssys/icmssys@192.168.241.128/yxptdb control=import_direct_parallel.ctl direct=true parallel=true
+	
+	
+	
+	clob 大数据字段
+		create table tb_clob(
+			new_content clob
+		);
+						
+		LOAD DATA  
+		INFILE '/u01/app/oracle/SQL*Loader/wjq_clob.csv' 
+		TRUNCATE INTO TABLE tb_clob 
+		FIELDS TERMINATED BY ',' 
+		( new_content  CHAR(1000000))
+		
+		
+		
+Java调用sqlldr在linux上导入数据
+https://blog.csdn.net/Jaiaxn/article/details/80907763

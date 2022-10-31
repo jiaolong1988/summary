@@ -1,0 +1,29 @@
+oracle dmp文件导入导出
+	dmp文件导出
+		exp icmssys/icmssys@yxptdb  \
+		file=/tmp/rlms_138.dmp \
+		log=/tmp/exp_rlms_138.log \
+		buffer=1048576 \
+		tables=TEMP_P901_BIZ_138,TEMP_P901_PKUUID_138,TEMP_P901_PAGE_138
+
+	dmp文件导入
+		imp icmssys/icmssys@yxptdb 
+		fromuser=icmssys 
+		touser=icmssys 
+		file=rlms_138.dmp 
+		log=imp_rlms_138.log 
+		buffer=1048576 
+		ignore=y
+
+		fromuser	就是把当前的dmp文件中的某一个用户下的数据取出。
+		touser		就是把现在dmp文件中的数据导入到目标库的指定user下。
+		
+		ignore=y    既会把exp文件内的数据内容导入
+					1.如果表有唯一关键字的约束条件, 不合条件将不被导入。							
+    				2.如果表没有唯一关键字的约束条件, 将引起记录重复。
+					
+					也就是说：当表已经存在了唯一性约束，特别是主键的约束，那么在导入时，只导入主键中不存在的记录. 导入过程中会有警告
+							  当要导入数据库中已经存在了某个表（test），如果该表没有唯一性约束，那么在导入时加参数ignore=y,则会把数据完全导入到表中，而且不报错。
+		参考：	
+		https://blog.csdn.net/hwhua1986/article/details/72770373
+			

@@ -1,0 +1,8 @@
+mysql -V
+
+异常-mysql驱动版本过高导致
+javax.net.ssl.SSLException: 
+closing inbound before receiving peer's close_notify
+
+配置连接数据库的url时，加上useSSL=false
+https://www.cnblogs.com/Evangenia/p/10972002.html

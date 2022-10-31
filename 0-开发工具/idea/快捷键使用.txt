@@ -1,25 +1,27 @@
-new Mode().var 回车  自动生成变量名
-alt+insert    生成构造方法
-
-Ctrl+shift +f   格式化代码；
-
-alt + 方向键(上或下)    移动代码
-alt + 方向键(左或右)    进入方后进行回退
-
+new Mode().var 回车  		自动生成变量名
+alt+insert    				生成构造方法
+Ctrl+shift +f   			格式化代码
+alt + 方向键(上或下)   		移动代码
 f2 查看方法信息
+
+
+alt + 方向键(左或右)    	返回上一次操作位置
+ctrl+alt+shift+c			复制类的全名
+
+
+查看实现类
+ctrl + alt +B		查找接口的实现类
+ctrl + h			查看类或接口的继承关系
+alt + 7				快速查看类中的所有方法 
+
+
+idea查看类层次结构快捷键	
+Crtl + Alt + U									临时展示
+Crtl + Alt + Shift + U       					永久展示
+右键类 -> Diagrams -> Show Diagram Popup
+
+
+
 
 https://blog.csdn.net/qq_42301302/article/details/109314546
 https://blog.csdn.net/weasleyqi/article/details/7896576
-
-
-	
-ctrl + alt +B	查找接口的实现类
-	查看详细文档注解
-ctrl + h	查看类或接口的继承关系
-alt + 7	快速查看类中的所有方法 
-
-
-idea查看类层次结构快捷键
-Crtl + Alt + U
-Crtl + Alt + Shift + U
-右键类 -> Diagrams -> Show Diagram Popup

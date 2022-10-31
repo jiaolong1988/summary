@@ -1,0 +1,29 @@
+mysql8
+
+查看当前使用的库
+select database();
+
+修改密码
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1qaz2wsx'
+set password = 'mypwd';
+
+远程访问的授权
+create user 'root'@'%' identified with mysql_native_password by '1qaz2wsx';
+grant all privileges on *.* to 'root'@'%' with grant option;
+flush privileges;
+
+
+加密规则：MySql8.0 版本 和 5.0 的加密规则不一样，而现在的可视化工具只支持旧的加密方式。
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'abc..123@BZ' PASSWORD EXPIRE NEVER;
+flush privileges;
+
+创建数据库
+create database db_herbal_medicine default character set utf8mb4 collate utf8mb4_0900_ai_ci;
+
+导入数据
+source /home/jiaolong/init.sql
+
+
+
+查看数据库编码集
+SHOW VARIABLES LIKE '%collation%';

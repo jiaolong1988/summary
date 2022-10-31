@@ -1,0 +1,37 @@
+mysql查询语句select-子查询
+https://blog.csdn.net/jesseyoung/article/details/40108781
+
+sql语法
+https://blog.csdn.net/qq_44866495/article/details/108086821
+
+
+
+表子查询实例
+    如：获取编号小于10的男性球员的号码
+
+	mysql> select playerno from (
+		select playerno, sex 
+		from players 
+		where playerno < 10) 
+	as players10 where sex='M';
+	
+
+4.4 行子查询实例
+    如：获取和100号球员性别相同并且居住在同一城市的球员号码。
+	mysql> select playerno 
+	from players 
+	where (sex, town) = (
+		select sex, town 
+		from players 
+		where playerno = 100);
+		
+4.5 标量子查询实例
+    可以指定一个标量表达式的任何地方，几乎都可以使用一个标量子查询。
+    如：获取和27号球员出生在同一年的球员的号码
+	mysql> select playerno 
+	from players 
+	where year(birth_date) = 
+		(select year(birth_date) 
+		from players 
+		where playerno = 27) 
+	and playerno <> 27;
