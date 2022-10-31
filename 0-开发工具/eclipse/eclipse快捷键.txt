@@ -6,7 +6,7 @@
 	Ctrl+shift+/			注释掉选择的代码块xml文件注释
 	Ctrl+shift+F        	格式化代码
 	Ctrl+Shift+P 		    查询选中括号的结束括号
-	Alt+shift+J				添加类注释
+	
 	Alt+Shift+R             批量修改名称
 	Ctrl+ =/-       		代码字体变大或缩小
 
@@ -19,6 +19,7 @@
 	Ctrl+Shift+X/Y  		变为大/小写  
     Alt+/                   代码提示
     Ctrl+Q 	                转至上一个编辑位置
+    Alt+shift+J				添加注释
 	F2						修改文件名
 
 调试
