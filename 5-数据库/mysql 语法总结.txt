@@ -1,0 +1,155 @@
+
+select (@i:=@i+1)"rownum", t.* FROM cluster_info_view t,(select @i:=0)j
+
+mysql string 转换为日期
+	MINUTE(str_to_date(t.write_time,'%Y%m%d %H:%i:%s')) as expireTime,
+	where str_to_date(t.write_time,'%Y%m%d %H:%i:%s') = str_to_date(sysdate(),'%Y%m%d %H:%i:%s') 	
+	https://blog.csdn.net/hu1010037197/article/details/115391335	
+
+DATE_SUB() 函数从日期减去指定的时间间隔。
+	select  DATE_SUB( DATE_FORMAT( NOW(),'%Y-%m-%d'),INTERVAL 1 HOUR ) as a	
+
+	给当前日期加一天
+	SELECT DATE_FORMAT(DATE_ADD(NOW(),INTERVAL 1 DAY),'%Y-%m-%d');
+
+计算日期时间差
+	DATEDIFF( '2021-07-04', '2021-04-04' ) 
+ 
+mysql 日期格式化
+	date_format(sysdate(),'%Y%m%d %H:%i:%s') as '日期' 
+获取季度
+	SELECT quarter("2018-12-07")
+	https://blog.csdn.net/lilongsy/article/details/85115280
+
+
+mysql 字符串拼接函数
+	CONCAT(str1,str2,...)
+	https://blog.csdn.net/myinsert/article/details/124021636
+
+行转列				  
+	GROUP_CONCAT()函数
+	https://moonapi.com/news/27122.html
+	
+	
+字符串转数字
+ CONVERT(m.cpuTotal, SIGNED)
+ 
+分组排序 返回序号
+	mysql 5.x不支持窗口函数，需自行实现
+	https://blog.csdn.net/weixin_41922349/article/details/97031138
+
+				SELECT
+					no "rm",	
+					f.*					
+				FROM(				
+					select 
+						 tmp.*,
+						 @rownum := @rownum + 1,
+						IF (
+							@pjan = tmp.agent_ip AND @grade = tmp.fsi_name,
+							@rank :=@rank + 1,
+							@rank := 1
+						) AS NO,
+						@pjan := tmp.agent_ip,
+						@grade := tmp.fsi_name
+					FROM(
+							SELECT
+								   *                         
+							FROM  res_temp_fsi_info 
+							ORDER BY expire_time desc
+					) tmp,(
+							SELECT @rownum := 0, @grade := NULL, @pjan := NULL, @rank := 0
+					) a					
+				) f
+							
+if函数
+	SELECT IF(500<1000, "YES", "NO");
+
+	
+	oracle 分组排序 返回序号
+		select * ,row_number() over (partition by c_id order by s_score) from score;
+		https://blog.csdn.net/yilulvxing/article/details/85098273
+	
+	
+oracle sysdate-1/24的意思解释
+	在oracle中，查询出来的日期往前推迟多长时间计算，我们可以用date-A/B/C/D这种格式：
+	其中A ---------表示天
+	其中B----------表示小时
+	其中C----------表示分钟
+	其中D----------表示秒
+
+	实例：如果我们计算当前时间往前推3小时，就应该这样去写
+
+	select sysdate-1/8 from dual;
+	解释：1 代表天。计算式*24代表小时。在除以8=3，表示当前时间往前推3个小时。
+
+	原文链接：https://blog.csdn.net/baidu_39425032/article/details/102231364
+	
+获取最近10分钟数据
+	mysql 获取当前时间10分钟内的数据
+	select *from t_agent where int_last_login>=CURRENT_TIMESTAMP - INTERVAL 10 MINUTE;
+	oracle 获取当前时间10分钟内的数据
+	select *from t_agent where int_last_login>(sysdate - 1 / 12 / 12)
+
+默认值
+	mysql ifnull  替换 oracle nvl函数
+
+虚拟表
+	oracle: select 'a'"b" from dual
+	mysql : select 'a'"b"
+	
+	
+oracle 左连接 简写
+	select * from t_a a left join t_b b on a.id=b.id and a.code=b.code;
+	select * from t_a a,t_b b where a.id=b.id(+) and a.code=b.code(+);
+	
+	
+获取一天的24小时
+    mysql	
+		SELECT   
+		DATE_FORMAT( DATE_SUB( DATE_FORMAT( NOW(),'%Y-%m-%d'),INTERVAL ( -(@i:=@i+1) ) HOUR ) ,'%Y-%m-%d %H') AS 'time'
+		FROM (
+				SELECT b  FROM (
+						SELECT '1' as a UNION SELECT '2' UNION SELECT '3' UNION SELECT '4' 
+				) AS a JOIN (
+						SELECT '1' as b UNION SELECT '2' UNION SELECT '3' UNION SELECT '4' UNION SELECT '5' UNION SELECT '6' 
+				) AS b ON 1=1        
+		) AS b  ,(SELECT @i:=-1)  AS i
+	oracle	
+		select 
+			to_char(to_date('00', 'HH24') + numtodsinterval(level - 1, 'hour'), 'hh24') timeslot 
+		from dual connect by level <= 24
+		
+多表join 
+	mysql多表join
+	select a.*,b.* from a left join b on a.id=b.id left join c on a.id=b.id 
+
+	oracle多表join
+	select * from a, tsi, itd
+	where a.data_syscode = tsi.busi_no(+) and a.trade_type = itd.trade_type(+)
+
+
+mysql 条件判断
+	select  case  
+				when t.id is null then
+				 '1'
+				 else
+				 '2'
+			end      as a           
+	from ICMS_BIZ_HOUR_COSTTIME t	
+	
+获取时间段内的日期	
+	SELECT
+		DATE_ADD('2022-07-01',  INTERVAL CAST(help_topic_id AS signed INTEGER )  DAY ) AS `date` 
+	FROM
+		mysql.help_topic 
+	WHERE
+		help_topic_id < (DATEDIFF('2022-07-04', '2022-07-01') + 1);
+	
+
+最近5年
+    select 
+   		 CONVERT( (@i:=@i+1), signed  ) + CONVERT('2021', signed)
+    from (
+    	 SELECT '1' as b UNION SELECT '2' UNION SELECT '3' UNION SELECT '4' UNION SELECT '5' 
+    )  t  ,(SELECT @i:=0)  j       	

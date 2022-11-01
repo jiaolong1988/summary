@@ -1,0 +1,112 @@
+
+解决mysql执行SQL文件，报错：
+”Got a packet bigger than 'max_allowed_packet' bytes“
+
+	登录mysql
+	mysql -hlocalhost -uroot -p
+
+	查看max_allowed_packet最大允许包
+	show VARIABLES like '%max_allowed_packet%';
+
+	修改
+	mysql -u root -p -e "set global max_allowed_packet=104857600;"
+
+	修改密码
+	mysqladmin -uroot -p 123456 password 1qaz2wsx
+
+ubuntu如何启动/停止/重启MySQL
+	service mysql start
+	service mysql stop
+	service mysql restart
+	service mysql status
+	
+查看mysql启动
+	systemctl status| grep mysql
+
+赋予远程权限
+    查看root权限
+	show grants for root;
+	
+	赋予权限 - 创建用户，并赋予权限
+	GRANT all  ON *.* TO 'root'@'%' IDENTIFIED BY '1qaz2wsx'  WITH GRANT OPTION;	
+	撤销权限
+	REVOKE ALL PRIVILEGES ON *.* FROM 'root'@'%';
+	
+	刷新权限
+	flush privileges;
+
+关闭远程权限
+	修改配置文件路径 /etc/mysql/mysql.conf.d/mysqld.cnf
+	#bind-address       = 127.0.0.1     #注释掉此行就可以远程登录了  
+	https://learnku.com/articles/8349/mysql57-implementation-of-remote-connections-adding-users-deleting-users-and-authorization 
+
+导入sql文件
+	source /root/user_info.sql
+
+创建用户，并赋予权限
+        
+    #删除用户		
+	DROP USER 'root'@'localhost';
+	
+	创建用户
+	#            数据库.表
+	GRANT ALL ON inbox.* TO 'm1'@'localhost';
+	
+	GRANT All ON *.* TO 'root'@'%' IDENTIFIED BY '1qaz2wsx'  WITH GRANT OPTION;
+
+	SHOW DATABASES	
+
+	案例
+		修改账户
+		select  Host, User from mysql.user where User='server' and Host='%';
+
+		UPDATE user SET Host='localhost' where  User='server' and Host='%';
+		select Host, User from user;
+
+		创建账户
+		GRANT ALL ON platform_led.* TO 'led'@'localhost'   IDENTIFIED BY 'lEd@epCom'  WITH GRANT OPTION;
+		
+		创建账户，设定访问方式
+		GRANT ALL ON platform_shore.* TO 'shore'@'%'  IDENTIFIED BY 'sHore@epCom'  WITH GRANT OPTION;
+
+		创建数据库
+		create database platform_shore;
+
+ubuntu mysql 安装
+
+	ubuntu 查看mysql的软件安装版本
+	apt-cache policy mysql-server
+	apt-cache policy mysql-client
+
+	# 安装mysql服务
+	sudo apt-get install mysql-server
+	# 安装客户端
+	sudo apt install mysql-client
+	# 安装依赖
+	sudo apt install libmysqlclient-dev
+	# 检查状态
+	sudo netstat -tap | grep mysql
+
+	修改密码
+	mysql> update mysql.user set authentication_string=PASSWORD('1qaz2wsx'), plugin='mysql_native_password' where user='root';
+	mysql> flush privileges;
+	mysql> exit
+
+	sudo /etc/init.d/mysql restart
+	
+	# 修改配置文件，注释掉bind-address = 127.0.0.1
+	$ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+	$ mysql -uroot -p
+	grant all on *.* to root@'%' identified by '1qaz2wsx' with grant option;
+	flush privileges;
+	exit
+	sudo /etc/init.d/mysql restart
+	
+	https://www.jb51.net/article/156476.htm
+	
+
+	
+GRANT ALL ON didi_electrician.* TO 'didi'@'localhost'   IDENTIFIED BY 'diDI@epCom'  WITH GRANT OPTION;
+#删除用户		
+DROP USER 'didi'@'localhost';

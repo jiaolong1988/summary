@@ -1,0 +1,10 @@
+
+账户被锁
+	1.登录dba账号，sqlplus / as sysdba
+	2. 修改账户：alter user xxxx account unlock;
+	3 commit;
+	
+
+密码永不过期
+	oracle账号执行
+	ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
