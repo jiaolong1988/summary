@@ -8,6 +8,17 @@
 跳出多层循环
 	aa:while(true){break:aa}
 
+判断对象是否为空
+org.apache.commons.lang.StringUtils
+StringUtils.isBlank()
+
+File 与Path相互转换
+	File.toPath()
+	Path.toFile()
+
+获取当前路径	
+	String currentPath = Paths.get("aa","xx.txt").toAbsolutePath().toString();
+
 读取文件
 	List<String> rows = Files.readAllLines(Paths.get("D:\\test\\test.sql"));
 	System.out.println(rows);
