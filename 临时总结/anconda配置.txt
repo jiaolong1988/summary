@@ -1,0 +1,41 @@
+anconda国内镜像源
+	阿里
+	https://developer.aliyun.com/mirror/anaconda
+	清华
+	https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+
+
+添加镜像源
+	生成.condarc文件
+	conda config --set show_channel_urls yes
+
+	添加镜像源
+	conda config --add channels http://mirrors.aliyun.com/pypi/simple/
+
+	删除镜像源
+	conda config --remove-key channels
+
+	显示添加的镜像源
+	conda config --show channels
+
+
+
+查看源的配置信息：就是查看.condarc
+conda config --show-sources
+
+查看全部配置信息
+conda config --show
+
+清除缓存
+conda clean -i
+
+
+:: 查看某个子命令的帮助
+	conda config --help
+	conda update --help
+	conda remove --help
+	conda install --help
+
+参考资料
+	Anaconda国内源配置
+	https://www.cpci.dev/anaconda-mirrors-configure/

@@ -1,0 +1,7 @@
+官网：https://github.com/square/okhttp/blob/master/samples/guide/src/main/java/okhttp3/recipes/SynchronousGet.java
+
+参考文章：
+https://blog.csdn.net/qq_35890572/article/details/86003679
+
+教程
+https://www.jianshu.com/p/bfd4008c08a2
