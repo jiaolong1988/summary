@@ -1,8 +1,8 @@
 https://www.ab62.cn/article/16474.html
 
-//访问子目录之前触发该方法
+//访问子目录之后触发该方法
 FileVisitResult postVisitDirectory(T var1, IOException var2) throws IOException;
-//访问子目录后触发该方法
+//访问子目录之前触发该方法
 FileVisitResult preVisitDirectory(T var1, BasicFileAttributes var2) throws IOException;
 //访问file文件时触发该方法
 FileVisitResult visitFile(T var1, BasicFileAttributes var2) throws IOException;

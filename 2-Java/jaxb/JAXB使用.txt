@@ -1,0 +1,22 @@
+使用教程
+https://blog.csdn.net/wn084/article/details/80853587
+
+
+@XmlRootElement(name = "human")
+@XmlElement(name = "rid")
+@XmlAttribute
+
+控制字段是否被默认序列化
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder={"R_OBJECT_ID","jl" })
+忽略字段映射
+@XmlTransient
+
+生成xml 2中方式
+	get/set 方式 : 不需要注解， 如果添加XmlElement注解不能放在 get方法和字段上边，会造成属性重复。
+				此方式获取字段值与类中定义的字段不一样。get/set获取的字段第一个字符小写。(字段名与get/set方法要符合明明规范)
+	字段上加注解: 不需要get/set方法。
+
+
+jaxb官网
+https://www.oracle.com/technical-resources/articles/javase/jaxb.html

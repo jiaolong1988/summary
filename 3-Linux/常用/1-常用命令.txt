@@ -85,3 +85,6 @@ ip link
 
 修改ip地址
 sudo ifconfig eth1 192.168.100.2 up
+
+--查询文件中的内容
+grep 2732 * 

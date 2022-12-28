@@ -1,3 +1,4 @@
+https://www.yiibai.com/oracle/oracle-exists.html
 <!-- oracle批量添加 -->
 	INSERT /*+ append */ table1(filed1,filed2)values('value1','value2') 
 
