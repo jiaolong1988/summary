@@ -1,0 +1,9 @@
+内存映射文件
+https://zhuanlan.zhihu.com/p/429987335
+
+程序员应该这样理解IO
+https://www.jianshu.com/p/fa7bdc4f3de7
+
+
+进程地址空间详解
+https://blog.csdn.net/attemptendeavor/article/details/122539046

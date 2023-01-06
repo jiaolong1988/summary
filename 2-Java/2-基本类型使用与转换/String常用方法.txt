@@ -1,0 +1,4 @@
+字符串拼接
+	//字符串拼接, 显示结果：usr\local\bin
+	String joined = String.join(File.separator, "usr", "local", "bin");
+	System.out.println(joined);
