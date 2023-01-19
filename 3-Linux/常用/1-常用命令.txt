@@ -94,5 +94,9 @@ ip link
 修改ip地址
 sudo ifconfig eth1 192.168.100.2 up
 
+
+查询当前目录下包含指定内容的文件名
+grep -r -l "查询内容" 
+
 --查询文件中的内容
 grep 2732 * 
