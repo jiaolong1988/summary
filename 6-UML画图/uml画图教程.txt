@@ -1,0 +1,19 @@
+软件：
+	draw.io
+
+教程
+	UML概述及UML图详解
+	https://blog.csdn.net/qq_40332045/article/details/104024042
+	
+	UML实践详细经典教程
+	http://www.uml.org.cn/oobject/201609092.asp
+	
+	w3cschool uml
+	https://www.w3cschool.cn/uml_tutorial/uml_tutorial-xtuw28up.html
+	
+	一文掌握14种UML图
+	https://cloud.tencent.com/developer/article/1684161
+	
+	30分钟学会UML类图
+	https://zhuanlan.zhihu.com/p/109655171
+	

@@ -47,8 +47,11 @@ sed获取指定行信息（awk获取指定列信息）
 	du -h --max-depth=1 
 	
 
-文件传输	
+文件夹传输	
 scp -r xdb11/ dmadmin@192.168.1.88:/dmadmin
+文件传输
+scp my_local_file.zip root@192.168.1.104:/usr/local/nginx/html/webs
+
 
 cd ../..
 
@@ -77,8 +80,13 @@ rpm -qf "/usr/sbin/ifconfig"
 查看linux多少位
 getconf LONG_BIT
 
-统计当前目录下文件的个数（不包括目录
-ls -l | grep "^-" | wc -l
+统计当前目录下所有文件数量（包括子目录下的所有文件)
+ls -lR  | grep "^-" | wc -l
+ls -R 递归列出遇到的子目录
+
+统计当前目录下所有文件夹数量（包括子目录下的所有文件夹)
+ls -lR  | grep "^d" | wc -l
+
 
 查看已有物理网卡
 ip link
