@@ -1,3 +1,16 @@
+0xFF 是计算机十六进制的表示
+0xFF的二进制表示就是：1111 1111
+将字节转换为16进制
+String hex = Integer.toHexString(buf[i] & 0xFF);
+
+0x :表示16进制
+0b :表示二进制
+
+//获取字符串的字节长度
+System.out.println("1".getBytes().length); //字符串大小为：1个字节长度
+System.out.println("中".getBytes().length); //字符串大小为：2个字节长度
+
+
 可变长度参数列表[既可变参数可以不填写即getName()]
 	getName("1","2","3");
 	static void getName(String...items) {

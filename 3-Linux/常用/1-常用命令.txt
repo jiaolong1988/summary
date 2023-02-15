@@ -87,6 +87,8 @@ ls -R 递归列出遇到的子目录
 统计当前目录下所有文件夹数量（包括子目录下的所有文件夹)
 ls -lR  | grep "^d" | wc -l
 
+最近修改的文件排在前面
+ls -t 
 
 查看已有物理网卡
 ip link
@@ -100,3 +102,14 @@ grep -r -l "查询内容"
 
 --查询文件中的内容
 grep 2732 * 
+
+显示指定列的内容
+ps -a | grep java | awk '{print $1}'
+
+
+作用:显示这个文件（ufile）被哪个程序调用
+losf 文件名
+https://www.cnblogs.com/mrwhite2020/p/16685207.html
+
+显示文件的编码格式
+file 1.txt

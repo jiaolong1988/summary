@@ -1,0 +1,45 @@
+css定义样式
+
+table, td, th {
+  border: 1px solid black;
+}
+	
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+#customers tr:hover {
+	background-color: #ddd;
+}
+
+选择器分类
+https://www.w3school.com.cn/css/css_selectors.asp
+
+	1.简单选择器（根据名称、id、类来选取元素）
+	2.组合器选择器（根据它们之间的特定关系来选取元素）
+	3.属性选择器（根据属性或属性值来选取元素）
+		设置带有特定属性或属性值的 HTML 元素的样式
+		[target] {
+		  background-color: yellow;
+		}
+		
+	4.伪类选择器（定义元素在不同状态下的样式。）	
+        例如：链接 点击前 点击中  点击后 设置不同的样式。	
+		a:link {
+		  color: #FF0000;
+		}
+		
+	5.伪元素选择器（对部分元素进行样式设定）
+		例如：对指定元素 的前后 添加其他元素
+		p::first-line {
+		  color: #ff0000;
+		}
+		
+总结：伪可理解为假的，不是真的。也就是说 伪类、伪元素是假的。
+      伪类，  主要是添加样式
+	  伪元素，可以添加元素
+
+参考手册
+	https://www.w3school.com.cn/cssref/index.asp

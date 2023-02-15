@@ -1,0 +1,30 @@
+一、for update定义
+
+for update一旦用户对某个行施加了行级加锁，则该用户可以查询也可以更新被加锁的数据行，其它用户只能查询但不能更新被加锁的数据行
+
+只有当出现如下之一的条件，才会释放共享更新锁：
+1、执行提交（COMMIT）语句
+2、退出数据库（LOG　OFF）
+3、程序停止运行
+
+
+
+for update是一种行级锁，又叫排它锁，在数据库中上锁用的，可以为数据库中的行上一个排它锁。当一个事务的操作未完成时候，其他事务可以读取但是不能写入或更新。
+例子：
+
+	比如一张表三个字段 ， id（商品id）, name（商品名字） , count(数量）
+	当商品抢购时候会显示剩余商品件数，如果并发量大的时候，商品自减的值可能不准确。所以当我们在一个事务中对count字段进行修改的时候，其他事务应该只能读取指定id的count,而不能进行update等操作。这个时候就需要用到for update.
+	sql语句：
+
+	start transaction ;
+	select * from table_name where id =1 for update ;
+
+	update table_name set count = count - 1 where id= 1;
+	此时如果另一个事务也想执行类似的操作：
+
+	start transaction ;
+	select * from table_name where id =1 for update ;
+	//下面的这行sql会等待,直到上面的事务回滚或者commit才得到执行。
+	update table_name set count = count - 1 where id= 1;
+
+	*注：当选中某一个行的时候,如果是通过主键id选中的。那么这个时候是行级锁。

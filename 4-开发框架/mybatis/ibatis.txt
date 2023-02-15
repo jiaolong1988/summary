@@ -1,0 +1,27 @@
+官网：https://blog.mybatis.org/2020/10/mybatis-356-released.html
+	文档：https://mybatis.org/mybatis-3/configuration.html
+	
+教程：https://www.w3cschool.cn/ibatis/vi6o1rir.html
+
+ibatis 
+	create table $tempTableName$ nologging parallel 8 as 
+	SELECT /*+ parallel(8)*/biz.BIZMETADATA1 FROM BOC_BIZ_METADATA_S biz  where sourcesystem='$syscode$' 
+	
+表名 
+	 $tempTableName$
+字段
+	'$syscode$' 
+
+
+
+ibatis #{}与${} 区别
+	#将传入的数据当成一个字符串，会对自动传入的数据加一个双引号
+	$将传入的数据直接显示在sql语句中
+
+	#方式能够很大程度上防止sql注入，而$无法防止sql的注入，
+	$一般用于传入数据库对象，例如传入表名
+
+	一般能用#就别用$
+
+批量更新
+	https://www.cnblogs.com/Marydon20170307/p/10066430.html
