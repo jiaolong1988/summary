@@ -21,7 +21,9 @@ Crtl + Alt + Shift + U       					永久展示
 右键类 -> Diagrams -> Show Diagram Popup
 
 
-
+抽取方法
+	选中指定代码 -> alt+shift+M
+	选中指定代码 -> 右键->Refactor -> Extract Method
 
 https://blog.csdn.net/qq_42301302/article/details/109314546
 https://blog.csdn.net/weasleyqi/article/details/7896576
