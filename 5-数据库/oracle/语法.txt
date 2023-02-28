@@ -1,3 +1,5 @@
+https://www.yiibai.com/oracle/oracle-timestamp.html
+
 <!-- 批量添加 -->
 	INSERT /*+ append */ table1(filed1,filed2)values('value1','value2') 
 
