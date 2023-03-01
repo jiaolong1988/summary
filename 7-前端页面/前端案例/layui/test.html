@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>layui.form小例子</title>
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+</head>
+
+<body>
+    <form class="layui-form" lay-filter="example">
+        <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width:100px ;">基础数据仓库</label>
+            <input type="checkbox" name="like[write]" lay-skin="primary" title="全选">
+            <div class="layui-input-block">
+                <input type="checkbox" id="6-12--18---19---20" name="like[write]" title="社会经济数据">
+                <input type="checkbox" name="like[read]" title="资源环境数据">
+                <input type="checkbox" name="like[read]" title="基础地理数据">
+                <input type="checkbox" name="like[read]" title="政策规范数据">
+                <input type="checkbox" name="like[read]" title="规划文本数据">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width:100px ;">成果数据管理</label>
+            <input type="checkbox" name="like[write]" lay-skin="primary" title="全选">
+            <div class="layui-input-block">
+                <input type="checkbox" name="like[write]" title="社会经济数据">
+                <input type="checkbox" name="like[read]" title="资源环境数据">
+                <input type="checkbox" name="like[read]" title="基础地理数据">
+                <input type="checkbox" name="like[read]" title="政策规范数据">
+                <input type="checkbox" name="like[read]" title="规划文本数据">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width:100px ;">成果数据应用</label>
+            <input type="checkbox" name="like[write]" lay-skin="primary" title="全选">
+            <div class="layui-input-block">
+                <input type="checkbox" name="like[write]" title="社会经济数据">
+                <input type="checkbox" name="like[read]" title="资源环境数据">
+                <input type="checkbox" name="like[read]" title="基础地理数据">
+                <input type="checkbox" name="like[read]" title="政策规范数据">
+                <input type="checkbox" name="like[read]" title="规划文本数据">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width:100px ;">系&nbsp;&nbsp;&nbsp;统&nbsp;&nbsp;应&nbsp;&nbsp;用</label>
+            <input type="checkbox" name="like[write]" lay-skin="primary" title="全选">
+            <div class="layui-input-block">
+                <input type="checkbox" name="like[write]" title="社会经济数据">
+                <input type="checkbox" name="like[read]" title="资源环境数据">
+                <input type="checkbox" name="like[read]" title="基础地理数据">
+                <input type="checkbox" name="like[read]" title="政策规范数据">
+                <input type="checkbox" name="like[read]" title="规划文本数据">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width:100px ;">成果数据查询</label>
+            <input type="checkbox" name="like[write]" lay-skin="primary" title="全选">
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="checkbox" name="like[write]" title="生态保护红线1">
+                </div>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="like[read]" title="环境质量底线5">
+                </div>
+
+                <div class="layui-input-block">
+                    <input type="checkbox" name="like[read]" title="环境质量底线2">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线21">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线22">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线23">
+
+
+                </div>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="like[write]" title="生态保护红线3">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线21">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线22">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线23">
+
+                </div>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="like[read]" title="环境质量底线4">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线21">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线22">
+                    <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线23">
+                    <!-- 
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线21">
+                        <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线22">
+                        <input type="checkbox" name="like[read]" lay-skin="primary" title="环境质量底线23">
+                    </div> -->
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+        <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+    </form>
+    <script src="./layui/layui.js"></script>
+    <script src="./jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            layui.use('form', function() {
+                var form = layui.form;
+                var data = form.val('example');
+
+                //监听提交
+                form.on('submit(formDemo)', function(data) {
+                    layer.msg(JSON.stringify(data.field));
+                    return false;
+                });
+                // alert(JSON.stringify(data));
+                //各种基于事件的操作，下面会有进一步介绍
+            });
+
+            //   $("[type='checkbox']").attr("checked", "");
+
+            $("#6-12--18---19---20").attr("checked", "");
+
+        });
+
+
+
+        // layui.use('form', function() {
+        //     var form = layui.form;
+        //     var data = form.val('example');
+        //     // alert(JSON.stringify(data));
+        //     //各种基于事件的操作，下面会有进一步介绍
+        // });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+https://blog.csdn.net/xiaojin21cen/article/details/102935872
+
+设置值
+<p th:text="${hello}"></p>
+<p th:value="${hello}"></p>
+
+
+<textarea> 属性
+placeholder=''插入您的文本，但它是灰色的（以工具提示样式格式），当字段被点击时，您的文本被replace为空的文本字段。
+
+
+
+//火狐控制台打印输出： Object { fileNumber="文件编号", fileName="文件名称"}
+console.log(map);
+for(var key in map){
+  console.log("属性：" + key + ",值：" + map[key]);
+}
+
+thymeleaf页面取值与js取值
+
+	<input type="hidden" th:value="${name}" id="name"/>
+	<!--js中根据id属性名获取-->
+	var name=$("#name").val();
+
+	<script th:inline="javascript">
+		var name = [[${name}]];
+		console.log(name);
+	</script>
+	
+打印map
+			var map = [[${role.updateMenuId}]];
+			console.log(name);
+			for(var key in map){
+			//	$("#"+ map[key]).attr("checked", "");
+				console.log("属性：" + key + ",值：" + map[key]);
+			}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>layui.form小例子</title>
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+</head>
+
+<body>
+    <form class="layui-form" lay-filter="example">
+        <div class="layui-form-item">
+            <label class="layui-form-label">站点</label>
+            <div class="layui-input-block">
+
+                <input type="checkbox" lay-skin="primary" id="f_all" lay-filter="f_all" title="全选">
+                <input type="checkbox" lay-skin="primary" id="c_all" lay-filter="c_all" title="反选">
+                <br/><br/>
+                <input type="checkbox" name="cityId" lay-skin="primary" lay-filter="c_one" class="cityId" title="北京" value="10001">
+                <input type="checkbox" name="cityId" lay-skin="primary" lay-filter="c_one" class="cityId" title="测试" value="10002">
+                <input type="checkbox" name="cityId" lay-skin="primary" lay-filter="c_one" class="cityId" title="西安" value="10003">
+                <input type="checkbox" name="cityId" lay-skin="primary" lay-filter="c_one" class="cityId" title="常州" value="10004">
+                <input type="checkbox" name="cityId" lay-skin="primary" lay-filter="c_one" class="cityId" title="肇庆" value="10005">
+            </div>
+        </div>
+    </form>
+    <script src="./layui/layui.js"></script>
+    <script src="./jquery.min.js"></script>
+    <script>
+        //https://blog.csdn.net/qq_16513911/article/details/81513790
+        $(document).ready(function() {
+            // layui.use('form', function() {
+            //     var form = layui.form;
+            //     var data = form.val('example');
+            //     // alert(JSON.stringify(data));
+            //     //各种基于事件的操作，下面会有进一步介绍
+            // });
+
+            // $("[type='checkbox']").attr("checked", "");
+
+            layui.use('form', function() {
+                var form = layui.form;
+
+                //全选
+                form.on('checkbox(c_all)', function(data) {
+                    var a = data.elem.checked;
+                    if (a == true) {
+                        $(".cityId").prop("checked", true);
+                        form.render('checkbox');
+                    } else {
+                        $(".cityId").prop("checked", false);
+                        form.render('checkbox');
+                    }
+
+                });
+
+                //反选
+                form.on('checkbox(f_all)', function(data) {
+                    var item = $(".cityId");
+                    item.each(function() {
+                        if ($(this).prop("checked")) {
+                            $(this).prop("checked", false);
+                        } else {
+                            $(this).prop("checked", true);
+                        }
+                    })
+                    form.render('checkbox');
+
+
+                });
+
+                //有一个未选中全选取消选中
+                form.on('checkbox(c_one)', function(data) {
+                    var item = $(".cityId");
+                    for (var i = 0; i < item.length; i++) {
+                        if (item[i].checked == false) {
+                            $("#c_all").prop("checked", false);
+                            form.render('checkbox');
+                            break;
+                        }
+                    }
+                    //如果都勾选了  勾上全选
+                    var all = item.length;
+                    for (var i = 0; i < item.length; i++) {
+                        if (item[i].checked == true) {
+                            all--;
+                        }
+                    }
+                    if (all == 0) {
+                        $("#c_all").prop("checked", true);
+                        form.render('checkbox');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>
