@@ -9,6 +9,7 @@
 	Alt+shift+J				添加类注释
 	Alt+Shift+R             批量修改名称
 	Ctrl+ =/-       		代码字体变大或缩小
+	ctrl+shift+T			查找类所在的jar
 
 代码
 	Shift+Alt+L   			光标放在“request.getParameter(“username”);”的行末尾，按 Shift+Alt+L，填入变量名，自动生成。
