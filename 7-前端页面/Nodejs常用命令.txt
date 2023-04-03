@@ -1,0 +1,35 @@
+--npm 安装 Node.js 模块
+ npm install <Module Name>
+--npm 卸载 Node.js 模块
+ npm uninstall <Module Name>
+
+
+--安装淘宝镜像模块-全局安装
+ npm install -g cnpm --registry=https://registry.npmmirror.com
+ --使用淘宝镜像安装 Node.js 模块
+ cnpm install [name]
+ 
+ 
+本地安装所在目录
+	./node_modules
+全家安装所在目录
+	安装包放在 /usr/local 下或者你 node 的安装目录。
+ 
+ 
+ 
+--查看所有全局安装模块
+	npm list -g
+--查看所有本地安装模块
+	npm ls
+--搜索模块
+	npm search xxx
+	
+--创建 package.json 文件	
+	 npm init --yes
+	 npm init -y
+	 
+	 package.json文档
+	 https://cloud.tencent.com/developer/section/1490235
+	 
+	 npm官方文档
+	 https://docs.npmjs.com/cli/v9/configuring-npm/package-json

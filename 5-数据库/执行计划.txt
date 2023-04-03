@@ -1,7 +1,0 @@
-
-一次搞定各种数据库 SQL 执行计划：MySQL
-https://blog.csdn.net/horses/article/details/103579177
-
-
-详解 MySQL 5.7 优化：Explain 执行计划
-https://www.php.cn/mysql-tutorials-468139.html

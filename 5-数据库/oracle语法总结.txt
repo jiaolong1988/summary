@@ -25,7 +25,12 @@ oracle
 	 from FCMS_PAGE_METADATA t 
 	 where REPLACE(REPLACE(t.modifytime, 'T', ' '), 'Z', '') > to_char(to_date('20220622 00:00:00', 'yyyymmdd hh24:mi:ss'),'yyyy-mm-dd')  and
            REPLACE(REPLACE(t.modifytime, 'T', ' '), 'Z', '') < to_char(to_date('20220624 00:00:00', 'yyyymmdd hh24:mi:ss'),'yyyy-mm-dd') 
-     
+    方式2 
+		select  
+		*
+		from boc_biz_metadata_s biz 
+		where to_char(to_date(replace(replace(biztime, 'T', ' '), 'Z', ''), 'yyyy-MM-dd HH24:mi:ss'),'yyyyMMdd')>'20230201'
+
 	   
 --mysql utc时间 范围查询
 	select

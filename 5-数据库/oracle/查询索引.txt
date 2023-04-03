@@ -1,0 +1,7 @@
+--查询索引
+select * from user_indexes t where t.index_name='IDX_KS06H_PKRNUM' or t.index_name='IDX_KS06H_BZRNUM'
+select * from all_indexes t
+select * from user_ind_columns t where t.table_name='TEMP_KS06_SNAP_BIZ_HIS'
+
+--删除表的时候 oracle 自动删除索引
+--修改表名后，索引对应的表 改为新的表。
