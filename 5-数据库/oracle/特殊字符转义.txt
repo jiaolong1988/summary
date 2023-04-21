@@ -1,0 +1,4 @@
+oracle 单引号转义
+SELECT biz.BIZMETADATA1, rownum as rnum FROM BOC_BIZ_METADATA_S biz where biz.SOURCESYSTEM = ''SO''   	
+
+ibatis 使用 <![CDATA[	]]> 进行转义
