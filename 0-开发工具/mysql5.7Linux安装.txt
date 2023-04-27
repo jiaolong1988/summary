@@ -1,0 +1,84 @@
+注意
+	安装目录：不能在家目录安装
+	安装版本；mysql-5.7.24-linux-glibc2.12-x86_64.tar
+	
+参考地址
+	https://cloud.tencent.com/developer/article/2080858
+	https://blog.csdn.net/qq_20780541/article/details/122035569
+
+安装准备
+	删除依赖
+		rpm -qa | grep mysql
+		rpm -qa | grep mariadb
+		rpm -e --nodeps xxxxxxx依赖
+
+	删除目录
+		find / -name mysql
+		rm -rf  xxx目录
+
+检查mysql用户组和用户是否存在
+	cat /etc/group | grep mysql
+	cat /etc/passwd | grep mysql
+
+--创建mysql用户
+	groupadd mysql
+	useradd -g mysql mysql
+	======可能不好用useradd -r -g mysql mysql
+
+确定安装目录
+	/opt/mysql
+安装目录下创建data目录
+	cd /opt/mysql
+	mkdir data
+
+	
+--赋予目录mysql权限
+	chown -R mysql:mysql /opt/mysql
+	chmod -R 755 /opt/mysql
+
+bin目录进行编译和初始化
+	./mysqld --initialize --user=mysql --datadir=/opt/mysql/data  --basedir=/opt/mysql
+
+记住密码
+	root@localhost: vs/%fgy3uk0G
+
+编辑配置文件my.cnf
+	vi /etc/my.cnf
+
+[mysqld]
+basedir=/opt/mysql
+datadir=/opt/mysql/data
+port=3306
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+symbolic-links=0
+max_connections=400
+innodb_file_per_table=1
+lower_case_table_names=1
+character_set_server=utf8
+	
+启动mysql服务器
+	cd support-files
+	./mysql.server start
+
+
+添加软连接，并重启mysql服务
+	ln -s /opt/mysql/support-files/mysql.server /etc/init.d/mysql
+	ln -s /opt/mysql/bin/mysql /usr/bin/mysql
+	service mysql restart
+
+修改密码与开放远程连接
+	mysql -u root -p
+	set password for root@localhost = password('123456');
+
+	use mysql;
+	update user set user.Host='%' where user.User='root';
+	flush privileges;
+
+关闭防火墙
+	systemctl stop firewalld.service
+
+查看mysql状态
+	service mysql status
+看看端口
+	netstat -lnp |grep 3306
+

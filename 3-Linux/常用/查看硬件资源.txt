@@ -15,3 +15,10 @@ arch
 硬盘
 lsblk -d -o name,rota
 # 返回0：SSD盘 返回1：SATA盘
+
+
+查看操作系统
+cat /etc/issue
+
+查看内核
+cat /proc/version
