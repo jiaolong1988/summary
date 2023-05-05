@@ -1,0 +1,6 @@
+springBoot日志配置（logback-spring.xml配置文件）
+	https://blog.csdn.net/hansome_hong/article/details/124434864
+	此文章很全面，已全面进行验证，以后以此进行配置。
+	
+	设置行号 日志级别
+	https://blog.csdn.net/hknaruto/article/details/103273129

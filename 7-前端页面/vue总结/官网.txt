@@ -1,0 +1,11 @@
+vue2
+	https://v2.cn.vuejs.org/
+	
+vue router3
+	https://v3.router.vuejs.org/zh/
+	
+vue cli
+	https://cli.vuejs.org/zh/config/
+	
+axios	
+	https://www.axios-http.cn/docs/intro
