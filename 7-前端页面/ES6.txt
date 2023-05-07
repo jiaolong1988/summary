@@ -1,0 +1,10 @@
+阮一峰 ECMAScript 6 (ES6) 标准入门教程 第三版
+https://www.bookstack.cn/read/es6-3rd/docs-let.md
+
+视频教程
+https://www.bilibili.com/video/BV1uK411H7on/?p=2&spm_id_from=pageDriver&vd_source=0d06d31507e2a60dc55ace905f38e5eb
+
+
+
+ES6基本全部语法
+https://blog.csdn.net/qq_40322724/article/details/113919534
