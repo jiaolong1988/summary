@@ -1,0 +1,31 @@
+https://blog.csdn.net/legend02uwn/article/details/81502608
+
+
+查看逻辑卷组
+lvs
+
+查看磁盘
+fdisk -l
+
+
+步骤：
+1.vmware增加磁盘
+2.对增加的磁盘创建分区
+3.格式化分区
+	[root@localhost ~]# partprobe
+	[root@localhost ~]# mkfs.ext3 /dev/sda3
+4.对磁盘分区进行合并
+
+	[root@localhost ~]# lvm
+	lvm> pvcreate /dev/sda3
+	lvm> vgextend rhel /dev/sda3
+
+	查看当前的Volume卷详情
+	lvm> vgdisplay -v
+
+	将系统盘的空余容量合并
+	lvm> lvextend -l+38399 /dev/mapper/rhel-root
+	lvm> quit
+
+	文件系统进行扩容，以让系统识别
+	fs_growfs /dev/mapper/rhel-root

@@ -1,0 +1,45 @@
+查看安装了哪些模块
+nginx -V
+
+
+反向代理
+    server {
+        listen       8001;
+        server_name  localhost;
+
+        location ~ /vod/ {
+			proxy_pass http://192.168.241.128:8881;
+        }
+		
+		location ~ /edu/ {
+			proxy_pass http://192.168.241.129:8882;
+        }
+    }
+	
+负载均衡
+	
+    upstream myserver {
+        server 192.168.241.128:8881;
+        server 192.168.241.129:8882;
+    }
+	
+    server {
+        listen       80;
+        server_name  _;
+
+        location / {
+            proxy_pass   http://myserver;
+			
+        }
+	}
+	
+指定页面
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            root   html;  #文件目录         
+            index  index.html index.htm;
+        }
+	}

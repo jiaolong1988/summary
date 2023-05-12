@@ -18,7 +18,8 @@ git 修改账号
 	git记住密码
 	git config --global credential.helper store
 
-
+查看远程仓库地址
+git remote -v
 
 
 checkout 用法总结

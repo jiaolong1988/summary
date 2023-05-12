@@ -1,0 +1,19 @@
+1、spring的事务注解@Transactional只能放在public修饰的方法上才起作用，在其他非public（private，protected）方法上，但是事务不起作用。
+
+2.mysql且引擎是MyISAM，则事务会不起作用，原因是MyISAM不支持事务，可以改成InnoDB引擎。
+
+3.在业务代码中如果抛出RuntimeException异常，事务回滚；但是抛出Exception，事务不回滚；
+	如果在加有事务的方法内，使用了try...catch..语句块对异常进行了捕获，而catch语句块没有throw  new RuntimeExecption异常，事务也不会回滚。
+	
+4.没有被sping管理的bean，事务不能生效（例如没有 @Service）
+
+https://zhuanlan.zhihu.com/p/101396825
+事务-自身调用失效
+	因为，spring的事务实现是使用了代理类来实现，而这里的this.methodA()，并没有走TestService的代理类，所以事务会失效。
+	方法1：把methodA()和methodB()分别放到不同的类里。
+
+
+Spring 框架提供了声明式和编程式事务管理。大多数用户喜欢声明式事务管理
+
+Spring 事务抽象的关键是事务策略的概念
+TransactionManager

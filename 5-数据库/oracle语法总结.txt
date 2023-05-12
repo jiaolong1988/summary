@@ -18,6 +18,12 @@ utc时间 --> 2022-05-10T11:50:46Z
 	select to_char(2004-05-07 13:23:44','yyyy-mm-dd hh24:mi:ss') as nowTime from dual; 
 
 oracle
+    推荐
+		select  
+		*
+		from boc_biz_metadata_s biz 
+		where biztime >'2023-02-01'
+		
 	方式1
 	-- 2022-06-23T15:54:08Z utc时间范围查询方式
      select  

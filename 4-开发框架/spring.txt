@@ -1,0 +1,23 @@
+传统mvc:在服务端依赖View技术渲染获得数据并返回给html
+RESTful:在http response 返回json对象
+	区别在于HTTP response body is created
+	
+@RestController 标记在类上边，表示类下的所有方法都返回一个 domain object，而不是传统的view。该注解包含@Controller 、 @ResponseBody.
+
+spring应用中使用 Jackson JSON库 自动将 方法返回对象 转换为json,该库在 web starter。
+Spring’s HTTP message 转换器支持将对象转换为json,不需要手动操作。
+
+lombok注解
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+
+spring 构造方法注入对象性
+
+CommandLineRunner 接口，完成项目启动后自动执行任务。
+https://cloud.tencent.com/developer/article/1750000
+
+异步执行
+https://spring.io/guides/gs/async-method/#initial
+
+
+全局异常如何使用？
+@ControllerAdvice

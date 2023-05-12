@@ -1,0 +1,20 @@
+http://shiro.apache.org/download.html
+
+与springboot整合
+	https://shiro.apache.org/spring-boot.html#web-applications
+
+
+
+shiro 和 spring boot 的集成 参考
+	https://cloud.tencent.com/developer/article/1489638
+
+
+
+Spring Boot整合Shiro (使用shiro-spring-boot-web-starter) 
+	https://www.cnblogs.com/Fly1nDutchman/p/14256236.html
+
+shiro-扩展thymeleafy
+	https://www.cnblogs.com/xiaojf/p/6613537.html
+
+密码加盐：
+	https://blog.csdn.net/acmman/article/details/78585662

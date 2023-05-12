@@ -1,0 +1,30 @@
+mybatis官网
+	https://mybatis.org/mybatis-3/zh/getting-started.html
+	
+	案例-集成mybatis
+		https://www.cnblogs.com/DDgougou/p/12636649.html
+
+
+	
+mybatis-spring官网
+	http://mybatis.org/spring/zh/boot.html
+	
+	spring boot 集成 mybatis
+	http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/
+	
+mybatis-pagehelper(分页)
+	官网: https://pagehelper.github.io/
+	github: https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md	
+	SpringBoot项目集成PageHelper使用
+		https://www.cnblogs.com/mengw/p/11673637.html
+
+	Pagehelper前端案例
+		https://blog.csdn.net/DreamWeaver_zhou/article/details/109493846
+
+通用mapper官网
+	https://github.com/abel533/Mapper/wiki
+	使用参考
+	https://mapperhelper.github.io/docs/2.use/
+	
+	
+	

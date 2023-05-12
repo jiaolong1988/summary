@@ -1,0 +1,47 @@
+NetworkManager设置-主
+https://zhuanlan.zhihu.com/p/52731316
+
+network和NetworkManager区别及ifconfig、ip、ethtool命令的使用介绍-辅
+https://blog.csdn.net/chyq112366/article/details/107202896
+
+
+
+Network简介：
+network是一个系统服务，你可以使用systemctl来查看该服务状态；这个服务是由initscripts软件包提供的，你看这个initscripts软件包名字你也能猜出来，这个包提供了操作系统运行起来后的一些脚本对系统做一些设备初始化(/etc/rc.d/init.d/network)。然后去etc/sysconfig/network-scripts目录下面找ifcfg-*文件进行网络设备管理。
+
+
+
+NetworkManager简介
+NetworkManager由一个管理系统网络连接、并且将其状态通过D-BUS（是一个提供简单的应用程序互相通讯的途径的自由软件项目，它是做为freedesktoporg项目的一部分来开发的）进行报告的后台服务，以及一个允许用户管理网络连接的客户端程序。你可以理解为NetworkManager的思想就是想一把讲linux操作系统下的各种网络相关的服务都统一管理起来，有点systemd的设计思路，但是，但是啊，这个其实是不符合linux设计思想的啊！
+
+systemctl status NetworkManager
+systemctl start NetworkManager
+systemctl stop NetworkManager
+systemctl restart NetworkManager
+systemctl enable NetworkManager
+
+
+nmcli：命令行。这是最常用的工具。
+nmtui：在shell终端开启文本图形界面。
+
+networkM
+
+NetworkManager网络配置
+1. 手工配置ifcfg，通过NM来生效 ，意思就是导入原来的配置到NM
+2. 通过NM自带工具配ip，比如nmcli，意思是从头建立自己的配置
+3. 手工配置ifcfg，通过传统network.service来生效
+
+
+cat > /etc/sysconfig/network-scripts/ifcfg-eth0 <<EOF
+NAME=eth0
+DEVICE=eth0
+ONBOOT=yes
+BOOTPROTO=none
+TYPE=Ethernet
+IPADDR=192.168.1.10
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+EOF
+
+通过NM来生效 ，意思就是导入原来的配置到NM
+nmcli c reload

@@ -1,0 +1,45 @@
+SpringBoot集成jodconverter使用openoffice将word转为pdf
+
+https://www.jianshu.com/p/77e0b6f5c7dd
+
+首先添加依赖
+<dependency>
+   <groupId>org.jodconverter</groupId>
+    <artifactId>jodconverter-core</artifactId>
+    <version>4.2.2</version>
+</dependency>
+<dependency>
+    <groupId>org.jodconverter</groupId>
+    <artifactId>jodconverter-spring-boot-starter</artifactId>
+    <version>4.2.2</version>
+</dependency>
+<dependency>
+    <groupId>org.jodconverter</groupId>
+    <artifactId>jodconverter-local</artifactId>
+    <version>4.2.2</version>
+</dependency>
+
+添加配置
+jodconverter:
+  local:
+    enabled: true
+    office-home: C:\\Program Files (x86)\\OpenOffice 4
+    max-tasks-per-process: 10
+    port-numbers: 8100
+	
+注入类	
+@Autowired
+private DocumentConverter converter;
+
+
+使用
+public String toHtml(String fileName, String uploadDir, String wordPath, String webDir) {
+        try {
+            File parent = new File(uploadDir, "pdfs/");
+            File file = new File(parent, fileName + ".pdf");
+            documentConverter.convert(new File(wordPath)).to(file).as(DefaultDocumentFormatRegistry.HTML).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return webDir + "pdfs/" + fileName + ".html";
+    }
