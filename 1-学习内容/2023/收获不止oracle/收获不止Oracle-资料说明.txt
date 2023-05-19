@@ -1,0 +1,16 @@
+《收获，不止Oracle》的读书笔记
+
+脚本
+https://github.com/liangjb/oraclev2.git
+
+脚本-不是书中脚本
+https://github.com/liangjingbin99/shouhuo
+
+
+
+收获不止Oracle --读书笔记
+https://blog.csdn.net/wuxiaojun000000/article/details/94131148
+
+总结文章
+https://blog.csdn.net/eric520zenobia/article/details/80922035
+

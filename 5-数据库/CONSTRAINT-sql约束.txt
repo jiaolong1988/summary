@@ -1,0 +1,34 @@
+/**
+ 语法：CONSTRAINT 主键约束的名称 PRIMARY key(字段1，字段2，....)
+	在表创建以后，使用alter table创建主键约束
+	例3：alter table添加单个主键约束
+		alter table Persons add primary key(P_id);
+	
+	例4：alter table添加多个主键约束
+		alter table Persons add CONSTRAINT pk_PersonID_Name primary key(P_id,P_Name);  
+*/
+
+create table Persons
+(
+  P_id int not null,
+  P_Name varchar(50),
+  City varchar(30),
+  CONSTRAINT pk_PersonID_Name PRIMARY key(P_id,P_Name)
+);
+
+
+create table Persons1
+(
+  P_id int not null,
+  P_Name varchar(50),
+  City varchar(30),
+  CONSTRAINT foreign_ID_Name FOREIGN key(P_id) REFERENCES Persons(P_Id) 
+);
+
+create table Persons2
+(
+  P_id int not null,
+  P_Name varchar(50),
+  City varchar(30),
+  CONSTRAINT foreign_ID_Name FOREIGN key(P_id,P_Name) REFERENCES Persons(P_Id,P_Name) 
+);
