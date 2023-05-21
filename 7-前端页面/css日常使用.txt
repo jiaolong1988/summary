@@ -43,3 +43,16 @@ https://www.w3school.com.cn/css/css_selectors.asp
 
 参考手册
 	https://www.w3school.com.cn/cssref/index.asp
+	
+	
+溢出常用设置	
+	x轴不溢出  y轴溢出 当超过 550高度时溢出
+	style="overflow-x:hidden;overflow-y:auto;max-height:550px"
+
+
+	设置 父页面的 属性值
+	window.parent.document.getElementById("content-main").setAttribute("value","qqqqqqqq")
+	$("#content-main", window.parent.document).attr("value","aaaa");
+
+	设置父页面css属性 ，相当于在 style中增加样式
+	$("#content-main", window.parent.document).css("overflow-y","auto");
