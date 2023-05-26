@@ -1,5 +1,3 @@
-package com.founder.ttt;
-
 
 public class TestTemp {
 	//类初始化

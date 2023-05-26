@@ -1,7 +1,0 @@
-`sudo echo "hahah" >> test.csv`
--bash: test.asc: Permission denied
-
-第一种是利用 "sh -c" 命令，它可以让 bash 将一个字串作为完整的命令来执行，这样就可以将 sudo 的影响范围扩展到整条命令。
-具体用法如下：
-$ sudo /bin/sh -c 'echo "hahah" >> test.asc'
-

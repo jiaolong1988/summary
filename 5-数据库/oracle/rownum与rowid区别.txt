@@ -1,9 +1,0 @@
-rownum
-	rownum默认是按照记录插入时的顺序给记录排的号
-
-	只有子查询才能根据order by 设置rownum。【Oracle中rownum的是在取数据的时候产生序号的】
-	select rownum ,id,name from (select * from student order by name);
-	
-rowid
-	Oracle对无orderby的语句返回的结果不进行排序，oracle此时的处理方式是按照数据的物理存储顺序来读取数据（既rowid）。
-	rowid表示的是数据存放的数据块内部地址，如果没有要求排序，oracle会顺序的从数据块中读取符合条件的数据返回到客户端.

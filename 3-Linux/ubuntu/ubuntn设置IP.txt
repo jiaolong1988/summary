@@ -1,0 +1,33 @@
+设置ip
+	sudo vim /etc/network/interfaces
+
+	auto lo
+	iface lo inet loopback
+
+	auto eth0
+	iface eth0 inet  dhcp
+
+	auto ens38
+	iface ens38 inet  static
+	address 192.168.100.2
+	network 192.168.100.0
+	netmask 255.255.255.0
+	boradcast 192.168.100.255
+	
+	https://blog.51cto.com/yangsj/1712782
+
+#重启网络
+sudo /etc/init.d/networking restart
+
+【Ubuntu】添加虚拟网卡的三种方式
+https://blog.csdn.net/White_Idiot/article/details/82934338
+
+
+查看已有物理网卡
+ip link
+
+修改ip地址
+sudo ifconfig eth1 192.168.100.2 up
+
+查看ubuntu系统版本
+cat /etc/issue

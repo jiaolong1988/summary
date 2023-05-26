@@ -22,11 +22,7 @@ mysql设置sql模式
 	修改密码
 	mysqladmin -uroot -p 123456 password 1qaz2wsx
 
-ubuntu如何启动/停止/重启MySQL
-	service mysql start
-	service mysql stop
-	service mysql restart
-	service mysql status
+
 	
 查看mysql启动
 	systemctl status| grep mysql
@@ -79,40 +75,6 @@ ubuntu如何启动/停止/重启MySQL
 
 		创建数据库
 		create database platform_shore;
-
-ubuntu mysql 安装
-
-	ubuntu 查看mysql的软件安装版本
-	apt-cache policy mysql-server
-	apt-cache policy mysql-client
-
-	# 安装mysql服务
-	sudo apt-get install mysql-server
-	# 安装客户端
-	sudo apt install mysql-client
-	# 安装依赖
-	sudo apt install libmysqlclient-dev
-	# 检查状态
-	sudo netstat -tap | grep mysql
-
-	修改密码
-	mysql> update mysql.user set authentication_string=PASSWORD('1qaz2wsx'), plugin='mysql_native_password' where user='root';
-	mysql> flush privileges;
-	mysql> exit
-
-	sudo /etc/init.d/mysql restart
-	
-	# 修改配置文件，注释掉bind-address = 127.0.0.1
-	$ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
-
-	$ mysql -uroot -p
-	grant all on *.* to root@'%' identified by '1qaz2wsx' with grant option;
-	flush privileges;
-	exit
-	sudo /etc/init.d/mysql restart
-	
-	https://www.jb51.net/article/156476.htm
-	
 
 	
 GRANT ALL ON didi_electrician.* TO 'didi'@'localhost'   IDENTIFIED BY 'diDI@epCom'  WITH GRANT OPTION;

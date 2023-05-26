@@ -1,0 +1,48 @@
+查看数据库当前版本
+select version ()
+mysql -V
+
+测试指定ip 端口号能否连接
+mysql -u root -p -h 127.0.0.1 -P 3306
+
+
+
+异常-mysql驱动版本过高导致
+	javax.net.ssl.SSLException: 
+	closing inbound before receiving peer's close_notify
+
+	配置连接数据库的url时，加上useSSL=false
+	https://www.cnblogs.com/Evangenia/p/10972002.html
+
+
+mysql函数截断问题解决
+	原因：
+		mysql中默认的结束符号为分号(;).由于在创建函数中使用使用了分号导致函数创建失败。
+
+		举例：
+		CREATE FUNCTION nvl(v1 datetime,v2 datetime)
+		RETURNS datetime
+		BEGIN
+			RETURN(ifnull(v1,v2));
+		END
+
+
+	因此解决方案
+		1.修改结束符为$$
+		mysql> delimiter $$
+
+		2.修改创建函数
+		CREATE FUNCTION nvl(v1 datetime,v2 datetime)
+		RETURNS datetime
+		BEGIN
+			RETURN(ifnull(v1,v2));
+		END$$
+
+		3.恢复结束符为 ";"
+		delimiter ;
+
+
+	解决mysql报错This function has none of DETERMINISTIC问题
+		show variables like 'log_bin_trust_function_creators';
+		set global log_bin_trust_function_creators=1;
+		https://www.php.cn/mysql-tutorials-477456.html

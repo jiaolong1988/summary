@@ -14,6 +14,18 @@ import java.util.Date;
  */
 public class DateOperate {
 	public static void main(String[] args) {
+		
+		//String转换成Date类型	
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+		String time = "2019-09-19";
+		Date date = ft.parse(time);
+
+		//Date转换成String类型
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String time = ft.format(date);
+
+
 		//日期的比较
 		Calendar dataCompare = Calendar.getInstance();
 		dataCompare.add(Calendar.DATE, -1);

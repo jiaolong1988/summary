@@ -1,2 +1,0 @@
-ORACLE 中dbms_stats的使用
-https://blog.csdn.net/shipeng1022/article/details/23884295

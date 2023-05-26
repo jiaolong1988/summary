@@ -1,0 +1,115 @@
+查询进程运行时长
+	ps -p 60772 -o etimes
+	ps -p 60772 -o etime=
+
+	#查询进程开始的日期 时间 及运行时长
+	ps -eo pid,tty,user,comm,lstart,etime|head -1;ps -eo pid,tty,user,comm,lstart,etime|grep 60772
+
+	#查询开始时间
+	ps aux |head -1;ps aux |grep 60772
+	
+	#查sqlplus 进程
+	ps aux |grep sqlplus
+	
+	#查进程号
+	pgrep sqlplus
+
+释放缓存
+	echo 1 > /proc/sys/vm/drop_caches
+	
+登录指定账户执行命令	
+	#方式1
+	echo "pssword" | sudo -S sh -c "echo 1 > /proc/sys/vm/drop_caches"
+
+	#方式2
+	echo "pssword" | sudo -S sh -c ./a.sh
+
+多命令执行
+	su - root <<EOF
+		echo 1 > /proc/sys/vm/drop_caches
+		exit;
+	EOF
+
+获取剩余内存大小	
+	free -h| grep Mem| awk '{print $4}' | sed "s/G//" 
+	
+sed获取指定行信息（awk获取指定列信息）	
+	使用命令sed -n 指定行数；-n '2p':第二行；-n '1,3p':第一至三行
+	ps aux | grep sbin | awk '{print $2}' | sed -n '1,3p'
+	
+统计字符数量	
+	grep -i success makeimagedata.log  | wc -l
+	
+文件查找
+     locate 指定地址   文件名  [案例：locate ./ 01.jpg ]
+      
+寻找当前目录，哪个文件夹占用空间最大 	 
+	du -h --max-depth=1 
+	
+
+文件夹传输	
+scp -r xdb11/ dmadmin@192.168.1.88:/dmadmin
+文件传输
+scp my_local_file.zip root@192.168.1.104:/usr/local/nginx/html/webs
+
+
+cd ../..
+
+cd - 返回上一次目录
+
+
+查看80端口被那个应用占用
+lsof -i :80
+
+
+比较文件的不同
+diff  -r /aa   /bbb
+
+替换（将所有 old 替换为  new）
+:%s/old/new/g	
+特殊字符使用\转义(将*. 替换为new/*.)
+:%s/\*\./new\/\*\./g
+
+
+获取正文内容,不显示注释
+cat /etc/security/limits.conf | grep -v ^# | grep -v ^$
+
+通过命令查看安装包
+rpm -qf "/usr/sbin/ifconfig"
+
+查看linux多少位
+getconf LONG_BIT
+
+统计当前目录下所有文件数量（包括子目录下的所有文件)
+ls -lR  | grep "^-" | wc -l
+ls -R 递归列出遇到的子目录
+
+统计当前目录下所有文件夹数量（包括子目录下的所有文件夹)
+ls -lR  | grep "^d" | wc -l
+
+最近修改的文件排在前面
+ls -t 
+
+查看已有物理网卡
+ip link
+
+修改ip地址
+sudo ifconfig eth1 192.168.100.2 up
+
+
+查询当前目录下包含指定内容的文件名
+grep -r -l "查询内容" 
+
+--查询文件中的内容
+grep 2732 * 
+
+显示指定列的内容
+ps -a | grep java | awk '{print $1}'
+
+
+作用:显示这个文件（ufile）被哪个程序调用
+losf 文件名
+https://www.cnblogs.com/mrwhite2020/p/16685207.html
+
+显示文件的编码格式
+file 1.txt

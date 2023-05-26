@@ -1,8 +1,0 @@
-type		查看命令类型（是否是shell内建命令）
-help		查看内建命令文档
-man			查看非内建命令文档
-
-
-type ls
-help cd
-man ls
