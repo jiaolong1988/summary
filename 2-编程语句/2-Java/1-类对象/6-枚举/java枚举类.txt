@@ -1,0 +1,69 @@
+import java.util.Date;
+
+public enum Planet {
+//	A,B;
+	
+    AAA(1, 2) , 
+    BBB(3, 4);
+	
+
+    private int a;
+    private int b;
+
+    Planet(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+     String getmessage(String flag,int a){
+    	Test t = new Test();
+    	Date date = new Date();
+    	
+        System.out.println(flag + ": get message :"+System.currentTimeMillis()+" a:"+a);        
+        return date.toString();
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+    	//获取所有枚举
+        for(Planet p : Planet.values()){
+            System.out.println(p);
+        }
+        System.out.println("===================");
+        
+    	for(int i=0;i<10;i++) {       	
+    		Planet.AAA.getmessage(Planet.AAA.toString(),Planet.AAA.a);
+    		Thread.sleep(2000);
+    		Planet.BBB.getmessage(Planet.BBB.toString(),Planet.BBB.a);
+    	}
+    	
+//    	for(int i=0;i<10;i++) {
+//    		Planet.A.getmessage("A");
+//    		Thread.sleep(2000);
+//    		Planet.B.getmessage(B.toString());
+//	    }
+    	  
+    }
+
+}
+
+
+
+enum Car {
+    lamborghini(900),tata(2),audi(50),fiat(15),honda(12);
+    private int price;
+    Car(int p) {
+        price = p;
+    }
+    int getPrice() {
+        return price;
+    } 
+}
+public class Main {
+    public static void main(String args[]){
+        System.out.println("所有汽车的价格：");
+        for (Car c : Car.values())
+        System.out.println(c + " 需要 " 
+        + c.getPrice() + " 千美元。");
+    }
+}

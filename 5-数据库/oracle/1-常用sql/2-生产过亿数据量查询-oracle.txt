@@ -1,0 +1,39 @@
+create table temp_pivs_his_page
+as
+select /*+ parallel(8)*/
+  t.R_OBJECT_ID, t.PKUUID ,t.PAGEINDEX ,t.FILENAME ,t.DOCINDEX ,t.R_CONTENT_SIZE, t.VERSIONLABEL, rownum as rnum
+from
+  boc_pkuuid_metadata_s t1,
+  BOC_PAGE_METADATA_SP t
+where 1=2;
+-----------------------------------------------------
+alter session enable parallel dml;
+
+insert
+/*+ parallel(8)*/  
+into temp_pivs_his_page nologging
+select 
+  t.R_OBJECT_ID, t.PKUUID ,t.PAGEINDEX ,t.FILENAME ,t.DOCINDEX ,t.R_CONTENT_SIZE, t.VERSIONLABEL, rownum as rnum
+from
+  boc_pkuuid_metadata_s t1,
+  BOC_PAGE_METADATA_SP t
+where
+    t1.pkuuid=t.pkuuid
+and t1.versionlabel=t.versionlabel 
+and t1.sourcesystem='PI';
+commit;
+alter session disable parallel dml;
+
+create index idx_pih_rnum on temp_pivs_his_biz (rnum) nologging parallel 8;
+alter index idx_pih_rnum parallel 1;
+create index idx_pih_bbiz on temp_pivs_his_biz (BIZMETADATA1) nologging parallel 8;
+alter index idx_pih_bbiz parallel 1;
+create index idx_pih_pbiz on temp_pivs_his_pkuuid (BIZMETADATA1) nologging parallel 8;
+alter index idx_pih_pbiz parallel 1;
+create index idx_pih_ppage on temp_pivs_his_page (rnum) nologging parallel 8;
+alter index idx_pih_ppage parallel 1;
+
+--收集统计信息
+exec dbms_stats.gather_table_stats(user,'BOC_BIZ_METADATA_S',degree =>4,estimate_percent => 5,no_invalidate => false );
+exec dbms_stats.gather_table_stats(user,'BOC_PKUUID_METADATA_S',degree =>4,estimate_percent => 5,no_invalidate => false );
+exec dbms_stats.gather_table_stats(user,'BOC_PAGE_METADATA_S',degree =>4,estimate_percent => 5,no_invalidate => false );
