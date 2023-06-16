@@ -1,5 +1,9 @@
 《收获，不止Oracle》的读书笔记
 
+oracle开发规范
+https://blog.csdn.net/litter_m/article/details/111049828
+
+
 脚本
 https://github.com/liangjb/oraclev2.git
 

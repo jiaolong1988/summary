@@ -24,3 +24,7 @@ $ java Foo
   
   表示加载asmtools.jar 并执行 org.openjdk.asmtools.jdis.Main类  参数位 Foo.class
   java -cp /path/to/asmtools.jar org.openjdk.asmtools.jdis.Main Foo.class > Foo.jasm.1
+
+https://blog.csdn.net/jiaobuchong/article/details/83037467
+//将第一行 到 正则匹配到的第一行中的 iconst_1 替换为 iconst_2（从记录行的左边开始，只替换一次）
+awk 'NR==1,/iconst_1/{sub(/iconst_1/, "iconst_2")} 1' Foo.jasm.1 

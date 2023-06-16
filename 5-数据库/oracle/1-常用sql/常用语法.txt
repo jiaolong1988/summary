@@ -1,0 +1,45 @@
+oracle 分组排序 返回序号
+		select * ,row_number() over (partition by c_id order by s_score) from score;
+		https://blog.csdn.net/yilulvxing/article/details/85098273
+	
+
+Oracle DECODE 函数解释与用法
+	select SUM(DECODE(DEPTNO,10,1,0)) "10号部门人数" from EMP;
+    含义是：DEPTNO==10的这列的值转换成1，如果DEPTNO!=10，那么这列的值转换为0.
+
+	https://www.jianshu.com/p/34764c115fde	
+	
+	
+oracle sysdate-1/24的意思解释
+	在oracle中，查询出来的日期往前推迟多长时间计算，我们可以用date-A/B/C/D这种格式：
+	其中A ---------表示天
+	其中B----------表示小时
+	其中C----------表示分钟
+	其中D----------表示秒
+
+	实例：如果我们计算当前时间往前推3小时，就应该这样去写
+
+	select sysdate-1/8 from dual;
+	解释：1 代表天。计算式*24代表小时。在除以8=3，表示当前时间往前推3个小时。
+
+	原文链接：https://blog.csdn.net/baidu_39425032/article/details/102231364
+	
+oracle 左连接 简写
+	select * from t_a a left join t_b b on a.id=b.id and a.code=b.code;
+	select * from t_a a,t_b b where a.id=b.id(+) and a.code=b.code(+);
+	
+oracle获取一天的24小时	
+	select 
+		to_char(to_date('00', 'HH24') + numtodsinterval(level - 1, 'hour'), 'hh24') timeslot 
+	from dual connect by level <= 24
+		
+oracle多表join
+	select * from a, tsi, itd
+	where a.data_syscode = tsi.busi_no(+) and a.trade_type = itd.trade_type(+)
+	
+oracle 获取当前时间10分钟内的数据
+	select *from t_agent where int_last_login>(sysdate - 1 / 12 / 12)
+
+默认值
+	nvl函数
+	
