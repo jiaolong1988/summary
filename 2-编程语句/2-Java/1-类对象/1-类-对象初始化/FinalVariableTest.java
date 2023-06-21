@@ -7,9 +7,7 @@ public class FinalVariableTest
 	final String str;
 	final int c;
 	final static double d;
-	// 既没有指定默认值，又没有在初始化块、构造器中指定初始值，
-	// 下面定义的ch实例变量是不合法的。
-	// final char ch;
+	
 	// 初始化块，可对没有指定默认值的实例变量指定初始值
 	{
 		//在初始化块中为实例变量指定初始值，合法
