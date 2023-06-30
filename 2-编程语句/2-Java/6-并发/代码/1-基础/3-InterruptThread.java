@@ -2,6 +2,16 @@ package temp;
 
 /**
  * 当线程正在执行任务时，通过interrupt方式 停止线程，使其退出
+ 
+ 对象方法	
+	interrupt()			：中断线程，当遇到 sleep,wait, join方式时，会抛中断异常，							  
+						  会清除中断状态
+	isInterrupted()		：返回线程是否中断，不会清除中断状态。
+	注意：interrupt()、isInterrupted()是成对使用的
+
+ 类方法（不需要new对象直接使用）
+	interrupted()		：返回线程是否中断，会清除中断状态。
+	
  * @author jiaolong
  * @date 2023-05-22 03:38:06
  */

@@ -1,0 +1,52 @@
+https://www.ab62.cn/article/16474.html
+
+//访问子目录之后触发该方法
+FileVisitResult postVisitDirectory(T var1, IOException var2) throws IOException;
+//访问子目录之前触发该方法
+FileVisitResult preVisitDirectory(T var1, BasicFileAttributes var2) throws IOException;
+//访问file文件时触发该方法
+FileVisitResult visitFile(T var1, BasicFileAttributes var2) throws IOException;
+//访问file文件失败时触发该方法
+FileVisitResult visitFileFailed(T var1, IOException var2) throws IOException;
+
+
+public enum FileVisitResult {
+    CONTINUE, 表示继续访问
+    TERMINATE, 继续访问，但是不访问该文件或者该目录的兄弟文件或目录
+    SKIP_SUBTREE,继续访问，但是不再访问该文件或者该目录的子目录
+    SKIP_SIBLINGS; 终止访问
+
+    private FileVisitResult() {
+    }
+}
+
+
+ /**
+     * 删除指定文件夹下文件
+     *
+     * @param filePath
+     */
+    public static void deleteFolders(String filePath) {
+
+        Path path = Paths.get(filePath);
+        try {
+            Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
+                    Files.delete(file);
+                    LOGGER.info("删除文件: {}", file);
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir,
+                                                          IOException exc) throws IOException {
+                    Files.delete(dir);
+                    LOGGER.info("文件夹被删除: {}", dir);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
