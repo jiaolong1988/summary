@@ -1,0 +1,4 @@
+数组与list相互转化
+	List<String> list = Arrays.asList("1","2","3");		
+	String[] s = list.toArray(new String[3]);
+	Collections.addAll()

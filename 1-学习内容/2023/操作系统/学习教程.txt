@@ -1,0 +1,26 @@
+Nand2Tetris
+	Nand2Tetris I, Nand2Tetris II
+	
+	环境搭建
+		https://zhuanlan.zhihu.com/p/49830601
+	软件
+		https://www.nand2tetris.org/software
+	课程
+		https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/N2T/
+	视频
+		https://link.zhihu.com/?target=https%3A//space.bilibili.com/69824765/%23/channel/detail%3Fcid%3D56426
+	教材
+		[计算机系统要素：从零开始构建现代计算机
+
+基础书
+《程序是怎样跑起来的》
+《计算机是怎样跑起来的》
+《深入理解计算机系统》
+
+《Unix & Linux大学教程》
+
+基础视频
+	南京大学袁春风老师主讲的 计算机系统基础
+
+	习题参考
+	https://github.com/liuxinyu123/cs_basis

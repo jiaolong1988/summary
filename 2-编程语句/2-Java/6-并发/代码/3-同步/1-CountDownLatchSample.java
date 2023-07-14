@@ -2,6 +2,7 @@ package concurrency1;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * 倒计时门闩
  * 线程协调，根据条件执行不同的并发任务。
  * @author jiaolong
  * @date 2023-01-19 03:28:18

@@ -1,7 +1,6 @@
-package test.recursion;
 
 //µÝ¹é
-//https://www.cnblogs.com/cainiao-chuanqi/p/11320972.html#autoid-1-4-0
+//https://www.cnblogs.com/cainiao-chuanqi/p/11320972.html
 public class Recursion {
 
 	/*
@@ -25,7 +24,9 @@ public class Recursion {
 	        return fib(n - 1) + fib(n - 2);
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		recursion_display(6);
+		//1 1 2 3 5 8 13
+		System.out.println("ì³²¨ÄÇÆõ£º"+fib(6));
 	}
 }
