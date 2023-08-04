@@ -1,0 +1,32 @@
+
+自定义注解如何实现
+https://www.cnblogs.com/luciochn/p/14529281.html
+
+https://blog.csdn.net/qq_41762594/article/details/109326971
+
+
+
+java验证
+https://www.zhihu.com/people/zhang-ke-55-95/posts
+
+	Hibernate Validator 学习与使用
+	https://zhuanlan.zhihu.com/p/185015279
+	
+	Hiberate Validator自定义约束
+	https://zhuanlan.zhihu.com/p/189501050
+
+	spring Validator 学习与使用
+	https://zhuanlan.zhihu.com/p/196755956
+
+	spring boot框架
+	https://start.spring.io/
+
+	JSR-303是Java为Bean数据合法性校验提供的标准框架，它定义了一整套校验注解，可以标注在成员变量，属性方法等之上。hibernate-validator就提供了这套标准的实现。
+	springboot的2.3.0版本以上，需手工引入spring-boot-starter-validation依赖；就间接引入了hibernate-validator依赖。
+
+	原理
+	https://www.cnblogs.com/chentianming/p/13424303.html
+	
+	
+	spring  自定义注解
+	https://juejin.cn/post/6998802031683043342
