@@ -1,6 +1,12 @@
 jni系列文章
 https://blog.csdn.net/zhan107876/category_11444246.html?spm=1001.2014.3001.5482
 
+
+jni 环境搭建
+https://blog.csdn.net/zhizhengguan/article/details/104904207
+https://blog.csdn.net/chinesesword/article/details/46548679
+
+
 项目
 testoftp
 boc_icms_oftpd

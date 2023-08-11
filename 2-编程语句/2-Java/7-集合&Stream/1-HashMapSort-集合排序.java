@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * 
+ * LinkedHashMap 顺序保存数据
  * @author jiaolong
  * @date 2023-03-03 11:20:33
  */
@@ -23,8 +23,6 @@ public class CollectionSort {
 		
 		mapSort2();
 		System.out.println("");
-		
-		ListSort();
 
 	}
     private static void mapSort1() {
@@ -93,43 +91,5 @@ public class CollectionSort {
 	}
 	
 	
-	private static void ListSort() {
-		List<String> list = new ArrayList<>();
-		list.add("temp_encrypt_add_202204161416");
-		list.add("temp_encrypt_add_202204161415");
-		list.add("temp_encrypt_add_202204161617");
-	    
-   
-        //遍历输出，foreach方式
-        for(String mapping: list){ 
-               System.out.println(mapping); 
-        }
-        
-        System.out.println("=============");
-        
-        //然后通过比较器来实现排序
-        Collections.sort(list,new Comparator<String>() {
-            //升序排序
-			@Override
-			public int compare(String o1, String o2) {
-				String[] o1info = o1.split("_");				
-				String[] o2info = o2.split("_");
-				
-				String val1 = o1info[o1info.length-1];
-				String val2 = o2info[o1info.length-1];
-							
-				
-				BigInteger o1val = new BigInteger(val1);
-				BigInteger o2val = new BigInteger(val2);
-				
-				return o1val.compareTo(o2val);
-			}            
-        });
-        
-        //遍历输出，foreach方式
-        for(String mapping: list){ 
-            System.out.println(mapping); 
-        }
-        
-	}
+
 }
