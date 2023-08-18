@@ -28,8 +28,9 @@ git clone https://github.com/jiaolong1988/test.git
 git clone  git@github.com:jiaolong1988/project.git
 
 
-
+查看远程仓库连接
 git remote -v
+删除远程仓库
 git remote remove origin
 
 
