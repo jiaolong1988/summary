@@ -1,6 +1,6 @@
 alt+/						代码提示
 alt+shift+L					生成变量名称
-alt+enter					导入相关类
+alt+enter					导入相关类,生成变量
 ctrl+1						帮助
 
 new Mode().var 回车  		自动生成变量名

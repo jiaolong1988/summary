@@ -1,0 +1,20 @@
+
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Repeatable(MyAnnotation.class)
+public @interface MyAnnotation {
+
+	//值类型
+	String name() default "疯狂软件";
+
+	/** 数组类型
+		1.Java自定义注解中的string[] value() default {};
+			表示该注解中可以接受一个字符串数组类型的参数，该参数的名称为value，且默认值为空数组。
+			@MyAnnotation({"value1", "value2", "value3"})
+			
+		2.在使用注解时，如果只传递了一个字符串值，可以省略value参数名，例如：@MyAnnotation("value1")
+	**/
+	String[] value() default {};
+
+}

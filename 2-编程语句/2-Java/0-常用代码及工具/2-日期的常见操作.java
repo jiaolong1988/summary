@@ -13,6 +13,22 @@ import java.util.Date;
  * @date 2023-03-03 11:23:41
  */
 public class DateOperate {
+	
+	//日期格式验证
+	public static boolean isLegalDate(int length, String sDate,String format) {
+        int legalLen = length;
+        if ((sDate == null) || (sDate.length() != legalLen)) {
+            return false;
+        }
+        DateFormat formatter = new SimpleDateFormat(format);
+        try {
+            Date date = formatter.parse(sDate);
+            return sDate.equals(formatter.format(date));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+	
 	public static void main(String[] args) {
 		
 		//String转换成Date类型	
