@@ -1,34 +1,45 @@
-alt+/						代码提示
-alt+shift+L					生成变量名称
-alt+enter					导入相关类,生成变量
-ctrl+1						帮助
+万能键
+	alt+enter					导入相关类,生成变量
+	ctrl+1						帮助,自动生成变量名
 
-new Mode().var 回车  		自动生成变量名
-alt+insert    				生成构造方法
-Ctrl+shift +f   			格式化代码
-alt + 方向键(上或下)   		移动代码
-f2 查看方法信息
+代码辅助与移动
+	Ctrl+shift +F   			格式化代码
+	Tab 						代码补全
+	ctrl+d  					删除当前行
+	alt + 方向键(左或右)    	返回上一次操作位置
+
+	ctrl+alt+方向键(上或下)		复制当前行内容至下一行
+	alt  +   方向键(上或下)   	移动代码至上一行或下一行
+
+复制类全路径
+	alt+c						复制类的全路径,包名+类名
+	alt+v						粘贴类的全路径
+	
+代码展开与折叠
+    ctrl + =					Expand All   (展开全部方法)
+	ctrl + -					Collapse All (折叠全部方法)
+
+文件查找
+	ctrl + F					在当前文件中 查找与替换
+	shift+shift					全局查找文件
+
+结构查找
+	ctrl+Alt+H					查看方法被哪里引用
+	ctrl + H					全局查找包含 某个变量 的类有哪些
+	ctrl + T 					接口的实现类有哪些
+
+类所有方法查看
+	alt + 7						查看类中的所有方法 
+	ctrl+o						查看所有方法 包含继承类的方法
+
+代码生成
+	alt + I    				    生成构造方法
+	ctrl+Alt+m					快速抽取方法						
+								选中指定代码 -> 右键->Refactor -> Extract Method	
+	
+查看类的继承关系图	
+	右键类 -> Diagrams -> Show Diagram Popup
+	Crtl + Alt + U									临时展示
+	Crtl + Alt + Shift + U       					永久展示
 
 
-alt + 方向键(左或右)    	返回上一次操作位置
-ctrl+alt+shift+c			复制类的全名
-
-
-查看实现类
-ctrl + alt +B		查找接口的实现类
-ctrl + h			查看类或接口的继承关系
-alt + 7				快速查看类中的所有方法 
-
-
-idea查看类层次结构快捷键	
-Crtl + Alt + U									临时展示
-Crtl + Alt + Shift + U       					永久展示
-右键类 -> Diagrams -> Show Diagram Popup
-
-
-抽取方法
-	选中指定代码 -> alt+shift+M
-	选中指定代码 -> 右键->Refactor -> Extract Method
-
-https://blog.csdn.net/qq_42301302/article/details/109314546
-https://blog.csdn.net/weasleyqi/article/details/7896576

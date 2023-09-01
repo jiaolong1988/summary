@@ -70,6 +70,8 @@ diff  -r /aa   /bbb
 特殊字符使用\转义(将*. 替换为new/*.)
 :%s/\*\./new\/\*\./g
 
+linux删除windows回车键
+sed -i 's/\r//' *.sh
 
 获取正文内容,不显示注释
 cat /etc/security/limits.conf | grep -v ^# | grep -v ^$
