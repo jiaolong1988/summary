@@ -115,3 +115,15 @@ https://www.cnblogs.com/mrwhite2020/p/16685207.html
 
 显示文件的编码格式
 file 1.txt
+
+sftp命令
+	sftp登录
+		sftp remote_user@remote_host
+
+	sftp 下载文集 及目录
+		get /path/remote_file
+		get -r remoteDirectory
+	退出
+		bye
+		exit
+	
