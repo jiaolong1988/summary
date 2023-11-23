@@ -25,6 +25,11 @@ System.out.println("中".getBytes().length); //字符串大小为：2个字节�
 org.apache.commons.lang.StringUtils
 StringUtils.isBlank()
 
+判断集合是否为空
+org.springframework.util.CollectionUtils
+CollectionUtils.isEmpty(queryPageData)
+
+
 File 与Path相互转换
 	File.toPath()
 	Path.toFile()

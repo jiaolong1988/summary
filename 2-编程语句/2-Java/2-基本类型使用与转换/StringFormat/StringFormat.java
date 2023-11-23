@@ -36,6 +36,9 @@ public class StringFormat {
 				b:布尔类型，只要实参为非false的布尔类型，均格式化为字符串true，否则为字符串false。
 
 		 */
+		 
+		String.format("smallTable:%1$-25s already import successful, status: %2$-7s" ,smallTableName,status)
+		
 	    System.out.println("实现左对齐：");
 	    System.out.println(String.format("%1$-9d", 1245));
 	    System.out.println("实现用0填充：");

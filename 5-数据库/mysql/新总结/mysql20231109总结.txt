@@ -1,0 +1,78 @@
+问题
+	oracle 导入时间与 mysql导入的时间 相差8小时？
+	java 持久化 注解 与 ibatis？	
+	IGNORE 关键字的作用
+
+mysql 数据插入
+https://blog.csdn.net/weixin_41725792/article/details/110186011
+
+
+
+ibatis/mybatis属性三：resultMap和resultClass/resultType
+https://www.jianshu.com/p/64fd0a8dcf76
+	<resultMap class="com.boc.icms.dbimport.bean.db.TFileInfo" id="tfileInfo">  
+	    <result column="ID" property="id"/>  
+        <result column="BEGIN_NAME" property="beginName"/>  
+        <result column="END_NAME" property="endName"/>  
+        <result column="NEW_NAME" property="newName"/>  
+        <result column="ORDER_NUMBER" property="orderNumber"/>  
+        <result column="CREATE_TIME" property="createTime"/>  
+    </resultMap> 
+
+
+ibatis批量插入-iterate标签应用
+https://blog.csdn.net/bauterujj/article/details/68947521
+	<insert id="insertSql" parameterClass="java.util.List" >
+		INSERT INTO T_FILE_INFO (ID, BEGIN_NAME, END_NAME, NEW_NAME, ORDER_NUMBER, CREATE_TIME) VALUES
+		<iterate  conjunction="," >   
+    		 <![CDATA[  
+    		   (#list[].id#,
+            	#list[].beginName#,
+            	#list[].endName#,
+            	#list[].newName#,
+            	#list[].orderNumber#,
+            	#list[].createTime#)            	
+        	 ]]>   
+    	</iterate >   
+	</insert>
+	
+ibatis iterate标签 迭代删除
+	https://blog.csdn.net/csdnbenbenchong/article/details/7096704	
+	
+	
+mysql5.7 时间精确到纳秒
+	https://blog.csdn.net/weixin_42018518/article/details/102629599
+	`mtime` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT 'TIMESTAMP类型修改时间',
+	create table T_GET_REPORT
+	(
+	  gettime    VARCHAR(64),
+	  geturl     VARCHAR(256),
+	  input_date timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)
+	)
+	;
+
+
+mysql报错：Duplicate entry ‘xx‘ for key ‘PRIMARY‘ 解决可行方案。已解决
+https://blog.csdn.net/jiayou516/article/details/117784500
+	原因：插入线程频率较高，没有处理好事务，造成插入sql执行顺序混乱
+	解决方法:把insert into 表名()values();修改为:insert ignore into 表名()values(); 
+	
+	
+
+	
+mysql的in查询参数限制	
+https://blog.csdn.net/LJFPHP/article/details/103656726	
+	
+	
+mysql默认不区分大小写
+	utf8_genera_ci不区分大小写，ci为case insensitive的缩写，即大小写不敏感。
+	utf8_bin区分大小写，cs为case sensitive的缩写，即大小写敏感。
+	https://blog.csdn.net/leoxyk/article/details/99855608	
+	
+	
+	
+	
+	
+
+
+

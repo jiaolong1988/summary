@@ -1,4 +1,4 @@
-package com.boc.icms.makelist.util;
+package com.boc.icms.dbimport.util;
 
 
 import java.io.File;
@@ -9,28 +9,29 @@ import java.io.OutputStream;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
 /**
  * Properties工具类，支持顺序存储
- * 
- * @author 		jiaolong
- * @date 		2022-09-19 02:40:03
+ * @author jiaolong
+ * @date 2023-11-16 04:24:12
  */
 public class OrderedPropertiesUtil{
 	private static final Logger logger = Logger.getLogger(OrderedPropertiesUtil.class);
 	
-	public Properties prop = new OrderedProperties();
+	private OrderedProperties prop ;
 	private String propertyFilePath ;
 	
 	public OrderedPropertiesUtil(String propertyFilePath) {
 		this.propertyFilePath = propertyFilePath;	
+		this.prop = new OrderedProperties();
 	}
 		
 	/**
@@ -38,46 +39,29 @@ public class OrderedPropertiesUtil{
 	 * @param values
 	 * @return
 	 */
-	public boolean createProperFile(Map<String,String> values) {
-		for(String key :values.keySet()) {
-			prop.setProperty(key, values.get(key));
+	public synchronized boolean createProperFile(Map<String, String> values) {
+		for (Map.Entry<String, String> entry : values.entrySet()) {
+			String key = entry.getKey();
+			String value = entry.getValue();
+
+			prop.setProperty(key, value);
 		}
-		
-		logger.debug("configPath --> "+propertyFilePath);
-		for(Object key:prop.keySet()) {
-			logger.debug("create config.flag info ==> key:"+key+" value:"+prop.get(key) );
-		}
-		
+
 		return outPropFile();
 	}
 	
 	
 	/**
-	 * 更新属性至文件中
+	 * 修改属性至文件中
 	 * @param propName
 	 * @param newValue
 	 */
-	public boolean setValToFile(String propName, String newValue) {
+	public synchronized boolean setValToFile(String propName, String newValue) {
 		loadFile();
 		prop.setProperty(propName, newValue);
-		boolean flag = outPropFile();
+		outPropFile();
 		
-		logger.debug("outPropFile:  ==>"+flag);	
-		for(Object key:prop.keySet()) {
-			logger.debug("setValToFile ["+propName+"] value:"+newValue+" ==> key:"+key+" value:"+prop.get(key));
-		}
-		
-		while(true) {
-			String fileNewValue = getVal(propName);
-			if(fileNewValue.equals(newValue)) {
-				break;
-			}
-			try {
-				TimeUnit.SECONDS.sleep(1);
-			} catch (InterruptedException e) {}
-		}
-	
-		return true;
+		return getVal(propName).equals(newValue);
 	}
 	
 	/**
@@ -85,37 +69,65 @@ public class OrderedPropertiesUtil{
 	 * @param propName
 	 * @return
 	 */
-	public String getVal(String propName) {
+	public synchronized String getVal(String propName) {
 		
 		loadFile();
-		for(Object key:prop.keySet()) {
-			logger.debug("getVal ["+propName+"] ==> key:"+key+" value:"+prop.get(key));
-		}
 		String val = prop.getProperty(propName);
-		if(val == null) {
-			logger.error("=====================>>>>>>>>>>>>>>>>>> get config.flag file info is null. attrName:"+propName +"  filePath:"+propertyFilePath);
-		    System.exit(0);
+		if(val == null) {			
+			logger.error("=====================>>>>>>>>>>>>>>>>>> read interrupt file info is null. attrName:"+propName +"  filePath:"+propertyFilePath);
+				   
+			for (Map.Entry<Object, Object> entry :prop.entrySet()) {
+				Object key = entry.getKey();
+				Object value = entry.getValue();
+				
+				logger.error("getVal ["+key+"] ==> key:"+key+" value:"+value);
+			}
+			return "";
 		}
 		
 		return val;	
 	}
 	
+	/**
+	 * 获取指定属性的值
+	 * @param propName
+	 * @return
+	 */
+	public synchronized Map<String,String> getAllVal() {
+		
+		if(!loadFile()) {
+			return Collections.emptyMap(); 
+		}
+		
+		Map<String,String> result = new HashMap<>();		
+		for (Map.Entry<Object, Object> entry :prop.entrySet()) {
+			String key = (String)entry.getKey();
+			String value =(String) entry.getValue();
+			
+			result.put(key, value);
+		}
+		return result;	
+	}
 
-
-	private boolean outPropFile() {
+	private synchronized boolean outPropFile() {
 		boolean flag = false;
 		try(OutputStream out = new FileOutputStream(propertyFilePath);) {			
 			prop.store(out, "Project configuration file");
 			flag = true;
 		} catch (IOException e) {
-			logger.error(e);
+			logger.error(" Interrupt file write fail, filePath:"+propertyFilePath,e);
 		}
 		return flag;
 	}	
 	
+	
+	/**
+	 * 读取中断文件将
+ 	 * @return true：加载文件成功， false:文件加载失败
+	 */
 	private boolean loadFile() {	
 		if(new File(propertyFilePath).exists()) {
-			try(FileInputStream fis = new FileInputStream(propertyFilePath);) {			
+			try(FileInputStream fis = new FileInputStream(propertyFilePath)) {			
 				prop.load(fis);
 				return true;
 			} catch (IOException e) {
@@ -127,19 +139,19 @@ public class OrderedPropertiesUtil{
 		
 		return false;
 	}
-	
+
 }
 
 /**
  * 
  * @author jiaolong
- * @date 2022-11-09 09:30:16
+ * @date 2023-11-16 04:24:37
  */
 class OrderedProperties extends Properties {
 
     private static final long serialVersionUID = 4710927773256743817L;
 
-    private final LinkedHashSet<Object> keys = new LinkedHashSet<Object>();
+    private final LinkedHashSet<Object> keys = new LinkedHashSet<>();
 
     @Override
     public Enumeration<Object> keys() {
@@ -147,7 +159,7 @@ class OrderedProperties extends Properties {
     }
 
     @Override
-    public Object put(Object key, Object value) {
+    public synchronized Object put(Object key, Object value) {
         keys.add(key);
         return super.put(key, value);
     }
@@ -159,7 +171,7 @@ class OrderedProperties extends Properties {
 
     @Override
 	public Collection<Object> values() {
-    	 Set<Object> set = new LinkedHashSet<Object>();
+    	 Set<Object> set = new LinkedHashSet<>();
     	 
     	 for (Object key : this.keys) {
     		set.add(this.getProperty((String) key));
@@ -169,14 +181,14 @@ class OrderedProperties extends Properties {
 	}
 
 	@Override
-	public  Object remove(Object key) {
+	public synchronized Object remove(Object key) {
     	keys.remove(key);
 		return super.remove(key);
 	}
 
 	@Override
     public Set<String> stringPropertyNames() {
-        Set<String> set = new LinkedHashSet<String>();
+        Set<String> set = new LinkedHashSet<>();
 
         for (Object key : this.keys) {
             set.add((String) key);
@@ -184,4 +196,25 @@ class OrderedProperties extends Properties {
 
         return set;
     }
+
+	@Override
+	public synchronized int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(keys);
+		return result;
+	}
+
+	@Override
+	public synchronized boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrderedProperties other = (OrderedProperties) obj;
+		return Objects.equals(keys, other.keys);
+	}
+	
 }
