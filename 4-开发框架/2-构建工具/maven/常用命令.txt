@@ -8,13 +8,41 @@ mvn clean package -e		查看异常信息
 mvn dependency:sources		下载源代码
 
 
-添加jar到本地仓库
-mvn install:install-file 
--DgroupId=org.spark-project.hive 
--DartifactId=hive-jdbc 
--Dversion=1.2.1.spark2 
--Dpackaging=jar 
--Dfile=C:\Users\lifei\Downloads\hive-jdbc-1.2.1.spark2.jar
+Maven使用本地jar包（三种方式）
+	https://blog.csdn.net/yu97271486/article/details/119998149
 
-导入本地jar 至 仓库
-mvn install:install-file -Dfile=D:\code\founder-idea-fcms\founder_fcms\lib\encryptUtil-2.0.2.1.jar -DgroupId=com.founder.util -DartifactId=encryptUtil -Dversion=2.0.2.1 -Dpackaging=jar
+1.1添加jar到本地仓库
+	mvn install:install-file 
+	-DgroupId=org.spark-project.hive 
+	-DartifactId=hive-jdbc 
+	-Dversion=1.2.1.spark2 
+	-Dpackaging=jar 
+	-Dfile=C:\Users\lifei\Downloads\hive-jdbc-1.2.1.spark2.jar
+
+	导入本地jar 至 仓库
+	mvn install:install-file -Dfile=D:\code\founder-idea-fcms\founder_fcms\lib\encryptUtil-2.0.2.1.jar -DgroupId=com.founder.util -DartifactId=encryptUtil -Dversion=2.0.2.1 -Dpackaging=jar
+
+
+1.2 pom.xml文件引入非仓库文件
+   </dependencies>
+         <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/log4j.jar</systemPath>
+        </dependency>
+    </dependencies>
+	
+    <build>
+        <plugins>
+            <!-- spring-boot-maven-plugin中设置将本地jar包导出到项目最终的依赖库中 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+        </plugins>
+	</build>		
