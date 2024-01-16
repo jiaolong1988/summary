@@ -1,0 +1,67 @@
+
+CHIP CPU {
+
+    IN  inM[16],         // M value input  (M = contents of RAM[A])
+        instruction[16], // Instruction for execution
+        reset;           // Signals whether to re-start the current
+                         // program (reset==1) or continue executing
+                         // the current program (reset==0).
+
+    OUT outM[16],        // M value output
+        writeM,          // Write to M? 
+        addressM[15],    // Address in data memory (of M)
+        pc[15];          // address of next instruction
+
+    PARTS:
+    // 解析C指令中dest与jump部分，其中d3标志为1表示writeM,只是指令规则。
+    And(a=instruction[15] ,b=instruction[5] ,out=d1 );
+    And(a=instruction[15] ,b=instruction[4] ,out=d2 );
+    And(a=instruction[15] ,b=instruction[3] ,out=d3,out=writeM );
+    And(a=instruction[15] ,b=instruction[2] ,out=j1 );
+    And(a=instruction[15] ,b=instruction[1] ,out=j2 );
+    And(a=instruction[15] ,b=instruction[0] ,out=j3 );
+
+//A Register
+    //如果是1[指令]，输出ALU的outM或0。如果是0[地址]直接输出。（instruction[15]=0表示是地址，1表示是指令）
+    Mux16(a=instruction ,b=outputM ,sel=instruction[15] ,out=Ainput );
+	
+	//A寄存器标志位，d1表示是否写入A寄存器
+    Not(in=instruction[15],out=Aload1);
+    Or(a=d1,b=Aload1,out=Aload);
+	
+	//将地址写入A寄存器中
+    ARegister(in=Ainput ,load=Aload ,out=Areg, out[0..14]= addressM );
+
+//D Register
+	//d2表示是否写入D存储器，outputM: ALU的输出值M
+    DRegister(in=outputM ,load=d2 ,out=Dreg );
+
+//ALU
+    //instruction[12]=0 D与[A]寄存器操作，instruction[12]=1 D与[M]寄存器操作.
+    Mux16(a=Areg,b=inM,sel=instruction[12],out=y);
+	
+    ALU(x=Dreg ,y=y ,zx=instruction[11] ,nx=instruction[10] ,zy=instruction[9] ,ny=instruction[8] ,f=instruction[7] ,no=instruction[6] ,out=outputM ,out=outM,zr=zr ,ng=ng );
+
+//PC
+	ng<0 1 否则0   j1<0  1 否则0
+	zr=0 1 否则0   j2=0  1 否则0
+    And(a=ng,b=j1,out=tmp1);
+    And(a=zr,b=j2,out=tmp2);
+	
+	//大于0的处理方式
+    Not(in=zr,out=notzr);
+    Not(in=ng,out=notng);
+    And(a=notzr,b=notng,out=ps);
+    And(a=ps,b=j3,out=tmp3);
+	
+	//c-jump指令中只要包含1，就会执行跳转
+    Or(a=tmp1,b=tmp2,out=tmp);
+    Or(a=tmp,b=tmp3,out=jump);
+	
+	//获取inc标志
+    Not(in=jump,out=inc);
+	
+	//执行pc操作
+    PC(in=Areg ,load=jump ,inc=inc ,reset=reset ,out[0..14]=pc );
+
+}

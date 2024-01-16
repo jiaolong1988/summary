@@ -15,11 +15,15 @@ public class StringFormat {
 	public static void main(String[] args) {
 		/**
 		 * %[argument_index$][flags][width]conversion
-		    [argument_index$] ，位置索引从1开始计算，用于指定对索引相应的实参进行格式化并替换掉该占位符。
+		 
+		 
+		     %
+		    [argument_index$]既（1$、2$)，位置索引从1开始计算，用于指定对索引相应的实参进行格式化并替换掉该占位符。
 			[flags] ，用于增强格式化能力，可同时使用多个 [flags] ，但某些标识是不能同时使用的。		
 			[width] ，用于设置格式化后的字符串最小长度，若使用 [最小宽度] 而无设置 [标识] ，那么当字符串长度小于最小宽度时，则以左边补空格的方式凑够最小宽度。						
 			conversion ，用于指定格式化的样式，和限制对应入参的数据类型。
 
+扩展
 			flags:
 				-: 在最小宽度内左对齐,不可以与0标识一起使用。
 				0: 若内容长度不足最小宽度，则在左边用0来填充。
