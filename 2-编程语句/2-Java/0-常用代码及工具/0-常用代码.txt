@@ -14,6 +14,10 @@ System.out.println("中".getBytes().length); //字符串大小为：2个字节�
 Object x = "xxx"
 System.out.println(x.getClass().getName());
 
+判断数据类型
+	Animal a;
+	if(a instanceof Cat){}
+
 
 可变长度参数列表[既可变参数可以不填写即getName()]
 	getName("1","2","3");
@@ -21,6 +25,7 @@ System.out.println(x.getClass().getName());
 		for(String x :items) 
 			System.out.println(x);				
 	}
+
 
 跳出多层循环
 	aa:while(true){break:aa}
@@ -32,6 +37,7 @@ StringUtils.isBlank()
 判断集合是否为空
 org.springframework.util.CollectionUtils
 CollectionUtils.isEmpty(queryPageData)
+
 
 
 File 与Path相互转换

@@ -1,0 +1,58 @@
+/**
+ * @author jiaolong
+ * @date 2024/01/18 11:21
+ * @description: TODO
+ * 初始化顺序是：类静态初始化块，对象初始化块，构造函数初始化。
+ * 初始化变量
+ *  1):类静态初始化块【只能】 初始化 静态变量和静态方法。[静态变量 必须在 类静态初始化块 前方]
+ *  2):对象初始化块【只能】 初始化 任何变量和方法。[非静态变量 必须在 对象初始化块 前方,静态变量没有位置要求]
+ *  3):构造器能能初始化 任何变量和方法。变量没有位置要求
+ */
+public class TestTemp {
+    static String d = " d";
+    String c = " c";
+
+    //类初始化,静态变量d 必须在静态初始化块 前方
+    static {
+        d = "D";
+        System.out.println("类静态初始化，修改静态变量d的值：" + d);
+
+        testStatic();
+    }
+
+    //对象初始化 变量a 必须在对象初始化块前面
+    String a = " a";
+    {
+        System.out.println("对象初始化，修改静态变量a的值：" + a + staticVar);
+
+        test();
+        testStatic();
+    }
+    static String staticVar = " t";
+
+    //构造方法 可以初始化任何变量和方法。 对变量位置 没有任何要求
+    public TestTemp() {
+        b = "B";
+        System.out.println("构造函数，变量b在构造函数的下方：" + b);
+
+        test();
+        testStatic();
+    }
+    String b = " b";
+
+    static void testStatic() {
+    }
+
+    void test() {
+    }
+
+    public static void main(String[] args) {
+        new TestTemp();
+
+        /* 输出结果：
+          类静态初始化，修改静态变量d的值：D
+          对象初始化，修改静态变量a的值：A
+          构造函数，变量b在构造函数的下方：B
+         */
+    }
+}
