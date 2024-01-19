@@ -7,30 +7,51 @@ package com.saveFileDemo;
  */
 public class BitTest {
 
+	/* 输出内容：
+		-2145577635 转换为16进制801d155d
+		=======byte类型8位二进制 自动转换为 32位int类型二进制======
+		-12 byte形式的二进制：11111111111111111111111111110100
+		-12 int 形式的二进制：11111111111111111111111111110100
+		
+		=======将int类型32为二进制 转换为 8位byte类型二进制 ======
+		-12 byte & 0xFF形式的二进制：11110100
+		-12 int  & 0xFF形式的二进制：11110100
+		
+		=======byte类型8位二进制 转换为 int、byte的值是不一样的======
+		-12 int 类型二进制的值244
+		-12 byte类型二进制的值-12
+		
+		=======0xFF代表什么======
+		0xFF是什么：255
+		0xFF是一个数字可赋值给一个int变量：255
+		0xFF二进制数字：11111111
+		
+		【11, -21, 21】 --> 十六进制:0b eb 15  
+	 */
 	public static void main(String[] args) {
 		//转换为16进制
-		System.out.println("-2145577635 转换为16进制"+Integer.toHexString(-2145577635));		
-	
+		System.out.println("-2145577635 转换为16进制"+Integer.toHexString(-2145577635));
+
 		byte tb = -12;
-		System.out.println("=======byte类型8位二进制 自动转换为 32位int类型二进制======");		
-		System.out.println("-12 byte形式的二进制："+ Integer.toBinaryString(tb)); 
-		System.out.println("-12 int 形式的二进制："+Integer.toBinaryString((int)tb)); 
-		
+		System.out.println("=======byte类型8位二进制 自动转换为 32位int类型二进制======");
+		System.out.println("-12 byte形式的二进制："+ Integer.toBinaryString(tb));
+		System.out.println("-12 int 形式的二进制："+Integer.toBinaryString((int)tb));
+
 		System.out.println("\n=======将int类型32为二进制 转换为 8位byte类型二进制 ======");
 		//将高24位全部变成0，低8位保持不变
-		System.out.println("-12 byte & 0xFF形式的二进制："+Integer.toBinaryString(tb & 0xFF));  
-		System.out.println("-12 int  & 0xFF形式的二进制："+Integer.toBinaryString(((int)tb) & 0xFF));  
-		
+		System.out.println("-12 byte & 0xFF形式的二进制："+Integer.toBinaryString(tb & 0xFF));
+		System.out.println("-12 int  & 0xFF形式的二进制："+Integer.toBinaryString(((int)tb) & 0xFF));
+
 		System.out.println("\n=======byte类型8位二进制 转换为 int、byte的值是不一样的======");
 		System.out.println("-12 int 类型二进制的值"+(int)(tb & 0xFF));
 		System.out.println("-12 byte类型二进制的值"+(byte)(tb & 0xFF));
-	
+
 		System.out.println("\n=======0xFF代表什么======");
 		int ox = 0xFF;
 		System.out.println("0xFF是什么："+0xFF);
 		System.out.println("0xFF是一个数字可赋值给一个int变量："+ox);
 		System.out.println("0xFF二进制数字："+Integer.toBinaryString(0xFF));
-		
+
 		byte[] md5Array = { 11, -21, 21 };
 		String str = bytesToHex(md5Array);
 		System.out.println("\n【11, -21, 21】 --> 十六进制:"+str);
@@ -52,8 +73,9 @@ public class BitTest {
 			} else {
 				strBuilder.append(hexString);
 			}
+			strBuilder.append(" ");
 		}
 		return strBuilder.toString();
 	}
-	
 }
+
