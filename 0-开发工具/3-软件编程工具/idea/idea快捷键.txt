@@ -11,16 +11,22 @@
 	ctrl+alt+方向键(上或下)		复制当前行内容至下一行
 	alt  +   方向键(上或下)   	移动代码至上一行或下一行
 	
-	ctrl + -					类中所有方法收缩
-	ctrl + =					类中所有方法展开
+	ctrl + shift + U			大小写转换
+
+注释
+	/**			类注释的 快捷方式
+	/*			方法的   快捷方式
+	/			纯粹注释 的快捷方式
+
+
+代码展开与折叠
+    ctrl + =					Expand All   (展开全部方法)
+	ctrl + -					Collapse All (折叠全部方法)
 
 复制类全路径
 	alt+c						复制类的全路径,包名+类名
 	alt+v						粘贴类的全路径
 	
-代码展开与折叠
-    ctrl + =					Expand All   (展开全部方法)
-	ctrl + -					Collapse All (折叠全部方法)
 
 文件查找
 	ctrl + F					在当前文件中 查找与替换
@@ -45,4 +51,9 @@
 	Crtl + Alt + U									临时展示
 	Crtl + Alt + Shift + U       					永久展示
 
+TranslationPlugin 翻译的快捷键
+	显示翻译对话框 		Ctrl + Shift + O
+	翻译           		Ctrl + Shift + Y
+	翻译并替换			Ctrl + Shift + X			将指定中文替换为英文
+	https://yiiguxing.gitee.io/translation-plugin/#/docs
 

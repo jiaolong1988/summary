@@ -4,6 +4,7 @@ package com.founder.util;
  * java String类中formatter给我们的好处
  * 语法：https://zxhtom.github.io/zxh/20180105.html
  * 案例：https://blog.csdn.net/qq_41071876/article/details/106217212
+ * Formatter 类见具体使用方法
  * @ClassName:  StringFormat   
  * @Description:TODO(描述这个类的作用)   
  * @author: jiaolong
@@ -34,10 +35,13 @@ public class StringFormat {
 				(: 若结果为负数，则用括号括住，且不显示符号。
 			conversion:
 				d:十进制
+				s:表示string类型
+				
 				o:八进制
 				x或X:十六进制
 				n:平台独立的换行符, 实际就是一个换行符
 				b:布尔类型，只要实参为非false的布尔类型，均格式化为字符串true，否则为字符串false。
+				
 
 		 */
 		 
