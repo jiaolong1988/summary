@@ -1,6 +1,7 @@
 万能键
 	alt+enter					导入相关类,生成变量
 	ctrl+1						帮助,自动生成变量名
+	Ctrl + Alt + O              清楚无效import导入包
 
 代码辅助与移动
 	Ctrl+shift +F   			格式化代码
@@ -12,6 +13,8 @@
 	alt  +   方向键(上或下)   	移动代码至上一行或下一行
 	
 	ctrl + shift + U			大小写转换
+	
+	ctrl +alt + t               surround with 快捷键,try/catch快捷键
 
 注释
 	/**			类注释的 快捷方式
@@ -34,7 +37,7 @@
 
 结构查找
 	ctrl+Alt+H					查看方法被哪里引用
-	ctrl + H					全局查找包含 某个变量 的类有哪些
+	ctrl + H					根据内容查找文件 
 	ctrl + T 					接口的实现类有哪些
 
 类所有方法查看

@@ -2,3 +2,11 @@
 	List<String> list = Arrays.asList("1","2","3");		
 	String[] s = list.toArray(new String[3]);
 	Collections.addAll()
+	
+	
+HashMap循环
+for (Map.Entry<Object, Object> entry :prop.entrySet()) {
+				Object key = entry.getKey();
+				Object value = entry.getValue();
+				
+}

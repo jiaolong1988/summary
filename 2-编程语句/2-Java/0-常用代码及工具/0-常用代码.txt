@@ -14,6 +14,14 @@ System.out.println("中".getBytes().length); //字符串大小为：2个字节�
 Object x = "xxx"
 System.out.println(x.getClass().getName());
 
+
+HashMap循环
+for (Map.Entry<Object, Object> entry :prop.entrySet()) {
+				Object key = entry.getKey();
+				Object value = entry.getValue();
+				
+}
+
 判断数据类型
 	Animal a;
 	if(a instanceof Cat){}
