@@ -29,7 +29,7 @@ for (Map.Entry<Object, Object> entry :prop.entrySet()) {
 
 可变长度参数列表[既可变参数可以不填写即getName()]
 	getName("1","2","3");
-	static void getName(String...items) {
+	static void getName(String ... items) {
 		for(String x :items) 
 			System.out.println(x);				
 	}
