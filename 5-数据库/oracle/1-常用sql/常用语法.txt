@@ -42,4 +42,6 @@ oracle 获取当前时间10分钟内的数据
 
 默认值
 	nvl函数
-	
+
+     最大值为null设置默认值
+	SELECT NVL(MAX(t.RNUM), 0) RNUM FROM TEMP_RL_FILE_DATA t WHERE t.BATCHNUM='1'	
