@@ -1,8 +1,14 @@
-看到第3集,40分钟处
+
+初级班
+	已看完第31集
+
+
+体系班
+	看到第3集,40分钟处
 
 
 资料
 https://www.zhihu.com/question/470989427
 
-
+代码
 https://github.com/algorithmzuo
