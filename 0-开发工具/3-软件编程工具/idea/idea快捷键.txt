@@ -16,6 +16,15 @@
 	
 	ctrl +alt + t               surround with 快捷键,try/catch快捷键
 
+debug
+	Ctrl + R						debug代码到光标处（2021版本）
+
+结构查找
+	ctrl+Alt+H					查看方法被哪里引用
+	ctrl + H					根据内容查找文件 
+	ctrl + T 					接口的实现类有哪些。选中接口方法，直接跳转到实现类。
+	ctrl+alt+B					同上		
+	
 注释
 	/**			类注释的 快捷方式
 	/*			方法的   快捷方式
@@ -35,11 +44,7 @@
 	ctrl + F					在当前文件中 查找与替换
 	shift+shift					全局查找文件
 
-结构查找
-	ctrl+Alt+H					查看方法被哪里引用
-	ctrl + H					根据内容查找文件 
-	ctrl + T 					接口的实现类有哪些。选中接口方法，直接跳转到实现类。
-	ctrl+alt+B					同上			
+	
 
 类所有方法查看
 	alt + 7						查看类中的所有方法 
