@@ -1,0 +1,41 @@
+172.18.124.163/50000
+db2admin/founder
+
+列出所有用户表 
+　 db2 list tables 
+
+查看实例
+	db2 list db directory
+	
+连接数据库
+	db2 connect to shjd
+	db2 connect to customer
+
+查看当前活动的数据库列表
+	db2 list active databases
+
+win:登录db2 命令窗口
+db2cmd
+
+
+http://localhost:8080/MacBoc
+http://localhost:8080/MacCustomer
+
+000013/111111
+
+jdk 1.6
+64位IE10
+
+
+--查询数据库配置信息
+db2 get db cfg for shjd
+db2set db2codepage=1208
+
+jiaolong是linux的用户
+
+--授权用户
+db2 "CREATE USER jiaolong WITHOUT SYSADM AUTHORITY"
+db2 "GRANT CONNECT ON DATABASE TO USER jaiolong"
+
+--授予用户所有权限
+db2 "GRANT DBADM WITH DATAACCESS ON DATABASE TO USER jiaolong"
