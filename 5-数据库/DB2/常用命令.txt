@@ -14,28 +14,34 @@ db2admin/founder
 查看当前活动的数据库列表
 	db2 list active databases
 
+--查询数据库配置信息
+db2 get db cfg for shjd
+
+释放数据库连接
+db2 connect reset 
+
+
 win:登录db2 命令窗口
 db2cmd
 
 
-http://localhost:8080/MacBoc
-http://localhost:8080/MacCustomer
-
-000013/111111
-
-jdk 1.6
-64位IE10
-
-
---查询数据库配置信息
-db2 get db cfg for shjd
-db2set db2codepage=1208
-
-jiaolong是linux的用户
-
---授权用户
-db2 "CREATE USER jiaolong WITHOUT SYSADM AUTHORITY"
-db2 "GRANT CONNECT ON DATABASE TO USER jaiolong"
-
---授予用户所有权限
-db2 "GRANT DBADM WITH DATAACCESS ON DATABASE TO USER jiaolong"
+DB2 建表语句
+	-- db2创建表
+	CREATE TABLE "MDPUSR"."SYS_USER" (
+		"ID" VARCHAR(32) NOT NULL,
+		"USER_CODE" VARCHAR(64),
+		"USER_NAME" VARCHAR(64)
+	) IN "TABSYS" INDEX "INDXSYS";
+	--如果是业务表，就指定   IN "MDPUSERSAPCE" INDEX "MDPINDEXSAPCE";
+	-- 指定了表空间和索引表空间。如果没有指定，会把表建在USERSPACE1默认表空间中
+	 
+	-- 注释
+	COMMENT ON TABLE "MDPUSR"."SYS_USER" IS '用户信息表';
+	COMMENT ON TABLE "MDPUSR"."SYS_USER"."USER_CODE" IS '用户编码';
+	COMMENT ON TABLE "MDPUSR"."SYS_USER"."USER_NAME" IS '用户姓名';
+	 
+	-- 添加主键
+	CREATE TABLE "MDPUSR"."SYS_USER" ADD PRIMARY KEY ("ID");
+	 
+	-- 添加索引
+	CREATE INDEX "MDPUSR"."IDX_SYS_USER_1" ON "MDPUSR"."SYS_USER" ("USER_CODE");

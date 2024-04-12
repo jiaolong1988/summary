@@ -1,0 +1,2 @@
+notepad++ 快捷键
+	Ctrl + Shift + L		删除当前行
