@@ -42,14 +42,19 @@ public class DateOperate {
 		String time = ft.format(date);
 
 
-		//日期的比较
 		Calendar dataCompare = Calendar.getInstance();
+		//日期减法操作
 		dataCompare.add(Calendar.DATE, -1);
 		System.out.println(dataCompare.getTime());
+		
+		//日期的比较
 		boolean x = dataCompare.getTime().compareTo(new Date())<0;
 		System.out.println("dataCompare 是否小于当前日期 ："+x+"\n");
 		
-				
+		//设置 毫秒值为0
+		dataCompare.set(Calendar.MILLISECOND, 0);
+			
+			
 		// Date 转 LocalDateTime
 		Date startDate = new Date();
 		LocalDateTime localDateTime1 = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();		
