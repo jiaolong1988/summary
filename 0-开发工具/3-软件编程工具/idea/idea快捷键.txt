@@ -3,6 +3,9 @@
 	ctrl+1						帮助,自动生成变量名
 	Ctrl + Alt + O              清楚无效import导入包
 
+	shift + enter				切换到下一行代码空位 
+	ctrl +alt+ enter			切换到上一行代码空位
+
 代码辅助与移动
 	Ctrl+shift +F   			格式化代码
 	Tab 						代码补全
