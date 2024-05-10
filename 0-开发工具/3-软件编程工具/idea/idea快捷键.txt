@@ -1,11 +1,12 @@
 万能键
 	alt + enter					导入相关类,生成变量
-	ctrl + 1						帮助,自动生成变量名
+	ctrl + 1					帮助,自动生成变量名
 	Ctrl + Alt + O              清楚无效import导入包
 
 	shift + enter				切换到下一行代码空位 
 	ctrl + alt+ enter			切换到上一行代码空位
-	ctrl + e 						显示最近编辑的文件列表
+	ctrl + e 					显示最近编辑的文件列表
+	Alt+F						控制台搜索
 
 代码辅助与移动
 	Ctrl+shift +F   			格式化代码
@@ -21,7 +22,7 @@
 	ctrl +alt + t               surround with 快捷键,try/catch快捷键
 
 debug
-	Ctrl + R						debug代码到光标处（2021版本）
+	Ctrl + R					debug代码到光标处（2021版本）
 
 结构查找
 	ctrl+Alt+H					查看方法被哪里引用
