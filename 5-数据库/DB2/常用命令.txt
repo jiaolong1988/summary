@@ -1,5 +1,28 @@
-172.18.124.163/50000
-db2admin/founder
+
+
+1.设置当前的schema为administrator
+db2 set current schema administrator
+ 
+2.导出数据
+db2 "export to /home/db2inst1/SYS_ROLE.del OF DEL SELECT * FROM SYS_ROLE"
+
+3.执行脚本
+db2 -tvf import.sql	
+	脚本内容：
+		connect to APM;
+		SET CURRENT SCHEMA = APM;
+
+		--备份数据
+		export to xxx.del of del modified by codepage=1208 MESSAGES xxx.log select * from xxxtable;
+		--导入数据
+		import from xxx.del of del modified by codepage=1208 commitcount 10000 MESSAGES xxx.log insert into xxxtable;
+
+
+		COMMIT WORK;
+
+		CONNECT RESET;
+
+
 
 列出所有用户表 
 　 db2 list tables 
