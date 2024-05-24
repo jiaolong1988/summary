@@ -2,33 +2,50 @@
 	alt + enter					导入相关类,生成变量
 	ctrl + 1					帮助,自动生成变量名
 	Ctrl + Alt + O              清楚无效import导入包
-
-	shift + enter				切换到下一行代码空位 
-	ctrl + alt+ enter			切换到上一行代码空位
-	ctrl + e 					显示最近编辑的文件列表
 	Alt+F						控制台搜索
 
 代码辅助与移动
 	Ctrl+shift +F   			格式化代码
 	Tab 						代码补全
-	ctrl+d  					删除当前行
+
+	shift + enter				切换到下一行代码空位 
+	ctrl + alt+ enter			切换到上一行代码空位
+	
 	alt + 方向键(左或右)    	返回上一次操作位置
-
-	ctrl+alt+方向键(上或下)		复制当前行内容至下一行
-	alt  +   方向键(上或下)   	移动代码至上一行或下一行
+	alt + 方向键(上或下)   		移动代码至上一行或下一行
 	
-	ctrl + shift + U			大小写转换
+	ctrl+alt+方向键(下)			复制当前行内容至下一行
+	ctrl+d  					删除当前行
 	
-	ctrl +alt + t               surround with 快捷键,try/catch快捷键
 
-debug
-	Ctrl + R					debug代码到光标处（2021版本）
 
 结构查找
 	ctrl+Alt+H					查看方法被哪里引用
-	ctrl+Alt+B					查看方法在哪里定义
-	ctrl + H					根据内容查找文件 
+	ctrl+Alt+B					查看方法在哪里定义				 
 	ctrl + T 					接口的实现类有哪些。选中接口方法，直接跳转到实现类。
+
+文件查找
+	ctrl + F					在当前文件中 查找与替换
+	ctrl + H					查询包含关键字的文本文件(根据内容查找文件)
+	shift+shift					全局查找文件
+
+类所有方法查看
+	alt + 7						查看类中的所有方法 
+	ctrl+o						查看所有方法 包含继承类的方法
+	ctrl + e 					显示最近编辑的文件列表
+
+代码生成
+	String.list					快速创建：List<String> list =new ArrayList<>();
+	String.map					生成创建：Map<String, String> map =new HashMap<>();
+	 
+	alt + I    				    生成构造方法
+	ctrl+Alt+m					快速抽取方法						
+								选中指定代码 -> 右键->Refactor -> Extract Method
+	ctrl +shift + U				大小写转换
+	ctrl +alt + t               surround with 快捷键,try/catch快捷键								
+
+debug
+	Ctrl + R					debug代码到光标处（2021版本）
 			
 	
 注释
@@ -46,20 +63,6 @@ debug
 	alt+v						粘贴类的全路径
 	
 
-文件查找
-	ctrl + F					在当前文件中 查找与替换
-	shift+shift					全局查找文件
-	ctrl + H					查询包含关键字的文本文件
-	
-
-类所有方法查看
-	alt + 7						查看类中的所有方法 
-	ctrl+o						查看所有方法 包含继承类的方法
-
-代码生成
-	alt + I    				    生成构造方法
-	ctrl+Alt+m					快速抽取方法						
-								选中指定代码 -> 右键->Refactor -> Extract Method	
 	
 查看类的继承关系图	
 	右键类 -> Diagrams -> Show Diagram Popup
