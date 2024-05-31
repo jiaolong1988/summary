@@ -10,3 +10,21 @@ for (Map.Entry<Object, Object> entry :prop.entrySet()) {
 				Object value = entry.getValue();
 				
 }
+
+
+删除元素
+        List<String> readLine = new ArrayList<>();
+        readLine.add("ccc");
+        readLine.add("");
+        readLine.add(null);
+
+        System.out.println(readLine);
+        
+        Iterator<String> iter = readLine.iterator();
+        while(iter.hasNext()){
+            if(StringUtils.isEmpty(iter.next())){
+                iter.remove();
+            }
+        }
+
+        System.out.println(readLine);

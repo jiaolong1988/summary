@@ -23,6 +23,8 @@ db2 -tvf import.sql
 		CONNECT RESET;
 
 
+创建数据库
+b2 create db 数据库名称 using codeset 数据库编码 territory CN
 
 列出所有用户表 
 　 db2 list tables 
@@ -37,7 +39,7 @@ db2 -tvf import.sql
 查看当前活动的数据库列表
 	db2 list active databases
 
---查询数据库配置信息
+--查询数据库配置信息-如：数据库编码
 db2 get db cfg for shjd
 
 释放数据库连接
