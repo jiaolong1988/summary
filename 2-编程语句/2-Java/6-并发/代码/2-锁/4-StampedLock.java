@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.StampedLock;
 
 /**
- * 官方案例
+ * 官方案例 读写锁中的性能之王
  * 参考文章: https://www.cnblogs.com/konck/p/9691538.html
 	StampedLock 的功能仅仅是 ReadWriteLock 的子集
 	StampedLock 不支持重入

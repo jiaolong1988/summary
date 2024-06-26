@@ -12,6 +12,8 @@ import org.json.JSONTokener;
 
 import com.founder.fcms.core.service.constant.ErrNoConst;
 
+https://github.com/everit-org/json-schema
+
 /**
  * ClassName: JsonShemaValidator <br/>
  * Function:json格式的数据校验工具类.<br/>
