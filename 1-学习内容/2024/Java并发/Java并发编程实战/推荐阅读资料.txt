@@ -7,3 +7,10 @@
 	第 8 章《线程池的使用》对线程池的使用也有更深入的介绍，如果你感兴趣或有需要的话，建议你仔细阅读。
 	
 Doug Lea《Java并发编程：设计原则与模式》
+
+图解 Java 多线程设计模式
+
+Java IO 的演进过程，你可以参考Scalable IO in Java，
+	https://gee.cs.oswego.edu/dl/cpjslides/nio.pdf
+	
+TCP/IP 网络编程的知识可参考 韩国尹圣雨写的经典教程——《TCP/IP 网络编程》。
