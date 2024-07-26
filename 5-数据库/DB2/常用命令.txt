@@ -1,4 +1,8 @@
-
+linux 修改db2密码	
+	passwd db2用户名
+	案例：
+		passwd db2inst1
+	
 
 1.设置当前的schema为administrator
 db2 set current schema administrator

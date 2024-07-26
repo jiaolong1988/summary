@@ -1,0 +1,10 @@
+for无限循环
+		for (; ; ) {
+			System.out.println("---");
+		}
+		
+		
+for带计数器-无限循环	
+		for (int i = 0; ; i++) {
+			System.out.println(i);
+		}

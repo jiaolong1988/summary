@@ -4,3 +4,6 @@ https://zhuanlan.zhihu.com/p/45746575
 
 github中文文档
 https://docs.github.com/zh/get-started
+
+github 更换QR码
+https://blog.csdn.net/fuxily/article/details/139349233

@@ -19,5 +19,14 @@ public class TestTemp {
 			System.out.println();			
 			System.out.println("++i   :"+i);
 			System.out.println("j++   :"+j);
+			
+			
+			/* ´òÓ¡½á¹û
+				x= ++i : 1
+				y= j++ : 0
+
+				++i   :1
+				j++   :1
+			*/
 		}
 }
