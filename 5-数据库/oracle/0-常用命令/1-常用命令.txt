@@ -1,6 +1,11 @@
 --查看Oracle数据库版本命令
 select * from v$version;
 
+--数据库用户解锁
+sqlplus / as sysdba
+SQL> alter user 用户名 account unlock;
+SQL> commit;
+
 
 oracle 查看命令
 	exp -help

@@ -1,0 +1,31 @@
+java8命令
+https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html
+
+java8虚拟机参数
+https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html
+
+java8虚拟机规范
+https://docs.oracle.com/javase/specs/jvms/se8/html/index.html
+
+虚拟机垃圾回收调优指南
+https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/
+
+虚拟机专栏
+https://www.cnblogs.com/ysocean/p/9345622.html
+
+
+jvm 参数 -verbose:gc 和 -XX:+PrintGC 的区别？
+	从日志输入内容上看，两者没有区别。
+	
+	2.1、-verbose:gc 是 稳定版本
+	2.2、-XX:+PrintGC 是 非稳定版本
+	可能在未通知的情况下删除
+
+参见：http://docs.oracle.com/javase/7/docs/technotes/tools/windows/java.html
+
+
+-Xms 堆内存的初始大小，默认为物理内存的1/64
+
+-Xmx 堆内存的最大大小，默认为物理内存的1/4
+
+-Xmn 堆内新生代的大小。通过这个值也可以得到老生代的大小：-Xmx减去-Xmn
