@@ -21,6 +21,11 @@ git 修改账号
 查看远程仓库地址
 git remote -v
 
+查看分支
+git branch
+删除分支
+git branch -D develop
+ 
 
 checkout 用法总结
 https://www.jianshu.com/p/cad4d2ec4da5
