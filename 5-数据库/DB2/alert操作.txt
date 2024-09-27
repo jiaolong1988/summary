@@ -1,0 +1,22 @@
+
+--删除主键
+alter table apm.sys_bank drop primary KEY;
+
+--添加主键
+alter table apm.sys_bank add primary key (BANK_ID);
+
+--禁用外键约束
+ALTER TABLE SYS_USER_BANK ALTER FOREIGN KEY FK_USER_ID2 NOT ENFORCED
+--启用外键约束
+ALTER TABLE SYS_USER_BANK ALTER FOREIGN KEY FK_USER_ID2  ENFORCED
+
+
+/*
+	NAME: 约束名称
+	DEFINER: 定义者
+	TBCREATOR: 实例名
+	CONSTRAINTTYP: 约束类型（P代表主键，F代表外键）
+	TBNAME: 表名称
+	ENFORCED: 是否启用（Y代表启用，N代表未启用）
+*/
+select t.NAME,t.DEFINER,t.CONSTRAINTYP,t.TBNAME, t.TBCREATOR ,t.ENFORCED  from SYSIBM.SYSTABCONST t where tbname='SYS_USER_BANK' AND t.TBCREATOR='APM';

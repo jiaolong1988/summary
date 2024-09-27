@@ -9,6 +9,9 @@ linux 修改db2密码
 	
 # 启动数据库实例
 	db2start
+	
+# 强制关闭数据库
+db2stop force
 
 
 1.设置当前的schema为administrator
