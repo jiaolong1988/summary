@@ -1,0 +1,30 @@
+docker 
+	查看容器端口
+		docker port 容器id
+		
+	查看容器资源状态
+		docker stats
+		
+	查看容器日志
+		docker logs -f 容器id
+		docker logs -n 10 容器id		
+		
+	查看docker配置信息-目录映射	
+		docker inspect 51edcac81277 | grep Mounts -A 20
+	
+
+端口号查看
+	lsof -i:端口号码
+	netstat -tulnp |grep 端口号
+	
+	
+查看操作系统
+	cat /etc/redhat-release
+	
+	
+重启网络 与重启docker
+	systemctl restart network && systemctl restart docker
+	service network start
+	
+查看防火墙状态	
+	systemctl status firewalld

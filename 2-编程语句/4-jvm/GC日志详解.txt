@@ -1,0 +1,14 @@
+在 GC 日志中， Heap after GC invocations=2 (full 0)  的意思是： 
+ 
+1. Heap after GC invocations**: 表示在当前的 GC 过程中，堆的状态信息。这里的 "after GC invocations" 指的是在进行 GC 操作之后的堆状态。 
+2. =2**: 表示垃圾回收（GC）已经进行了 2 次。这包括所有类型的 GC，包括年轻代的 GC 和完全 GC（Full GC）。 
+3. (full 0)**: 表示在这 2 次 GC 中，没有发生完全 GC（Full GC），即完全 GC 的次数为 0。 
+ 
+因此，这一行信息表明，当前的堆状态是在进行了 2 次年轻代 GC 之后，并且没有发生任何完全 GC。这个信息可以帮助开发者了解 GC 的频率和类型，从而进行更好的内存管理和性能调优。
+
+
+
+
+SELECT * FROM INSTANCEOF java.lang.Object t WHERE (
+	toHex(t.@objectAddress) >= "0xfec00000" AND toHex(t.@objectAddress) <= "0xff91c288"
+)
