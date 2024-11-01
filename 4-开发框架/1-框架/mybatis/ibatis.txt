@@ -7,11 +7,10 @@ ibatis
 	create table $tempTableName$ nologging parallel 8 as 
 	SELECT /*+ parallel(8)*/biz.BIZMETADATA1 FROM BOC_BIZ_METADATA_S biz  where sourcesystem='$syscode$' 
 	
-表名 
-	 $tempTableName$
-字段
-	'$syscode$' 
-
+	表名 
+		$tempTableName$
+	字段
+		'$syscode$' 
 
 
 ibatis #{}与${} 区别
@@ -25,3 +24,43 @@ ibatis #{}与${} 区别
 
 批量更新
 	https://www.cnblogs.com/Marydon20170307/p/10066430.html
+	
+
+iterator标签
+
+	1、用法 ：
+	<iterate property="serialList" open="(" close=")" conjunction=",">
+		#serialList[]#
+	</iterate>
+
+
+	property="" 	 /*可选, 当参数为java.util.Map时才使用, 代表map中值为list的key。 如果参数本身是一个java.util.List, 不需要使用此属性。 
+	conjunction=""   /*可选, iterate可以看作是一个循环,这个属性指定每一次循环结束后添加的符号,比如使每次循环是OR的, 则设置这个属性为OR*/  
+	open=""          /*可选, 循环的开始符号*/  
+	close=""         /*可选, 循环的结束符号*/  
+	prepend=""       /*可选, 加在open指定的符号之前的符号*/  
+
+
+	案例1：
+		<insert id="batchInsertFtpFileData" parameterClass="java.util.Map">
+			INSERT INTO $loadFileToDbTableName$ (BIZMETADATA1, INSERTDATE, BATCHNUM, FTP_FNAME)
+			<iterate property="list" conjunction=" union all ">
+				select #list[].bizmetadata1#, #list[].insertdate#, #list[].batchnum#, #list[].ftpFname# from dual
+			</iterate>
+		</insert>
+
+	案例2：	
+		<insert id="batchInsertFtpFileData" parameterClass="java.util.Map">
+			insert all
+			<iterate property="list" conjunction="  ">
+				INTO  $loadFileToDbTableName$ (BIZMETADATA1, INSERTDATE, BATCHNUM, FTP_FNAME) VALUES
+				(
+				  #list[].bizmetadata1#, #list[].insertdate#, #list[].batchnum#, #list[].ftpFname#
+				)
+			</iterate>
+			select * from dual
+		</insert>
+		
+	参考：
+		https://blog.csdn.net/quguang65265/article/details/77854627
+		https://blog.csdn.net/hudonyo/article/details/73920645

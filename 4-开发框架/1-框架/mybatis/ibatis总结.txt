@@ -1,8 +1,0 @@
-ibatis 
-	create table $tempTableName$ nologging parallel 8 as 
-	SELECT /*+ parallel(8)*/biz.BIZMETADATA1 FROM BOC_BIZ_METADATA_S biz  where sourcesystem='$syscode$' 
-	
-表名 
-	 $tempTableName$
-字段
-	'$syscode$' 
