@@ -1,32 +1,30 @@
 /*
- * 1.ÔÚ²»¸³ÖµµÄÇé¿öÏÂ£¬++iÓëi++µÄ iÖµÊÇÒ»ÑùµÄ£¬Ã»ÓĞÇø±ğ
- * 2.ÔÚ¸³ÖµµÄÇé¿öÏÂ£¬x = ++i; Óë x = i++;µÄÇø±ğÎª£º
- * 	¡¾2.1¡¿£º++ÔÚÇ° ÏÈ¼ÆËãºó¸³Öµ
- *  ¡¾2.2¡¿£º++ÔÚºó ÏÈ¼Æ¸³Öµºó¼ÆËã
+ * 	ã€2.1ã€‘ï¼š++åœ¨å‰ å…ˆè®¡ç®—åèµ‹å€¼
+ *  ã€2.2ã€‘ï¼š++åœ¨å å…ˆè®¡èµ‹å€¼åè®¡ç®—
+ *   https://developer.aliyun.com/article/878744
  */
 public class TestTemp {
 		public static void main(String[] args) {
-		
-			int i=0,j=0;			
-			int x=0,y=0;
 			
-			x = ++i;
-			y = j++;
-			
-			System.out.println("x= ++i : "+x);						
-			System.out.println("y= j++ : "+y);
-			
-			System.out.println();			
-			System.out.println("++i   :"+i);
-			System.out.println("j++   :"+j);
-			
-			
-			/* ´òÓ¡½á¹û
-				x= ++i : 1
-				y= j++ : 0
+      /*  i++: å…ˆè‡ªå¢ï¼Œç„¶åè¿”å› è‡ªå¢ä¹‹å‰çš„å€¼
+          ++i: å…ˆè‡ªå¢ï¼Œç„¶åè¿”å› è‡ªå¢ä¹‹åçš„å€¼
+         æœ¬è´¨ä¸Šéƒ½æ˜¯æ‰§è¡Œäº† i = i + 1 æ“ä½œï¼Œåªæ˜¯è¿”å›å€¼ä¸åŒè€Œå·²
+      */
+        
+        int a=1, b=1;
+        System.out.println("a:"+ ++a);  //2
+        System.out.println("a:"+ a);    //2
+        System.out.println("b:"+ b++);  //1
+        System.out.println("b:"+ b);    //2
 
-				++i   :1
-				j++   :1
-			*/
+        System.out.println("================");
+
+        int i = 0;
+        int j = 0;
+        i = i++;  //ç­‰åŒäº i=i
+        System.out.println("i="+i);
+        j = i++;
+        System.out.println("i = " + i + ", j = " + j);
+		
 		}
 }
