@@ -15,13 +15,6 @@ Object x = "xxx"
 System.out.println(x.getClass().getName());
 
 
-HashMap循环
-for (Map.Entry<Object, Object> entry :prop.entrySet()) {
-				Object key = entry.getKey();
-				Object value = entry.getValue();
-				
-}
-
 判断数据类型
 	Animal a;
 	if(a instanceof Cat){}
@@ -34,30 +27,15 @@ for (Map.Entry<Object, Object> entry :prop.entrySet()) {
 			System.out.println(x);				
 	}
 
-
-跳出多层循环
-	aa:while(true){break:aa}
-
-判断对象是否为空
-org.apache.commons.lang.StringUtils
-StringUtils.isBlank()
-
-判断集合是否为空
-org.springframework.util.CollectionUtils
-CollectionUtils.isEmpty(queryPageData)
-
-
-
 File 与Path相互转换
 	File.toPath()
-	Path.toFile()
+	Path.toFile()	
+
 
 获取当前路径	
+    # 当前路径\aa\xx.txt
 	String currentPath = Paths.get("aa","xx.txt").toAbsolutePath().toString();
 
-读取文件
-	List<String> rows = Files.readAllLines(Paths.get("D:\\test\\test.sql"));
-	System.out.println(rows);
 
 数组与list相互转化
 	List<String> list = Arrays.asList("1","2","3");		
@@ -82,12 +60,7 @@ File 与Path相互转换
 	Thread.sleep( 5 * 1000 );
 	TimeUnit.SECONDS.sleep( 5 );
 
-拷贝对象-spring	
-	BeanUtils.copyProperties(oldObj, newObj);
 
-文件操作-org.apache.commons.io.FileUtils
-FileUtils.copyFile(srcFile, destFile);
-	
 文件过滤	
 File ftpdirFile = new File(xmlFileDir);
 File[] firstLevelDir = ftpdirFile.listFiles(new FileFilter() {
@@ -98,9 +71,23 @@ File[] firstLevelDir = ftpdirFile.listFiles(new FileFilter() {
 	}
 });
 		
-java自带移动文件
-Files.move(source, target);
-		
+
+
+判断对象是否为空
+org.apache.commons.lang.StringUtils
+StringUtils.isBlank()
+
+判断集合是否为空
+org.springframework.util.CollectionUtils
+CollectionUtils.isEmpty(queryPageData)
+
+拷贝对象-spring	
+	BeanUtils.copyProperties(oldObj, newObj);
+
+文件操作-org.apache.commons.io.FileUtils
+FileUtils.copyFile(srcFile, destFile);
+	
+	
 反射
 		//用于判断参数类型是否一致（表示Long是不是Number的子类:既将Long转换为Number,失败会抛出ClassCastException）
 		Long.class.asSubclass(Number.class);

@@ -8,3 +8,27 @@ for带计数器-无限循环
 		for (int i = 0; ; i++) {
 			System.out.println(i);
 		}
+		
+for-变量定义在外部的写法		
+        int i=0;
+        for( ; i<10; i++){
+            System.out.println(i);
+        }
+		
+
+HashMap循环
+	for (Map.Entry<Object, Object> entry :prop.entrySet()) {
+		Object key = entry.getKey();
+		Object value = entry.getValue();					
+	}
+	
+跳出多层循环
+	aa:while(true){
+		break:aa
+	}
+	
+
+多变量定义
+        String a,b;
+        String c="c", d="d";
+		

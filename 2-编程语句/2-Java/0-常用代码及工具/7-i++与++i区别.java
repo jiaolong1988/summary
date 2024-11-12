@@ -1,7 +1,10 @@
 /*
- * 	【2.1】：++在前 先计算后赋值
- *  【2.2】：++在后 先计赋值后计算
- *   https://developer.aliyun.com/article/878744
+ *	1.在不赋值的情况下，++i与i++的 i值是一样的，没有区别.
+ *	2.在赋值的情况下，x = ++i; 与 x = i++;的区别为：
+ * 		【2.1】：++在前 ,赋值为自增 【后】 的值
+ *  	【2.2】：++在后 ,赋值为自增 【前】 的值
+ *
+ *  https://developer.aliyun.com/article/878744
  */
 public class TestTemp {
 		public static void main(String[] args) {
