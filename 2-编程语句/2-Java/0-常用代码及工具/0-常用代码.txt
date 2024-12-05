@@ -11,14 +11,17 @@ System.out.println("1".getBytes().length); //字符串大小为：1个字节长�
 System.out.println("中".getBytes().length); //字符串大小为：2个字节长度
 
 查看对象的数据类型
-Object x = "xxx"
-System.out.println(x.getClass().getName());
+	Object x = "xxx"
+	System.out.println(x.getClass().getName());
 
 
 判断数据类型
 	Animal a;
 	if(a instanceof Cat){}
-
+	
+三目运算
+	int a = 0;
+	int b = a > 0 ? 1 : 9;
 
 可变长度参数列表[既可变参数可以不填写即getName()]
 	getName("1","2","3");
