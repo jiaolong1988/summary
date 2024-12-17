@@ -7,6 +7,8 @@ from
   BOC_PAGE_METADATA_SP t
 where 1=2;
 -----------------------------------------------------
+
+
 alter session enable parallel dml;
 
 insert
@@ -23,6 +25,9 @@ and t1.versionlabel=t.versionlabel
 and t1.sourcesystem='PI';
 commit;
 alter session disable parallel dml;
+
+
+
 
 create index idx_pih_rnum on temp_pivs_his_biz (rnum) nologging parallel 8;
 alter index idx_pih_rnum parallel 1;
