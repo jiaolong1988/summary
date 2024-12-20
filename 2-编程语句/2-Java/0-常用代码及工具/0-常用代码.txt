@@ -24,7 +24,11 @@ System.out.println("中".getBytes().length); //字符串大小为：2个字节�
 	int b = a > 0 ? 1 : 9;
 
 可变长度参数列表[既可变参数可以不填写即getName()]
+	String [] args = {"1","2","3"};
+	getName(args);
+	
 	getName("1","2","3");
+	getName();
 	static void getName(String ... items) {
 		for(String x :items) 
 			System.out.println(x);				
