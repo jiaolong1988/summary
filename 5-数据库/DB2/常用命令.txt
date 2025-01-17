@@ -5,7 +5,11 @@ linux 修改db2密码
 	案例：
 		passwd db2inst1
 
-	
+	查看过期时间【db2inst1：数据库用户名】
+	chage -l db2inst1
+	设置过期时间
+	chage -M 99999 db2inst1
+		
 	
 # 启动数据库实例
 	db2start

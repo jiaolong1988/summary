@@ -7,6 +7,9 @@ mvn install    				在本地repository中安装jar
 mvn clean package -e		查看异常信息
 mvn dependency:sources		下载源代码
 
+#导出项目依赖的jar
+mvn dependency:copy-dependencies -DoutputDirectory=D:\lib
+
 
 Maven使用本地jar包（三种方式）
 	https://blog.csdn.net/yu97271486/article/details/119998149
