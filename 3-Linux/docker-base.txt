@@ -1,0 +1,5 @@
+docker 镜像存储目录
+/var/lib/docker/image/overlay2
+
+docker images
+

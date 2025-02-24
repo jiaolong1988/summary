@@ -1,0 +1,15 @@
+
+1.登录oracle用户服务器
+	su - oracle
+
+2.打开监听
+	lsnrctl start #启动监听服务
+	lsnrctl status
+
+3.以SYS用户身份登录Oracle
+	sqlplus  /nolog
+	conn / as sysdba
+	
+3.启动实例
+	SQL> startup
+
