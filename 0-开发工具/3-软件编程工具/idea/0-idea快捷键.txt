@@ -6,7 +6,7 @@ ctrl+alt系列
 	Ctrl+Alt+方向键(下)			复制当前行内容至下一行
 	Ctrl+Alt+H					查看方法被哪里引用
 	Ctrl+Alt+B					查看方法在哪里定义	
-				
+	Alt+Enter					获取对象的所有get set方法
 
 
 万能键
