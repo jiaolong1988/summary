@@ -1,3 +1,6 @@
+临时禁用超时退出
+TMOUT=0
+
 查询进程运行时长
 	ps -p 60772 -o etimes
 	ps -p 60772 -o etime=
@@ -127,3 +130,16 @@ sftp命令
 		bye
 		exit
 	
+	
+	
+# 统计当前目录总大小
+du -sh .
+
+# 统计多个目录并显示总计
+du -sch /var/log/*
+
+# 排除特定文件类型（结合find）
+find /path -type f -name "*.tmp" -prune -o -print | du -ch
+
+# 按大小排序子目录
+du -h --max-depth=1 /path | sort -hr
