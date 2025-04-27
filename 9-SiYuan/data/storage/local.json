@@ -1,0 +1,54 @@
+{
+  "local-fileposition": {
+    "20200812220555-lj3enxa": {
+      "endId": "20240508001403-j8ceveg",
+      "focusEnd": 2,
+      "focusId": "20240507235944-1hsp90h",
+      "focusStart": 2,
+      "rootId": "20200812220555-lj3enxa",
+      "scrollTop": 800,
+      "startId": "20241125224159-8zf3bos"
+    },
+    "20200813093015-u6bopdt": {
+      "endId": "20230415111923-37gvzqk",
+      "focusEnd": 11,
+      "focusId": "20210428213311-2hv9zwx",
+      "focusStart": 11,
+      "rootId": "20200813093015-u6bopdt",
+      "scrollTop": 0,
+      "startId": "20210428213311-2hv9zwx"
+    },
+    "20230106101434-e6g4av3": {
+      "endId": "20230106103650-61q8v8i",
+      "rootId": "20230106101434-e6g4av3",
+      "scrollTop": 200,
+      "startId": "20230106101434-otjrwff"
+    },
+    "20250425162926-bwjxoov": {
+      "endId": "20250425164023-e54anpr",
+      "rootId": "20250425162926-bwjxoov",
+      "scrollTop": 0,
+      "startId": "20250425163651-mjogxoa"
+    },
+    "20250425164132-rimcef7": {
+      "endId": "20250425164503-9ofyno2",
+      "rootId": "20250425164132-rimcef7",
+      "scrollTop": 666,
+      "startId": "20250425164409-zydlra7"
+    },
+    "20250425165536-wa67umx": {
+      "endId": "20250425165636-1gqxrho",
+      "rootId": "20250425165536-wa67umx",
+      "scrollTop": 0,
+      "startId": "20250425165557-a643clr"
+    }
+  },
+  "local-filespaths": [
+    {
+      "notebookId": "20250425162808-mi69pdq",
+      "openPaths": [
+        "/20250425162926-bwjxoov/20250425165536-wa67umx.sy"
+      ]
+    }
+  ]
+}
