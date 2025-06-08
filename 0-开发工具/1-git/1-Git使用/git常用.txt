@@ -1,3 +1,7 @@
 清理本地版本库
 	git gc --prune=now
 	https://www.zhihu.com/question/29769130/answer/45546231
+
+
+如果只是临时需要绕过 SSL 验证（例如测试环境），可以通过命令临时禁用 Git 的 SSL 证书检查：
+git config --global http.sslVerify false
