@@ -11,8 +11,9 @@
 
 ##  官网
 
-[Nginx中文文档](https://www.nginx.cn/doc/index.html)
-[Nginx英文文档](https://nginx.org/en/docs/)
+[nginx: download](https://nginx.org/en/download.html)
+
+
 
 安装：https://nginx.org/en/linux_packages.html#sourcepackages
 [Nginx 黑马视频教程](https://www.bilibili.com/video/BV1ov41187bq?p=8&spm_id_from=pageDriver)
