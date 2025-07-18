@@ -62,9 +62,7 @@ public class UserController {
 }
 ```
 
-Java
 
-复制
 
 #### 泄漏现象：
 
@@ -89,9 +87,7 @@ Java
 -Dcom.sun.xml.bind.v2.runtime.JAXBContextImpl=DEBUG
 ```
 
-Bash
 
-复制
 
 输出示例中若频繁出现`Creating JAXBContext for classes: [com.example.User]`，则说明存在重复创建。
 
@@ -129,9 +125,7 @@ public class UserController {
 }
 ```
 
-Java
 
-复制
 
 #### 2. 避免类加载器泄漏（热部署场景）
 
@@ -159,9 +153,7 @@ Java
   </Context>
   ```
 
-  XML
-
-  复制
+  
 
 #### 3. 升级JAXB实现版本（Java 8专用）
 
@@ -181,9 +173,7 @@ Java 8自带的JAXB RI（`jaxb-impl:2.2.8`）存在已知内存泄漏bug（如[J
 </dependency>
 ```
 
-XML
 
-复制
 
 #### 4. 替代方案：使用更轻量的XML库（可选）
 
@@ -195,9 +185,7 @@ ObjectMapper xmlMapper = new XmlMapper();
 String xml = xmlMapper.writeValueAsString(user);
 ```
 
-Java
 
-复制
 
 ### 五、总结
 
