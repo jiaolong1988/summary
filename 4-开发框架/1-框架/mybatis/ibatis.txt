@@ -60,6 +60,17 @@ iterator标签
 			</iterate>
 			select * from dual
 		</insert>
+	案例3：
+		<!-- 直接根据字符串列表插入数据 -->
+		<insert id="insertByStringList" parameterClass="java.util.Map">
+			INSERT INTO target_table (id, name, create_time)
+			SELECT id, name, NOW()
+			FROM source_table 
+			WHERE id IN 
+			<iterate property="idList" open="(" close=")" conjunction=",">
+				#idList[]#
+			</iterate>
+		</insert>	
 		
 	参考：
 		https://blog.csdn.net/quguang65265/article/details/77854627
