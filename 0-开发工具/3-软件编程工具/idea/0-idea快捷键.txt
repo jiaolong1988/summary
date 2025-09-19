@@ -7,6 +7,7 @@ ctrl+alt系列
 	Ctrl+Alt+H					查看方法被哪里引用
 	Ctrl+Alt+B					查看方法在哪里定义	
 	Alt+Enter					获取对象的所有get set方法
+	f2							显示类的注解信息
 
 
 万能键
