@@ -38,8 +38,8 @@ services:
      - db
    image: wordpress:latest
    volumes:
-     - wordpress_data:/var/www/html
-     - ./custom-php.ini:/usr/local/etc/php/conf.d/custom.ini
+     - ./wordpress_data:/var/www/html   #本地路径:docker容器文件路径
+     - ./custom-php.ini:/usr/local/etc/php/conf.d/custom.ini #上传文件大小配置
    ports:
      - "8888:80"  
      - "443:443"
@@ -54,6 +54,61 @@ volumes:
  wordpress_data: {}
  
 ```
+
+### mysql8
+
+```yml
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    restart: always
+    ports:
+      - "8080:80"  # WordPress 访问端口
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: securepassword
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - wp-network
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: mysql8
+    restart: always
+    ports:
+      - "3306:3306"  # 指定 MySQL 端口，便于外部连接测试
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: securepassword
+    command: 
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - wp-network
+
+volumes:
+  wordpress_data:
+  mysql_data:
+
+networks:
+  wp-network:
+    driver: bridge
+```
+
+
+
+
 
 ### 设置上传视频大小
 
@@ -97,3 +152,10 @@ volumes:
 - 解压命令
 
   > ffmpeg -i test.mp4 -vcodec libx264 -acodec aac output.mp4
+
+
+
+## 3.安装插件
+
+- Simple Local Avatars		设置头像
+
