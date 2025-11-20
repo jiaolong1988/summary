@@ -1,0 +1,24 @@
+docker run \
+-p 3305:3306 \
+--name mysql57 \
+-v /root/mysql5.7_docker/log:/var/log/mysql \
+-v /root/mysql5.7_docker/data:/var/lib/mysql \
+-v /root/mysql5.7_docker/conf:/etc/mysql/conf.d \
+--restart=always \
+-e MYSQL_ROOT_PASSWORD=1boW3@heO0k4H2_~#tU2@$#$1 \
+-d mysql:5.7
+
+
+
+#密码
+1boW3@heO0k4H2_~#tU2@$#$1
+
+
+docker exec -it mysql57 /bin/bash
+mysql -uroot -p1boW3@heO0k4H2_~#tU2@$#$1
+use mysql;
+GRANT ALL ON *.* TO root@'%' IDENTIFIED BY '1boW3@heO0k4H2_~#tU2@$#$1' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+https://blog.csdn.net/apgk1/article/details/144370035

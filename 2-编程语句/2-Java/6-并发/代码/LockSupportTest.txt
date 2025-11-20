@@ -1,0 +1,53 @@
+import java.util.concurrent.locks.LockSupport;
+
+//在 Java 并发编程中，LockSupport.park() 是一个非常重要的工具方法，常用于线程的挂起和唤醒操作。它属于 //java.util.concurrent.locks.LockSupport 类，是实现更高级并发工具（如 ReentrantLock、Condition 等）的基础。
+public class ProducerConsumerExample {
+
+    // 缓冲区
+    private static final int BUFFER_SIZE = 1;
+    private static int buffer = -1;
+    private static boolean isFull = false;
+    private static boolean isEmpty = true;
+
+    public static void main(String[] args) {
+        Thread producer = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                while (isFull) {
+                    LockSupport.park(); // 缓冲区满，生产者挂起
+                }
+
+                buffer = i;
+                System.out.println("Produced: " + buffer);
+                isFull = true;
+                isEmpty = false;
+
+                LockSupport.unpark(consumer); // 唤醒消费者
+            }
+        });
+
+        Thread consumer = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                while (isEmpty) {
+                    LockSupport.park(); // 缓冲区空，消费者挂起
+                }
+
+                System.out.println("Consumed: " + buffer);
+                buffer = -1;
+                isFull = false;
+                isEmpty = true;
+
+                LockSupport.unpark(producer); // 唤醒生产者
+            }
+        });
+
+        producer.start();
+        consumer.start();
+
+        try {
+            producer.join();
+            consumer.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
