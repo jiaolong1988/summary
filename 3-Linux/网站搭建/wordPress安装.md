@@ -1,5 +1,34 @@
 [wordpress 如何使用docker compose 安装文档 ](https://cn.bing.com/search?q=wordpress 如何使用docker compose  安装文档&qs=n&form=QBRE&sp=-1&lq=0&pq=wordpress 如何使用docker compose  安装wen'd&sc=12-37&sk=&cvid=448B8D2B6D4B4F13A04BE1C6BAFD8A0D)
 
+# 指定网站域名
+
+![image-20251129151717870](assets/image-20251129151717870.png)
+
+```bash
+#wp-config.php 开始位置添加如下内容：
+define('WP_SITEURL', 'https://goldlong.site');
+define('WP_HOME', 'https://goldlong.site');
+```
+
+## docker安装
+
+```bash
+docker run -d \
+--name wordpress \
+--network app-network \
+-p 8888:80 \
+-e WORDPRESS_DB_HOST=mysql-server \
+-e WORDPRESS_DB_NAME=wordpress_db \
+-e WORDPRESS_DB_USER=wp_user \
+-e WORDPRESS_DB_PASSWORD=wp_pass@123 \
+-v /root/wordpress-New/wordpress_data:/var/www/html \
+-v /root/wordpress-New/custom-php.ini:/usr/local/etc/php/conf.d/custom.ini \
+--restart=always \
+wordpress:latest
+```
+
+
+
 
 
 ## 1.wordpress安装

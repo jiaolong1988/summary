@@ -119,14 +119,34 @@ sudo yum remove -y mysql-community-server mysql-community-client mysql-community
 
 ```bash
 sudo yum install httpd -y
-sudo systemctl start httpd
-sudo systemctl enable httpd
-sudo systemctl status httpd
 
 #端口修改为8080
 sudo sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf
 vim /etc/httpd/conf/httpd.conf
+
+
+sudo systemctl start httpd
+sudo systemctl enable httpd
+sudo systemctl status httpd
 ```
+
+**修改家目录地址，默认的地址：/var/www/html**
+
+```
+vim /etc/httpd/conf/httpd.conf  # 打开配置文件
+
+# 原配置：DocumentRoot "/var/www/html"
+DocumentRoot "/home/user/mywebsite"  # 改为新目录
+
+# 原配置：<Directory "/var/www/html">
+<Directory "/home/user/mywebsite">  # 同步改为新目录
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
+```
+
+
 
 ## 配置虚拟主机
 
@@ -137,6 +157,9 @@ vim /etc/httpd/conf.d/easyappointments.conf
 <VirtualHost *:8080>
     DocumentRoot "/var/www/html/easyappointments"
     ServerName localhost
+    # 指定上下文
+    Alias /booking "/var/www/html/easyappointments"
+    
     
     <Directory "/var/www/html/easyappointments">
         Options Indexes FollowSymLinks
@@ -182,7 +205,32 @@ cp config-sample.php config.php
 
 - 配置数据库信息
 
+  >     const DB_HOST = '127.0.0.1';
+  >     const DB_NAME = 'easyappointments';
+  >     const DB_USERNAME = 'easy_user';
+  >     const DB_PASSWORD = 'easy_pass@123';
+
 ![image-20251022113517227](assets/image-20251022113517227.png)
+
+
+
+## 删除easyAppointment信息
+
+
+
+- /var/www/html/easyappointments/application/views/components/
+
+  > booking_footer.php
+  >
+  > booking_header.php
+
+- /var/www/html/easyappointments/application/views/layouts
+
+
+
+linux查找文件中包含指定内容的文件命令：
+
+> grep -r "Powered By" /var/www/html/easyappointments
 
 
 
