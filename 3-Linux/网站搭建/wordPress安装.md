@@ -25,6 +25,19 @@ docker run -d \
 -v /root/wordpress-New/custom-php.ini:/usr/local/etc/php/conf.d/custom.ini \
 --restart=always \
 wordpress:latest
+
+
+docker run -d \
+--name wordpress \
+--network app-network \
+-p 8888:80 \
+-e WORDPRESS_DB_HOST=mysql-server-easy \
+-e WORDPRESS_DB_NAME=wordpress_db \
+-e WORDPRESS_DB_USER=wp_user \
+-e WORDPRESS_DB_PASSWORD=wp_pass@123 \
+-v /root/wordpress/data:/var/www/html \
+--restart=always \
+wordpress:latest
 ```
 
 

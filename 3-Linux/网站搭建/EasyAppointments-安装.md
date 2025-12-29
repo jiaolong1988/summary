@@ -220,17 +220,33 @@ cp config-sample.php config.php
 
 - /var/www/html/easyappointments/application/views/components/
 
-  > booking_footer.php
+  > booking_footer.php  前台地址 漂白
   >
   > booking_header.php
+  >
+  > backend_footer.php     后台地址 漂白
 
-- /var/www/html/easyappointments/application/views/layouts
+  
+
+- 消息页面漂白
+
+  > /var/www/html/easyappointments/application/views/layouts/message_layout.php
+
+
+
+- 去除google日历
+
+  > /var/www/html/easyappointments/application/views/pages/booking_confirmation.php
+  >
+  > 
 
 
 
 linux查找文件中包含指定内容的文件命令：
 
 > grep -r "Powered By" /var/www/html/easyappointments
+>
+> grep -r " Software Development" /var/www/html/easyappointments
 
 
 
