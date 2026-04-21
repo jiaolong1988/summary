@@ -1,0 +1,9 @@
+3305	允许	mysql5.7-docker	
+3900	允许	朋友圈	
+8888	允许	wordpress	
+3000	允许		
+48080	允许	easyapponitment	
+3306	允许	MySQL服务 (3306)	
+
+
+http://43.138.35.43:8888
