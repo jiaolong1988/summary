@@ -1,0 +1,19 @@
+
+https://cursor.com/cn/docs/skills
+
+官方
+	https://github.com/anthropics/skills/tree/main/skills
+
+axi-front-design-skill 
+	做高质量 PPT
+	https://github.com/bbostaice/axi-front-design-skill
+
+ui-ux-pro-max-skill
+	6.7 万星 skill，AI 写的PPT和网页终于不像模板了
+	https://www.bilibili.com/video/BV1zgoPBHESd?
+	https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/main
+
+	npm install -g uipro-cli
+	uipro init --ai cursor 
+
+everything-claude-code
