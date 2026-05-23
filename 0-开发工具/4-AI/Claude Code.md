@@ -6,6 +6,17 @@
 - [安装视频](https://www.bilibili.com/video/BV1oPFDzQEG7/)
 - [Claude Code 不再推荐 npm 安装](https://blog.csdn.net/ko800008ok/article/details/159004066)
 
+- [Claude Code 安装 - 中文站](https://claude-zh.cn/guide/getting-started)
+
+  ```powershell
+  # win powershell安装
+  & ([scriptblock]::Create((New-Object Net.WebClient).DownloadString("https://claude-zh.cn/scripts/install.ps1")))
+  ```
+
+- cc-switch
+
+  > [Release CC Switch v3.14.1 · farion1231/cc-switch](https://github.com/farion1231/cc-switch/releases/tag/v3.14.1)
+
 
 
 ## 案例
@@ -31,7 +42,7 @@
 | 7    | /tasks                                | 查看后台执行的任务                     |
 | 8    | /init                                 | 生成CLAUDE.md文件                      |
 | 9    | claude -c                             | 直接进入上次对话                       |
-|      | claude -r                             | 选择历史会话恢复，适合中途推出后续工作 |
+| 10   | claude -r                             | 选择历史会话恢复，适合中途推出后续工作 |
 |      |                                       |                                        |
 |      |                                       |                                        |
 |      |                                       |                                        |
