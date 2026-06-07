@@ -1,0 +1,37 @@
+{
+    "java.debug.settings.onBuildFailureProceed": true,
+
+	// 1. 指定 JDK 8 为运行时（编译和运行都用它）
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-1.8",
+            "path": "d:\\MyProgram Files\\JDK\\Java8\\jdk-1.8",
+            "default": true
+        }
+    ],
+    // 2. 指定 JDT Language Server 自身也用 JDK 8 运行（避免用系统高版本 JDK）
+    "java.jdt.ls.java.home": "d:\\MyProgram Files\\JDK\\Java8\\jdk-1.8",
+    // 3. 编译输出目录，统一到 bin（和 Eclipse 对齐）
+    "java.project.outputPath": "bin",
+    // 4. 指定源码目录为 src
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    // 5. 禁止自动升级编译版本
+    "java.completion.enabled": true,
+    "java.configuration.updateBuildConfiguration": "disabled",
+    // 6. 强制编译级别为 1.8
+    "java.compile.nullAnalysis.mode": "disabled",
+    "java.settings.url": "",
+    
+    "files.exclude": {
+        "**/.idea": true,
+        "**/.eclipse": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.classpath": true,
+        "**/.git": true,
+        "**/.svn": true
+    }
+}
+
