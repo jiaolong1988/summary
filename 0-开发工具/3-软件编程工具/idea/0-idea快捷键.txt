@@ -4,8 +4,8 @@ ctrl+alt系列
 	Ctrl+Alt+T                  Surround with 快捷键,try/catch快捷键				
 	Ctrl+Alt+Enter			    切换到上一行代码空位
 	Ctrl+Alt+方向键(下)			复制当前行内容至下一行
-	Ctrl+Alt+H					查看方法被哪里引用
-	Ctrl+Alt+B					查看方法在哪里定义	
+	Ctrl+Alt+F					查看方法被哪里引用
+	Ctrl+T						查看方法在哪里定义	
 	Alt+Enter					获取对象的所有get set方法
 	f2							显示类的注解信息
 
@@ -34,14 +34,13 @@ ctrl+alt系列
 
 
 结构查找
-	Ctrl+Alt+H					查看方法被哪里引用
-	Ctrl+Alt+B					查看方法在哪里定义				 
-	Ctrl + T 					接口的实现类有哪些。选中接口方法，直接跳转到实现类。
+	Ctrl+Alt+F					查看方法被哪里引用
+	Ctrl + T 					查看方法在哪里定义，接口的实现类有哪些。选中接口方法，直接跳转到实现类。
 
 文件查找
-	Ctrl + F					在当前文件中 查找与替换
-	Ctrl + H					查询包含关键字的文本文件(根据内容查找文件)
-	shift+shift					全局查找文件
+	shift+shift					全局查找类文件查找
+	Ctrl+ F			    		当前文件查找替换
+	Ctrl+ H						全局文件查找替换
 
 类所有方法查看
 	Alt  + 7					查看类中的所有方法 
