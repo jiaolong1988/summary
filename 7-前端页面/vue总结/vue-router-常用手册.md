@@ -1,8 +1,8 @@
-### 路由
+# 路由
 
 - [嵌套路由 | Vue Router](https://router.vuejs.org/zh/guide/essentials/nested-routes.html)
 
-## 1 动态路由
+## 1.动态路由
 
 ```js
  {
@@ -63,7 +63,7 @@
 
 
 
-## 3. query与params 区别
+## 3.query与params 区别
 
 > 句话速记：
 >

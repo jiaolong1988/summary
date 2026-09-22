@@ -22,7 +22,7 @@ const params = { pageNum: 1, pageSize: 10 }
 // 简写：params 等价于 params: params
 request.get({
   url: '/api/page',
-  params 
+  params                        //简写
 })
 ```
 
@@ -41,7 +41,6 @@ watch([price, count], ([newP, newC], [oldP, oldC]) => {
     //模板字符串
     console.log("watch ",`Count changed from ${oldP} to ${newP}`)
 })   
-
 ```
 
 
@@ -64,7 +63,7 @@ watch([price, count], ([newP, newC], [oldP, oldC]) => {
 
 
 
-## 5. import副作用导入
+### 5. import副作用导入
 
 > 【不导入仅执行】
 
@@ -84,7 +83,7 @@ watch([price, count], ([newP, newC], [oldP, oldC]) => {
 
 
 
-## 6.import type 类型导入
+### 6.import type 类型导入
 
 - 只导入【类型】，不导入运行时代码，仅给 TypeScript 做类型校验，打包后这行直接消失。
 
@@ -98,7 +97,7 @@ import type { xxx } from 'vue-router'  // 只导入类型，仅 TS 用
 | 导入函数、常量、class，页面要执行运行          | `import {}`      |
 | 导入 type /interface，只做类型标注，不参与运行 | `import type {}` |
 
-###  案例
+####  案例
 
 ```ts
 // 👉 纯类型：编译之后直接消失，JS里没有任何痕迹
@@ -137,9 +136,7 @@ saveToken(myToken)
 
 
 
-
-
-## 7.import 函数形式的导入
+### 7.import 函数形式的导入
 
 | 写法                    | 执行时机                  | 打包产物           | 用途                         |
 | ----------------------- | ------------------------- | ------------------ | ---------------------------- |
@@ -163,7 +160,7 @@ const routes = [
   {
     path: '/login',
     // 直接写 import()，router 内部会处理这个 Promise
-    component: () => import('@/views/Login/UserLogin.vue')
+    component: () => import('@/views/Login/UserLogin.vue')    ★重点
   }
 ]
 
@@ -174,13 +171,9 @@ const router = createRouter({
 export default router
 ```
 
-
-
 > `() => import(...)` 是箭头函数，**访问路由的时候才执行 import ()**，实现懒加载；没访问该路由，不会下载这个组件 js 文件。
 
 > ❗不要直接写 `component: import('xxx')`，会在初始化就执行加载，失去懒加载意义，必须包一层函数。
-
-
 
 
 
@@ -191,8 +184,6 @@ export default router
 `export default {}`：**ES6 默认导出，导出一个 JS 对象**。
 
 > 一个文件只能有**一个** `export default`；导出的是一整个对象，不是分别导出里面的属性
-
-
 
 - 基础写法
 
@@ -227,7 +218,9 @@ import { get } from './http.ts'
 
 
 
-- TypeScript + 泛型
+#### TypeScript + 泛型
+
+
 
 ```ts
 // request.ts
@@ -246,6 +239,11 @@ export default {
   }
 }
 
+//语法结构：是「对象字面量里面赋值箭头函数」
+const http = {
+  // 【对象属性名】 : 【函数值】
+  get: (参数) => { 函数体 }
+}
 ```
 
 调用
@@ -273,18 +271,13 @@ const users = await http.get<User[]>({ url: '/api/user' })
 
 ### **components.d.ts**是什么
 
-它是 **unplugin‑vue‑components** 自动生成的类型声明文件，**只服务于 TypeScript + Vue 模板，不参与项目打包运行**。
+它是 **unplugin‑vue‑components** 自动生成的**类型声明文件**，**只服务于 TypeScript + Vue 模板，不参与项目打包运行**。
 
 > 你项目里开启了 VantResolver，实现模板里直接写 `<van-button />`，不用手动 `import VanButton from 'vant'`。
 >
 > 虽然代码运行没问题，但 TS 本身不知道 `<van‑xxx>` 这些全局组件存在，就会报红色波浪、丢失 props 提示。**这个文件就是解决这个问题的**。
 
-- 修改此文件存储路径
-
-```
-```
-
-
+- 修改此文件存储路径：tsconfig.app.json
 
 
 
@@ -457,7 +450,7 @@ list.find(item => {
   >
   >  () => ({ count:0 })
 
-- / 以下两个函数 是一样的效果
+-  以下两个函数 是一样的效果
 
 ```ts
 // 写法A：箭头函数「隐式返回对象字面量」
@@ -470,6 +463,23 @@ state: () => {
   return { count: 0 }
 }
 ```
+
+
+
+### 2.4箭头函数-指定返回类型
+
+```
+const o = {
+    state: ():number => (10),
+    //x:number 指定参数类型
+    //指定返回值类型
+    state1: (x:number):string => ("xxx")
+}
+```
+
+
+
+
 
 
 
@@ -504,7 +514,20 @@ state: () => {
 
 
 
-## 4 ...是什么-剩余运算符
+## 4 剩余运算符(...)
+
+口诀
+
+- **左边 `...otherOption`：rest 收集（剩余）**，用在**解构**，多个值收进一个对象 / 数组
+
+- **右边 `...obj`：spread 展开**，把对象打散平铺
+
+  ```
+  // 展开示例
+  const newObj = { ...otherOption, timeout: 5000 }
+  ```
+
+  
 
 ### 4.1在解构里
 
@@ -665,7 +688,7 @@ function test(x: Value) {
   }
   
   // keyof Person 得到： "name" | "age" | "address"
-  type PersonKeys = keyof Person/
+  type PersonKeys = keyof Person
   ```
 
   
